@@ -17,7 +17,7 @@ function ApplicationManager()
         g_ApplicationManager = this;
 
         this.level = new Level().startupLevel(canvasWidth, canvasHeight);
-        this.background = new VisualGameObject().startupVisualGameObject(g_ResourceManager.background, -300, -750, 1);
+        this.background = new Background().startupBackground(g_ResourceManager.background);
         g_player = new Player().startupPlayer(this.level);
         this.updateScore();
         return this;
