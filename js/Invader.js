@@ -37,7 +37,7 @@ function Invader() {
     
     if(Math.random() > 0.50 && Invader.cooldown <= 0) {
       Invader.cooldown = Invader.fire_speed;
-      bullet = new Bullet().startupBullet(this.x - this.type.width / 2, this.y + this.type.height, 1);
+      bullet = new Bullet().startupBullet(this.x + this.type.width / 2, this.y + this.type.height, 1);
     }
     
     this.x += dt * Invader.speed * Invader.x_move;
