@@ -95,7 +95,11 @@ function GameObjectManager()
         [{name: 'background', src: 'images/Map2.png'},
          {name: 'bulletUp', src: 'images/BulletUp.png'},
          {name: 'bulletDown', src: 'images/BulletDown.png'},
-         {name: 'hammer', src: 'images/HammerT1.png'}]);
+         {name: 'hammer', src: 'images/HammerT1.png'},
+         {name: 'invader1', src: 'images/Invader1.png'},
+         {name: 'invader2', src: 'images/Invader2.png'},
+         {name: 'invader3', src: 'images/Invader3.png'},
+         {name: 'explosion', src: 'images/explosion1.png'}]);
 
     // use setInterval to call the draw function
     setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
