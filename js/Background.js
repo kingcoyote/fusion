@@ -34,7 +34,6 @@ function Background(){
 		if(this.y + this.height <= g_GameObjectManager.canvas.height) {
 			this.y_move = 1;
 			this.change_speed();
-			this.x_move = 0;
 		}
 		// hit top edge
 		if(this.y >= 0) {

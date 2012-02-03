@@ -13,6 +13,10 @@ function Player() {
   this.screenBorder = 20;
   this.fire_speed   = 0.50; // weapon cooldown in seconds. 0.5 is default
 
+  this.team = 1;
+  
+  this.destructible = true;
+  
   /**
    * construct the player object
    * 
@@ -66,6 +70,23 @@ function Player() {
       bullet = new Bullet().startupBullet(this.x+50, this.y, -1);
     }
   }
+  
+  this.shutdownDestructibleGameObject = function() {
+    var explosion = new AnimatedGameObject().startupAnimatedGameObject(
+        g_ResourceManager.explosion, 
+        this.x + (100 / 2) - 62,
+        this.y + (85 / 2) - 62,
+        1,
+        5,
+        10
+    );
+    this.shutdownVisualGameObject();
+    setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
+  }
+  
+  this.collision_area = function() {
+    return new Rectangle().startupRectangle(this.x, this.y, 100, 85);
+  };
 }
 
 Player.prototype = new VisualGameObject;

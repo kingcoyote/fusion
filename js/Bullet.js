@@ -5,7 +5,7 @@
  */
 function Bullet() {
   this.speed        = 500; // base speed
-
+  this.direction = 0;
   /**
    * construct the player object
    * 
@@ -13,6 +13,7 @@ function Bullet() {
    * @return
    */
   this.startupBullet = function(x, y, direction) {
+    this.direction = direction;
     if(direction == 1) {
       this.startupVisualGameObject(g_ResourceManager.bulletDown, x-10, y+60, 1);
     } else {
@@ -36,7 +37,22 @@ function Bullet() {
     if(this.y + 80 < 0 || this.y - 80 > g_GameObjectManager.canvas.height) {
       this.shutdownVisualGameObject();
     }
+    
+    for(var i in g_GameObjectManager.gameObjects) {
+      var object = g_GameObjectManager.gameObjects[i];
+      if(object.destructible && this.direction == object.team && this.collision_area().intersects(object.collision_area())) {
+        object.shutdownDestructibleGameObject();
+        this.shutdownVisualGameObject();
+        g_score += 10;
+        g_ApplicationManager.updateScore();
+        break;
+      };
+    }
   }
+  
+  this.collision_area = function() {
+    return new Rectangle().startupRectangle(this.x, this.y, 20, 80);
+  };
 }
 
 Bullet.prototype = new VisualGameObject;
