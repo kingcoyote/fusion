@@ -5,55 +5,41 @@ function Invader() {
     invader3 : { image : g_ResourceManager.invader3, width: 54, height: 89, gun : { x : 27, y : 84 } }
   };
   
+  this.controller = false;
+  
   this.team = -1;
   
   this.original_y = 0;
   
   this.destructible = true;
   
-  this.startupInvader = function(type, x, y) {
+  this.type = {};
+  
+  this.startupInvader = function(type, x, y, controller) {
+    this.controller = controller;
     this.type = this.invaders['invader' + type];
     this.original_y = y;
     this.startupVisualGameObject(this.invaders['invader' + type].image, x, y, 1);
   };
   
   this.update = function(dt, context, xScroll, yScroll) {
-    
-    if(this.x + this.type.width  + 15 > g_GameObjectManager.canvas.width) {
-      Invader.y_offset += 15;
-      Invader.x_move = -1;
-      Invader.speed += Invader.speed_increment;
-
-    }
-    
-    if(this.x < 15) {
-      Invader.y_offset += 15;
-      Invader.x_move = 1;
-      Invader.speed += Invader.speed_increment;
-
-    }
-    Invader.cooldown -= dt;
-    
-    if(Math.random() > 0.50 && Invader.cooldown <= 0) {
-      Invader.cooldown = Invader.fire_speed;
-      var gun_x = this.x + this.type.gun.x;
-      var gun_y = this.y + this.type.gun.y;
-      var bullet = new Bullet().startupBullet(gun_x, gun_y, 1);
-      var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashDown, gun_x - 27 , gun_y);
-      var self = this;
-      flash.update = function() { 
-        this.x = self.x + self.type.gun.x - 27;
-      }
-      setTimeout(function(){flash.shutdownVisualGameObject();}, 50);
-    }
-    
-    this.x += dt * Invader.speed * Invader.x_move;
-    this.y = this.original_y + Invader.y_offset;
+    this.x += dt * this.controller.x_speed
+    this.y = this.original_y + this.controller.y_drop;
   };
   
   this.collision_area = function() {
     return new Rectangle().startupRectangle(this.x, this.y, this.type.width, this.type.height);
   }
+  
+  this.create_bullet = function() {
+    var bullet = new Bullet().startupBullet(this.x + this.type.gun.x, this.y + this.type.gun.y, 1);
+    var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashDown, this.x + this.type.gun.x - 27 , this.y + this.type.gun.y);
+    var self = this;
+    /*flash.update = function() { 
+      this.x = self.x + self.type.gun.x - 27;
+    }*/
+    setTimeout(function(){flash.shutdownVisualGameObject();}, 125);
+  };
   
   this.shutdownDestructibleGameObject = function() {
     var explosion = new AnimatedGameObject().startupAnimatedGameObject(
@@ -68,13 +54,6 @@ function Invader() {
     setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
   }
 }
-
-Invader.x_move = 1;
-Invader.y_offset = 0;
-Invader.speed  = 50;
-Invader.speed_increment = 15;
-Invader.cooldown = 0;
-Invader.fire_speed = 5;
 
 
 Invader.prototype = new VisualGameObject();
