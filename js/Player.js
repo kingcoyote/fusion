@@ -13,6 +13,8 @@ function Player() {
   this.screenBorder = 20;
   this.fire_speed   = 0.50; // weapon cooldown in seconds. 0.5 is default
 
+  this.gun = { x : 50, y : 15 };
+  
   this.team = 1;
   
   this.destructible = true;
@@ -67,7 +69,13 @@ function Player() {
     this.cooldown -= dt;
     if(this.fire && this.cooldown <= 0) {
       this.cooldown = this.fire_speed;
-      bullet = new Bullet().startupBullet(this.x+50, this.y, -1);
+      var bullet = new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
+      var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54);
+      var self = this;
+      flash.update = function() { 
+        this.x = self.x + self.gun.x - 27;
+      }
+      setTimeout(function(){flash.shutdownVisualGameObject();}, 125);
     }
   }
   

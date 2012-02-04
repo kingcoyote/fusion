@@ -15,7 +15,7 @@ function Bullet() {
   this.startupBullet = function(x, y, direction) {
     this.direction = direction;
     if(direction == 1) {
-      this.startupVisualGameObject(g_ResourceManager.bulletDown, x-10, y+60, 1);
+      this.startupVisualGameObject(g_ResourceManager.bulletDown, x-10, y, 1);
     } else {
       this.startupVisualGameObject(g_ResourceManager.bulletUp, x-10, y-60, 1);
       this.speed = 0 - this.speed;
