@@ -16,9 +16,8 @@ function ApplicationManager()
     {
         g_ApplicationManager = this;
 
-        this.level = new Level().startupLevel(canvasWidth, canvasHeight);
         this.background = new Background().startupBackground(g_ResourceManager.background);
-        g_player = new Player().startupPlayer(this.level);
+        g_player = new Player().startupPlayer();
         
         this.invaders = [];
         this.invaders.push(new Invader().startupInvader(1, 15, 183));

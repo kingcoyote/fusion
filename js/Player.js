@@ -8,7 +8,6 @@ function Player() {
   this.left         = false;
   this.right        = false;
   this.fire         = false;
-  this.level        = null;
   this.cooldown     = 0;
   this.screenBorder = 20;
   this.fire_speed   = 0.50; // weapon cooldown in seconds. 0.5 is default
@@ -25,9 +24,8 @@ function Player() {
    * @param level
    * @return
    */
-  this.startupPlayer = function(level) {
+  this.startupPlayer = function() {
     this.startupVisualGameObject(g_ResourceManager.hammer, g_GameObjectManager.canvas.width / 2 - 50, g_GameObjectManager.canvas.height - 100);
-    this.level = level;
     return this;
   }
 
