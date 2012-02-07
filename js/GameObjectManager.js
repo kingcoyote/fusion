@@ -129,7 +129,8 @@ function GameObjectManager()
          {name: 'invader3', src: 'images/Invader3.png'},
          {name: 'explosion', src: 'images/explosion1.png'},
          {name: 'flashUp', src: 'images/FlashUp.png'},
-         {name: 'flashDown', src: 'images/FlashDown.png'}]);
+         {name: 'flashDown', src: 'images/FlashDown.png'},
+         {name: 'shield', src: 'images/shieldChunk.png'}]);
 
     // use setInterval to call the draw function
     setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
