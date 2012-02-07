@@ -50,6 +50,7 @@ function Player() {
     @param number  The global scrolling value of the y axis
    */
   this.update = function (dt, context, xScroll, yScroll) {
+    this.y = yScroll + g_GameObjectManager.canvas.height - 115;
     if (this.left) {
       this.x -= this.speed * dt;
     }

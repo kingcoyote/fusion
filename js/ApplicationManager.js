@@ -23,12 +23,14 @@ function ApplicationManager()
         
         this.invader_controller = new InvaderController().startupInvaderController(1);
         this.updateScore();
+        
+        this.startupGameObject(0,0,-50);
         return this;
     }
 	 
-	this.update = function(dt,  context, xScroll, yScroll)
+    this.update = function(dt,  context, xScroll, yScroll)
     {
-        g_GameObjectManager.yScroll += 50 * dt;
+        g_GameObjectManager.yScroll -= 50 * dt;
     }
 
     this.updateScore = function()
@@ -37,4 +39,4 @@ function ApplicationManager()
         score.innerHTML = String(g_score);
     }
 }
-ApplicationManager.prototype = new GameObject
+ApplicationManager.prototype = new GameObject();

@@ -25,7 +25,7 @@ function Invader() {
   
   this.update = function(dt, context, xScroll, yScroll) {
     this.x += dt * this.controller.x_speed
-    this.y = this.original_y + this.controller.y_drop;
+    this.y = this.original_y + this.controller.y_drop + yScroll;
     this.cooldown -= dt;
   };
   
