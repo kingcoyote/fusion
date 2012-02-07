@@ -27,17 +27,17 @@ function Invader() {
   };
   
   this.update = function(dt, context, xScroll, yScroll) {
-    this.x += dt * this.controller.x_speed
+    this.x += dt * this.controller.x_speed;
     this.y = this.original_y + this.controller.y_drop + yScroll;
     this.cooldown -= dt;
   };
   
   this.collision_area = function() {
     return new Rectangle().startupRectangle(this.x, this.y, this.type.width, this.type.height);
-  }
+  };
   
   this.shoot = function() {
-    var bullet = new Bullet().startupBullet(this.x + this.type.gun.x, this.y + this.type.gun.y, 1);
+    new Bullet().startupBullet(this.x + this.type.gun.x, this.y + this.type.gun.y, 1);
   };
   
   this.shutdownDestructibleGameObject = function() {
@@ -52,7 +52,7 @@ function Invader() {
     );
     this.shutdownVisualGameObject();
     setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
-  }
+  };
 }
 
 

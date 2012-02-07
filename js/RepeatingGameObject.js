@@ -30,7 +30,7 @@ function RepeatingGameObject()
         this.height = height;
         this.scrollFactor = scrollFactor;
         return this;
-    }
+    };
 	
     /**
         Clean this object up
@@ -38,7 +38,7 @@ function RepeatingGameObject()
     this.shutdownstartupRepeatingGameObject = function()
     {
         this.shutdownVisualGameObject();
-    }
+    };
     
 	/**
         Draws this element to the back buffer
@@ -67,7 +67,7 @@ function RepeatingGameObject()
                 areaDrawn = this.drawRepeat(canvas, newPosition, newFillArea, newScrollPosition);
             }
         }
-    }
+    };
     
     this.drawRepeat = function(canvas, newPosition, newFillArea, newScrollPosition)
     {
@@ -83,8 +83,7 @@ function RepeatingGameObject()
         canvas.drawImage(this.image, left, top, width, height, newPosition[0], newPosition[1], width, height);
         
         return [width, height];
-    }
-    
-    
+    };
 }
+
 RepeatingGameObject.prototype = new VisualGameObject();

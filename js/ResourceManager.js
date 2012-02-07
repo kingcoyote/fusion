@@ -40,5 +40,5 @@ function ResourceManager()
 		}
 
         return this;
-    }
+    };
 }

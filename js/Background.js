@@ -15,7 +15,7 @@ function Background(){
 		var x = (this.width - g_GameObjectManager.canvas.width) * Math.random();
 		var y = (this.height - g_GameObjectManager.canvas.height); 
 		return this.startupVisualGameObject(image, 0 - x, 0 - y, -1);
-	}
+	};
 	
 	this.update = function(dt, context, xScroll, yScroll) {
 		
@@ -43,7 +43,7 @@ function Background(){
 	
 		this.x += (dt * this.x_speed) * this.x_move;
 		this.y += (dt * this.y_speed) * this.y_move;
-	}
+	};
 
 	this.change_speed = function() {
 		this.y_speed = this.speed_range * Math.random() + this.min_speed;

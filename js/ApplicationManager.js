@@ -30,13 +30,13 @@ function ApplicationManager()
 
 		this.startupGameObject(0,0,-50);
 		return this;
-	}
+	};
 
 
 	this.updateScore = function()
 	{
 		var score = document.getElementById("score");
 		score.innerHTML = String(g_score);
-	}
+	};
 }
 ApplicationManager.prototype = new GameObject();

@@ -42,7 +42,7 @@ function AnimatedGameObject()
   this.startupAnimatedGameObject = function(image, x, y, z, frameCount, fps)
   {
     if (frameCount <= 0) throw "framecount can not be <= 0";
-    if (fps <= 0) throw "fps can not be <= 0"
+    if (fps <= 0) throw "fps can not be <= 0";
 
     this.startupVisualGameObject(image, x, y, z);
     this.currentFrame = 0;
@@ -52,17 +52,17 @@ function AnimatedGameObject()
     this.frameWidth = this.image.width / this.frameCount;
 
     return this;
-  }
+  };
 
   this.shutdownAnimatedGameObject = function()
   {
     this.shutdownVisualGameObject();       
-  }
+  };
 
   this.setAnimation = function(/**Image*/ image, /**Number*/ frameCount, /**Number*/ fps)
   {
     if (frameCount <= 0) throw "framecount can not be <= 0";
-    if (fps <= 0) throw "fps can not be <= 0"
+    if (fps <= 0) throw "fps can not be <= 0";
 
     this.image = image;
     this.currentFrame = 0;
@@ -70,7 +70,7 @@ function AnimatedGameObject()
     this.timeBetweenFrames = 1/fps;
     this.timeSinceLastFrame = this.timeBetweenFrames;
     this.frameWidth = this.image.width / this.frameCount;
-  }
+  };
 
   /**
         Draws this element to the back buffer
@@ -91,12 +91,12 @@ function AnimatedGameObject()
       ++this.currentFrame;
       this.currentFrame %= this.frameCount;
     }
-  }
+  };
 
   this.collisionArea = function()
   {
     return new Rectangle().startupRectangle(this.x, this.y, this.frameWidth, this.image.height);
-  }
+  };
 }
 
 AnimatedGameObject.prototype = new VisualGameObject;

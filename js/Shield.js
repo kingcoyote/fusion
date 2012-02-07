@@ -12,7 +12,7 @@ Shield = function() {
   
   this.shutdownDestructibleGameObject = function() {
     this.shutdownVisualGameObject();
-  } 
+  } ;
 };
 
 Shield.prototype = new VisualGameObject;

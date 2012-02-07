@@ -21,7 +21,7 @@ function VisualGameObject()
     this.draw = function(/**Number*/ dt, /**CanvasRenderingContext2D*/ context, /**Number*/ xScroll, /**Number*/ yScroll)
     {
         context.drawImage(this.image, this.x - xScroll, this.y - yScroll);
-    }
+    };
     
     /**
         Initialises this object
@@ -35,7 +35,7 @@ function VisualGameObject()
         this.startupGameObject(x, y, z);
         this.image = image;
         return this;
-    }
+    };
     
     /**
         Clean this object up
@@ -44,11 +44,11 @@ function VisualGameObject()
     {
         this.shutdownGameObject();
         this.image = null;
-    }
+    };
 
     this.collisionArea = function()
     {
         return new Rectangle().startupRectangle(this.x, this.y, this.image.width, this.image.height);
-    }
+    };
 }
 VisualGameObject.prototype = new GameObject;

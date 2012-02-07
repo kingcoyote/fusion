@@ -34,7 +34,7 @@ function GameObjectManager()
             break;
         }
     }
-  }
+  };
   
   /** The time that the last frame was rendered  
         @type Date
@@ -97,8 +97,8 @@ function GameObjectManager()
     g_GameObjectManager = this;
 
     // watch for keyboard events
-    document.onkeydown = function(event){g_GameObjectManager.keyDown(event);}
-    document.onkeyup = function(event){g_GameObjectManager.keyUp(event);}
+    document.onkeydown = function(event){g_GameObjectManager.keyDown(event);};
+    document.onkeyup = function(event){g_GameObjectManager.keyUp(event);};
 
     // get references to the canvas elements and their 2D contexts
     this.canvas = document.getElementById('canvas');
@@ -136,7 +136,7 @@ function GameObjectManager()
     setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
 
     return this;        
-  }
+  };
 
   /**
         The render loop
@@ -151,7 +151,7 @@ function GameObjectManager()
     if (!this.resourcesLoaded)
     {
       var numLoaded = 0;
-      for (i = 0; i < g_ResourceManager.imageProperties.length; ++i)
+      for (var i = 0; i < g_ResourceManager.imageProperties.length; ++i)
       {
         if (g_ResourceManager[g_ResourceManager.imageProperties[i]].complete)
           ++numLoaded;
@@ -217,7 +217,7 @@ function GameObjectManager()
   this.addGameObject = function(gameObject)
   {
     this.gameObjects.push(gameObject);
-    this.gameObjects.sort(function(a,b){return a.zOrder - b.zOrder;})
+    this.gameObjects.sort(function(a,b){return a.zOrder - b.zOrder;});
   };
 
   /**
@@ -227,7 +227,7 @@ function GameObjectManager()
   this.removeGameObject = function(gameObject)
   {
     this.gameObjects.removeObject(gameObject);
-  }
+  };
 
   this.keyDown = function(event)
   {
@@ -238,7 +238,7 @@ function GameObjectManager()
         this.gameObjects[x].keyDown(event);
       }
     }
-  }
+  };
 
   this.keyUp = function(event)
   {
@@ -249,5 +249,5 @@ function GameObjectManager()
         this.gameObjects[x].keyUp(event);
       }
     }
-  }
+  };
 }

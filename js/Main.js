@@ -8,4 +8,5 @@ var FPS = 30,
 
 window.onload = function() {
   new GameObjectManager().startupGameObjectManager();
-}
+};
+

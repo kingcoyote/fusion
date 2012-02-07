@@ -41,7 +41,7 @@ function Powerup()
     this.startupAnimatedGameObject(image, x, y - this.bounceHeight, z, frameCount, fps);
     this.value = value;
     return this;
-  }
+  };
 
   /**
         Shuts this object down.
@@ -49,7 +49,7 @@ function Powerup()
   this.shutdownPowerup = function()
   {
     this.shutdownAnimatedGameObject();
-  }
+  };
 
   /**
         Updates the object
@@ -70,7 +70,7 @@ function Powerup()
       g_score += this.value;
       g_ApplicationManager.updateScore();
     }
-  }
+  };
 }
 
 Powerup.prototype = new AnimatedGameObject;

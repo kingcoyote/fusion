@@ -34,7 +34,7 @@ function GameObject()
         this.y = y;
         g_GameObjectManager.addGameObject(this);
         return this;
-    }
+    };
     
     /**
         Cleans up the object, and removes it from the list of objects held by the GameObjectManager.
@@ -42,5 +42,5 @@ function GameObject()
     this.shutdownGameObject = function()
     {
         g_GameObjectManager.removeGameObject(this);
-    }
+    };
 }

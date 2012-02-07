@@ -27,20 +27,20 @@ function Player() {
   this.startupPlayer = function() {
     this.startupVisualGameObject(g_ResourceManager.hammer, g_GameObjectManager.canvas.width / 2 - 50, g_GameObjectManager.canvas.height - 100);
     return this;
-  }
+  };
 
   this.keyDown = function(event) {
     this.left  = event.keyCode == 37 ? true : this.left;
     this.right = event.keyCode == 39 ? true : this.right;
     this.fire  = event.keyCode == 32 ? true : this.fire;
-  }
+  };
 
   this.keyUp = function(event)
   {
     this.left  = event.keyCode == 37 ? false : this.left;
     this.right = event.keyCode == 39 ? false : this.right;
     this.fire  = event.keyCode == 32 ? false : this.fire;
-  }
+  };
 
   /**
     Updates the object
@@ -70,10 +70,10 @@ function Player() {
       this.cooldown = this.fire_speed;
       this.shoot();
     }
-  }
+  };
   
   this.shoot = function() {
-    var bullet = new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
+    new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
   };
   
   this.shutdownDestructibleGameObject = function() {
@@ -87,7 +87,7 @@ function Player() {
     );
     this.shutdownVisualGameObject();
     setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
-  }
+  };
   
   this.collision_area = function() {
     return new Rectangle().startupRectangle(this.x, this.y, 100, 85);

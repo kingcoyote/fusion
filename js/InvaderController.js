@@ -11,7 +11,7 @@ function InvaderController() {
     this.row_drop = InvaderWaves[level].row_drop;
     this.x_speed = InvaderWaves[level].x_speed;
     for(var i in InvaderWaves[level].invaders) {
-      var invader = new Invader()
+      var invader = new Invader();
       invader.startupInvader(
         InvaderWaves[level].invaders[i][0],
         InvaderWaves[level].invaders[i][1],
@@ -26,21 +26,19 @@ function InvaderController() {
     for(var i in this.invaders) {
       if(this.invaders[i].dead) continue;
       if(this.invaders[i].x + this.invaders[i].type.width + 15 > 1024) {
-        this.y_drop += this.row_drop
+        this.y_drop += this.row_drop;
         this.x_speed = 0 - (Math.abs(this.x_speed) + this.speed_increment);
       }
       
       if(this.invaders[i].x < 15) {
-        this.y_drop += this.row_drop
+        this.y_drop += this.row_drop;
         this.x_speed = Math.abs(this.x_speed) + this.speed_increment;
       }
       if(Math.random() > 0.999 && this.invaders[i].cooldown <= 0) {
         this.invaders[i].shoot();
       }
     };
-  }
-  
-  
+  };
 }
 
 InvaderController.prototype = new GameObject;

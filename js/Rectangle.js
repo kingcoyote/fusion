@@ -24,7 +24,7 @@ function Rectangle()
         this.width = width;
         this.height = height;
         return this;
-    }
+    };
 
     /**
         @return         true if there is an intersection, false otherwise
@@ -42,5 +42,5 @@ function Rectangle()
             return false;
 
         return true;
-    }
+    };
 }
