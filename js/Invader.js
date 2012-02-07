@@ -16,6 +16,7 @@ function Invader() {
   this.destructible = true;
   
   this.type = {};
+  this.dead = false;
   
   this.startupInvader = function(type, x, y, controller) {
     this.controller = controller;
@@ -40,7 +41,8 @@ function Invader() {
   };
   
   this.shutdownDestructibleGameObject = function() {
-    var explosion = new AnimatedGameObject().startupAnimatedGameObject(
+	this.dead = true;
+	var explosion = new AnimatedGameObject().startupAnimatedGameObject(
         g_ResourceManager.explosion, 
         this.x + (this.type.width / 2) - 62,
         this.y + (this.type.height / 2) - 62,

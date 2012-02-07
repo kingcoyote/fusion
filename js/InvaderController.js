@@ -24,6 +24,7 @@ function InvaderController() {
 
   this.update = function(dt, context, xScroll, yScroll) {
     for(var i in this.invaders) {
+      if(this.invaders[i].dead) continue;
       if(this.invaders[i].x + this.invaders[i].type.width + 15 > 1024) {
         this.y_drop += this.row_drop
         this.x_speed = 0 - (Math.abs(this.x_speed) + this.speed_increment);
