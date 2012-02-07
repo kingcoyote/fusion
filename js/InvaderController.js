@@ -42,4 +42,4 @@ function InvaderController() {
   
 }
 
-InvaderController.prototype = new GameObject();
+InvaderController.prototype = new GameObject;

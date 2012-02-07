@@ -52,4 +52,4 @@ function Invader() {
 }
 
 
-Invader.prototype = new VisualGameObject();
+Invader.prototype = new VisualGameObject;
