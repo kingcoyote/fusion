@@ -14,7 +14,7 @@ function Player() {
 
   this.gun = { x : 50, y : 15 };
   
-  this.team = 1;
+  this.team = -1;
   
   this.destructible = true;
   

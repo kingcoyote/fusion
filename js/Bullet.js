@@ -40,10 +40,10 @@ function Bullet() {
     
     for(var i in g_GameObjectManager.gameObjects) {
       var object = g_GameObjectManager.gameObjects[i];
-      if(object.destructible && this.direction == object.team && this.collision_area().intersects(object.collision_area())) {
+      if(object.destructible && this.direction != object.team && this.collision_area().intersects(object.collision_area())) {
         object.shutdownDestructibleGameObject();
         this.shutdownVisualGameObject();
-        g_score += 10;
+        g_score += object.points;
         g_ApplicationManager.updateScore();
         break;
       };
