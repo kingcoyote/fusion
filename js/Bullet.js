@@ -51,7 +51,7 @@ function Bullet() {
   }
   
   this.collision_area = function() {
-    return new Rectangle().startupRectangle(this.x, this.y, 20, 80);
+    return new Rectangle().startupRectangle(this.x+2.5, this.direction == 1 ? this.y + 62.5 : this.y+2.5, 15, 15);
   };
 }
 
