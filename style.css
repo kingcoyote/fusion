@@ -1,1 +1,11 @@
-body { font-family: Arial,Helvetica,sans-serif;}
+body { background-color:#333; color: #fff; text-align:center; padding:0; }
+
+#page_wrapper { margin:0 auto; text-align:left; width:1280px; border:1px solid white; background-color:#000; }
+#page_wrapper:after { content:'.'; display:block; clear:both; visibility:hidden; font-size:1px; }
+
+#game { width:1024px; float:left; margin-bottom:-5px; }
+#sidebar { width:246px; float:left;  padding:0 5px; }
+
+#sidebar h1 { text-align:center; border-bottom:2px solid white; }
+#sidebar h2 { border-bottom:1px solid white; margin-bottom:2px; font-size:18px; }
+#sidebar div.detail { font-size: 24px; }
