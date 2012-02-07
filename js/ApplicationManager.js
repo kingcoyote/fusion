@@ -16,13 +16,19 @@ function ApplicationManager()
     {
         g_ApplicationManager = this;
 
-        this.background = new Background().startupBackground(g_ResourceManager.background);
+        //this.background = new Background().startupBackground(g_ResourceManager.background);
+        this.background0 = new RepeatingGameObject().startupRepeatingGameObject(g_ResourceManager.background0, 0, 0, -25, 1024, 2048, 0.5);
+        this.background1 = new RepeatingGameObject().startupRepeatingGameObject(g_ResourceManager.background1, 0, -1024, -24, 1024, 2048, 0.75);
         g_player = new Player().startupPlayer();
         
         this.invader_controller = new InvaderController().startupInvaderController(1);
-        
         this.updateScore();
         return this;
+    }
+	 
+	this.update = function(dt,  context, xScroll, yScroll)
+    {
+        g_GameObjectManager.yScroll += 50 * dt;
     }
 
     this.updateScore = function()
@@ -31,3 +37,4 @@ function ApplicationManager()
         score.innerHTML = String(g_score);
     }
 }
+ApplicationManager.prototype = new GameObject
