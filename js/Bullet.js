@@ -34,7 +34,7 @@ function Bullet() {
   this.update = function (dt, context, xScroll, yScroll) {
     this.y += this.speed * dt;
     
-    if(this.y + 80 < 0 || this.y - 80 > g_GameObjectManager.canvas.height) {
+    if(this.y + 80 - yScroll < 0 || this.y - 80 > g_GameObjectManager.canvas.height) {
       this.shutdownVisualGameObject();
     }
     

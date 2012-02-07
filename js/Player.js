@@ -50,6 +50,7 @@ function Player() {
     @param number  The global scrolling value of the y axis
    */
   this.update = function (dt, context, xScroll, yScroll) {
+    this.y = yScroll + g_GameObjectManager.canvas.height - 115;
     if (this.left) {
       this.x -= this.speed * dt;
     }
@@ -67,15 +68,13 @@ function Player() {
     this.cooldown -= dt;
     if(this.fire && this.cooldown <= 0) {
       this.cooldown = this.fire_speed;
-      var bullet = new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
-      var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54);
-      var self = this;
-      flash.update = function() { 
-        this.x = self.x + self.gun.x - 27;
-      }
-      setTimeout(function(){flash.shutdownVisualGameObject();}, 125);
+      this.shoot();
     }
   }
+  
+  this.shoot = function() {
+    var bullet = new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
+  };
   
   this.shutdownDestructibleGameObject = function() {
     var explosion = new AnimatedGameObject().startupAnimatedGameObject(

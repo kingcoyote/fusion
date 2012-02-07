@@ -120,7 +120,7 @@ function GameObjectManager()
     // create a new ResourceManager
     new ResourceManager().startupResourceManager(
         [{name: 'background0', src: 'images/bg0.jpg'},
-		 {name: 'background1', src: 'images/bg1-alt.png'},
+         {name: 'background1', src: 'images/bg1-alt.png'},
          {name: 'bulletUp', src: 'images/BulletUp.png'},
          {name: 'bulletDown', src: 'images/BulletDown.png'},
          {name: 'hammer', src: 'images/HammerT1.png'},
