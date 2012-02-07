@@ -5,16 +5,11 @@ function Invader() {
     invader3 : { image : g_ResourceManager.invader3, width: 54, height: 89, gun : { x : 27, y : 84 }, cooldown: 1.5 }
   };
   
-  this.points = 0;
-
+  this.points = 10;
   this.controller = false;
-  
   this.team = 1;
-  
   this.original_y = 0;
-  
   this.destructible = true;
-  
   this.type = {};
   this.dead = false;
   
