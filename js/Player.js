@@ -67,11 +67,11 @@ function Player() {
     this.cooldown -= dt;
     if(this.fire && this.cooldown <= 0) {
       this.cooldown = this.fire_speed;
-      this.create_bullet();
+      this.shoot();
     }
   }
   
-  this.create_bullet = function() {
+  this.shoot = function() {
     var bullet = new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
     var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54);
     var self = this;
