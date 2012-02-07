@@ -73,12 +73,6 @@ function Player() {
   
   this.shoot = function() {
     var bullet = new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
-    var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54);
-    var self = this;
-    flash.update = function() { 
-      this.x = self.x + self.gun.x - 27;
-    }
-    setTimeout(function(){flash.shutdownVisualGameObject();}, 125);
   };
   
   this.shutdownDestructibleGameObject = function() {
