@@ -24,10 +24,11 @@ function ApplicationManager()
 		for(var i in ShieldList) {
 			new Shield().startupShield(ShieldList[i][0], ShieldList[i][1]);
 		}
-
-		this.invader_controller = new InvaderController().startupInvaderController(1);
+		g_level = 1;
+		new InvaderController().startupInvaderController(g_level);
 		this.updateScore();
-
+		this.updateLevel();
+		
 		return this;
 	};
 
@@ -37,5 +38,11 @@ function ApplicationManager()
 		var score = document.getElementById("score");
 		score.innerHTML = String(g_score);
 	};
+	
+	this.updateLevel = function()
+	{
+	  var level = document.getElementById("level");
+    level.innerHTML = String(g_level);
+	}
 }
 ApplicationManager.prototype = new GameObject();

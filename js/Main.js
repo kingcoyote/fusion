@@ -4,6 +4,7 @@ var FPS = 30,
   g_ApplicationManager = null,
   g_ResourceManager = null,
   g_score = 0,
+  g_level = 0,
   g_player = null;
 
 window.onload = function() {
