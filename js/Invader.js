@@ -33,6 +33,13 @@ function Invader() {
   
   this.shoot = function() {
     new Bullet().startupBullet(this.x + this.type.gun.x, this.y + this.type.gun.y, 1);
+    var flash = new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashDown, this.x + this.type.gun.x - 27 , this.y + this.type.gun.y, 5);
+    var self = this;
+    flash.update = function() { 
+      this.x = self.x + self.type.gun.x - 27;
+    };
+    setTimeout(function(){flash.shutdownVisualGameObject();}, 125);
+    this.cooldown = this.type.cooldown;
   };
   
   this.shutdownDestructibleGameObject = function() {
