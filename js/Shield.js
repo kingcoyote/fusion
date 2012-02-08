@@ -3,7 +3,7 @@ Shield = function() {
   this.destructible = true;
   this.points = 0;
   this.startupShield = function(x, y) {
-    this.startupVisualGameObject(g_ResourceManager.shield, x, y);
+    this.startupVisualGameObject(g_ResourceManager.shield, x, y, 1);
   };
   
   this.collision_area = function() {

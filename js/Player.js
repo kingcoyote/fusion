@@ -25,7 +25,12 @@ function Player() {
    * @return
    */
   this.startupPlayer = function() {
-    this.startupVisualGameObject(g_ResourceManager.hammer, g_GameObjectManager.canvas.width / 2 - 50, g_GameObjectManager.canvas.height - 100);
+    this.startupVisualGameObject(
+        g_ResourceManager.hammer, 
+        g_GameObjectManager.canvas.width / 2 - 50, 
+        g_GameObjectManager.canvas.height - 100, 
+        5
+    );
     return this;
   };
 
