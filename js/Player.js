@@ -17,7 +17,7 @@ function Player() {
   this.team = -1;
   
   this.destructible = true;
-  
+  this.points = 0;
   /**
    * construct the player object
    * 
