@@ -18,7 +18,7 @@ function Background(){
 	};
 	
 	this.update = function(dt, context, xScroll, yScroll) {
-	  this.y += dt * this.speed_y;
+	  this.y += Math.ceil(dt * this.speed_y);
 	  this.x += dt * this.speed_x;
 	  
 	  if(this.repeat && this.spawn_repeat === false && this.y >= 0 && this.speed_y >= 0) {
