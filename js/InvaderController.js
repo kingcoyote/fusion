@@ -30,6 +30,9 @@ function InvaderController() {
     alive = false;
     for(var i in this.invaders) {
       if(this.invaders[i].dead) continue;
+      if(this.invaders[i].y > g_GameObjectManager.canvas.height + this.invaders[i].type.height - 300) {
+        g_GameObjectManager.endLoop();
+      }
       alive = true;
       if(this.invaders[i].x + this.invaders[i].type.width + 15 > 1024) {
         this.y_drop += this.row_drop;

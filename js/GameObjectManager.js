@@ -133,7 +133,7 @@ function GameObjectManager()
          {name: 'shield', src: 'images/shieldChunk.png'}]);
 
     // use setInterval to call the draw function
-    setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
+    this.loop = setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
 
     return this;        
   };
@@ -210,6 +210,11 @@ function GameObjectManager()
     }        
   };
 
+  this.endLoop = function()
+  {
+    clearInterval(this.loop);
+  };
+  
   /**
         Adds a new GameObject to the gameObjects collection
         @param gameObject The object to add

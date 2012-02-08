@@ -90,6 +90,19 @@ function Player() {
         5,
         10
     );
+    
+    g_lives--;
+    g_ApplicationManager.updateLives();
+    if(g_lives) {
+      setTimeout(function(){
+        g_player = new Player().startupPlayer();
+      }, 3000);
+    } else {
+      setTimeout(function(){
+        g_GameObjectManager.endLoop();
+      }, 1000);
+    }
+    
     this.shutdownVisualGameObject();
     setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
   };

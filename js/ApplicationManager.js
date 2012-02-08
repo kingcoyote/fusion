@@ -28,6 +28,7 @@ function ApplicationManager()
 		new InvaderController().startupInvaderController(g_level);
 		this.updateScore();
 		this.updateLevel();
+		this.updateLives();
 		
 		return this;
 	};
@@ -44,5 +45,11 @@ function ApplicationManager()
 	  var level = document.getElementById("level");
     level.innerHTML = String(g_level);
 	}
+	
+	this.updateLives = function()
+  {
+    var lives = document.getElementById("lives");
+    lives.innerHTML = String(g_lives);
+  }
 }
 ApplicationManager.prototype = new GameObject();
