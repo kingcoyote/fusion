@@ -20,7 +20,7 @@ function VisualGameObject()
     */
     this.draw = function(/**Number*/ dt, /**CanvasRenderingContext2D*/ context, /**Number*/ xScroll, /**Number*/ yScroll)
     {
-        context.drawImage(this.image, this.x - xScroll, this.y - yScroll);
+        context.drawImage(this.image, Math.ceil(this.x) - xScroll, Math.ceil(this.y) - yScroll);
     };
     
     /**
