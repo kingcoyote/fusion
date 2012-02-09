@@ -1,11 +1,15 @@
-body { background-color:#333; color: #fff; text-align:center; padding:0; }
+body { background-color:#333; color: #fff; text-align:center; padding:0; margin:0; }
 
-#page_wrapper { margin:0 auto; text-align:left; width:1260px; border:1px solid white; background-color:#000; }
-#page_wrapper:after { content:'.'; display:block; clear:both; visibility:hidden; font-size:1px; }
+#game { margin:0 auto; text-align:left; width:1024px; height:768px; background-color:#000; position:relative; }
 
-#game { width:1024px; float:left; margin-bottom:-5px; }
-#sidebar { width:226px; float:left;  padding:0 5px; }
+#canvas { background-color: #000; }
 
-#sidebar h1 { text-align:center; border-bottom:2px solid white; }
-#sidebar h2 { border-bottom:1px solid white; margin-bottom:2px; font-size:18px; }
-#sidebar div.detail { font-size: 24px; }
+#hud { position:absolute; bottom:0; padding:5px; width:1014px; }
+#hud h2, #hud div { display:inline; }
+#hud h2 { font-size: 18px; font-weight:normal; }
+#hud .detail { font-size:24px; font-weight:bold; }
+#hud #hud_lives { float:left; width: 338px; text-align:left; }
+#hud #hud_score { float:left; width:338px; text-align:center; }
+#hud #hud_level { float:left; width: 338px; text-align:right; }
+
+.clearfix:after { content:"."; visibility:hidden; display:block; clear:both; color:#000; }
