@@ -12,6 +12,8 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #hud_bottom #hud_middle { float:left; width:338px; text-align:center; }
 #hud_bottom #hud_right { float:left; width: 338px; text-align:right; }
 
+#hud_bottom #lives { background:url(images/LifeIcon.png) repeat-x; display:block; height:34px; width: 86px}
+
 #game_over { display:none; position:absolute; width:350px; height: 120px; top: 324px; left: 337px; text-align:center; background-color:#000; border:2px solid #fff; }
 #game_over p { font-weight:bold; font-size:24px; }
 #game_over span { cursor: pointer; font-size: 16px; }

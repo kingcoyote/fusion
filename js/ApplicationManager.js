@@ -50,7 +50,7 @@ function ApplicationManager()
 	this.updateLives = function()
   {
     var lives = document.getElementById("lives");
-    lives.innerHTML = String(g_lives);
+    lives.style.width = g_lives * 43 + 'px';
   }
 	
 	this.updateHealth = function()
