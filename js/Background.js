@@ -21,22 +21,22 @@ function Background(){
 	  this.y += dt * this.speed_y;
 	  this.x += dt * this.speed_x;
 	  
-	  if(this.repeat && this.spawn_repeat === false && this.y >= 0 && this.speed_y >= 0) {
-	    this.spawn_repeat = true;
-	    this.zOrder += 1;
-	    new Background().startupBackground(
-	      this.image, 
-	      this.width, 
-	      this.height, 
-	      this.speed_x, 
-	      this.speed_y, 
-	      this.start_x, 
-	      0.25 - this.height, 
-	      this.repeat,
-	      this.z
-	    );
-	  }
-	}
+	  
+	};
+	
+	this.draw = function(dt, context, xScroll, yScroll) {
+      context.drawImage(this.image, this.x, this.y);
+      
+      // if the y value is above 0, we need to duplicate the image on top
+      if(this.y >= 0) {
+        context.drawImage(this.image, this.x, this.y - this.height);
+      }
+      
+      // if the y value is above canvas height, we need to reset the image
+      if(this.y >= g_GameObjectManager.canvas.height) {
+        this.y = g_GameObjectManager.canvas.height - this.height;
+      }
+  };
 };
 
 Background.prototype = new VisualGameObject();
