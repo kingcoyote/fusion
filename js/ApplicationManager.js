@@ -16,8 +16,8 @@ function ApplicationManager()
 	{
 		g_ApplicationManager = this;
 		
-		this.background0 = new Background().startupBackground(g_ResourceManager.background0, 1024, 2048, 0, 15, 1, -1024, true, -105);
-    this.background1 = new Background().startupBackground(g_ResourceManager.background1, 1024, 2048, 0, 30, 1, -1024, true, -95);
+		this.background0 = new Background().startupBackground(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105);
+    this.background1 = new Background().startupBackground(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95);
 		
     g_player = new Player().startupPlayer();
     
