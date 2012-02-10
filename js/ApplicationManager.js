@@ -45,13 +45,13 @@ function ApplicationManager()
 	{
 	  var level = document.getElementById("level");
     level.innerHTML = String(g_level);
-	}
+	};
 	
 	this.updateLives = function()
   {
     var lives = document.getElementById("lives");
     lives.style.width = g_lives * 43 + 'px';
-  }
+  };
 	
 	this.updateHealth = function()
 	{
