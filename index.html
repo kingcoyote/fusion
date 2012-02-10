@@ -25,19 +25,24 @@
   </head>
   <body>
     <div id="game">
+      <div id="hud_top">
+      
+      </div>
       <canvas id="canvas" width="1024" height="768">
         <p>Your browser does not support the canvas element!</p>
       </canvas>
-      <div id="hud">
-        <div id="hud_lives">
+      <div id="hud_bottom">
+        <div id="hud_left">
           <h2>Lives</h2>
-          <div id="lives" class="detail">1</div>
+          <div id="lives" class="detail">0</div>
         </div>
-        <div id="hud_score">
+        <div id="hud_middle">
+          <h2>Health</h2>
+          <div id="health" class="detail">0</div>
+        </div>
+        <div id="hud_right">
           <h2>Score</h2>
           <div id="score" class="detail">0</div>
-        </div>
-        <div id="hud_level">
           <h2>Level</h2>
           <div id="level" class="detail">0</div>
         </div>

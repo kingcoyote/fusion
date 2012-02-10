@@ -29,6 +29,7 @@ function ApplicationManager()
 		this.updateScore();
 		this.updateLevel();
 		this.updateLives();
+		this.updateHealth();
 		
 		return this;
 	};
@@ -51,5 +52,11 @@ function ApplicationManager()
     var lives = document.getElementById("lives");
     lives.innerHTML = String(g_lives);
   }
+	
+	this.updateHealth = function()
+	{
+	  var health = document.getElementById("health");
+	  health.innerHTML = g_player.health;
+	};
 }
 ApplicationManager.prototype = new GameObject();

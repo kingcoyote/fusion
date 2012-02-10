@@ -11,7 +11,8 @@ function Player() {
   this.cooldown     = 0;
   this.screenBorder = 20;
   this.fire_speed   = 0.50; // weapon cooldown in seconds. 0.5 is default
-
+  this.health = 20;
+  
   this.gun = { x : 50, y : 15 };
   
   this.team = -1;
@@ -102,6 +103,7 @@ function Player() {
     if(g_lives) {
       setTimeout(function(){
         g_player = new Player().startupPlayer();
+        g_ApplicationManager.updateHealth();
       }, 3000);
     } else {
       setTimeout(function(){

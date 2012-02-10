@@ -8,6 +8,7 @@ function Bullet() {
   this.direction = 0;
   this.width = 12;
   this.height = 40;
+  this.damage = 10;
   /**
    * construct the player object
    * 
@@ -43,10 +44,14 @@ function Bullet() {
     for(var i in g_GameObjectManager.gameObjects) {
       var object = g_GameObjectManager.gameObjects[i];
       if(object.destructible && this.direction != object.team && this.collision_area().intersects(object.collision_area())) {
-        object.shutdownDestructibleGameObject();
+        object.health -= this.damage;
+        g_ApplicationManager.updateHealth();
+        if(object.health <= 0) {
+          object.shutdownDestructibleGameObject();
+          g_score += object.points;
+          g_ApplicationManager.updateScore();
+        }
         this.shutdownVisualGameObject();
-        g_score += object.points;
-        g_ApplicationManager.updateScore();
         break;
       };
     }

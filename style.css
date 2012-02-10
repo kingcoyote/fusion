@@ -4,13 +4,13 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 
 #canvas { background-color: #000; }
 
-#hud { position:absolute; bottom:0; padding:5px; width:1014px; }
-#hud h2, #hud div { display:inline; }
-#hud h2 { font-size: 18px; font-weight:normal; }
-#hud .detail { font-size:24px; font-weight:bold; }
-#hud #hud_lives { float:left; width: 338px; text-align:left; }
-#hud #hud_score { float:left; width:338px; text-align:center; }
-#hud #hud_level { float:left; width: 338px; text-align:right; }
+#hud_bottom { position:absolute; bottom:0; padding:5px; width:1014px; }
+#hud_bottom h2, #hud_bottom div { display:inline; }
+#hud_bottom h2 { font-size: 18px; font-weight:normal; }
+#hud_bottom .detail { font-size:24px; font-weight:bold; }
+#hud_bottom #hud_left { float:left; width: 338px; text-align:left; }
+#hud_bottom #hud_middle { float:left; width:338px; text-align:center; }
+#hud_bottom #hud_right { float:left; width: 338px; text-align:right; }
 
 #game_over { display:none; position:absolute; width:350px; height: 120px; top: 324px; left: 337px; text-align:center; background-color:#000; border:2px solid #fff; }
 #game_over p { font-weight:bold; font-size:24px; }
