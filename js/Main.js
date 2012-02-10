@@ -5,10 +5,13 @@ var FPS = 30,
   g_ResourceManager = null,
   g_score = 0,
   g_level = 0,
-  g_lives = 3,
+  g_lives = 0,
   g_player = null;
 
 window.onload = function() {
   new GameObjectManager().startupGameObjectManager();
+  document.getElementById('restart').onclick = function() {
+    g_GameObjectManager = new GameObjectManager().startupGameObjectManager();
+  };
 };
 

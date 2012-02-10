@@ -95,7 +95,13 @@ function GameObjectManager()
   {
     // set the global pointer to reference this object
     g_GameObjectManager = this;
-
+    
+    g_score = 0;
+    g_lives = 3;
+    g_level = 1;
+    
+    document.getElementById('game_over').style.display='none';
+    
     // watch for keyboard events
     document.onkeydown = function(event){g_GameObjectManager.keyDown(event);};
     document.onkeyup = function(event){g_GameObjectManager.keyUp(event);};
@@ -213,6 +219,7 @@ function GameObjectManager()
   this.endLoop = function()
   {
     clearInterval(this.loop);
+    document.getElementById('game_over').style.display='block';
   };
   
   /**
