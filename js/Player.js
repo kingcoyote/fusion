@@ -17,6 +17,8 @@ function Player() {
   
   this.team = -1;
   
+  this.invulnerable = 0;
+  
   this.destructible = true;
   this.points = 0;
   /**
@@ -64,6 +66,8 @@ function Player() {
       this.x += this.speed * dt;
     }
     
+    this.invulnerable -= dt;
+    
     if(this.x - 15 <= 0) {
       this.x = 15;
     }
@@ -103,6 +107,7 @@ function Player() {
     if(g_lives) {
       setTimeout(function(){
         g_player = new Player().startupPlayer();
+        g_player.invulnerable = 2;
         g_ApplicationManager.updateHealth();
       }, 3000);
     } else {

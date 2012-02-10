@@ -44,6 +44,9 @@ function Bullet() {
     for(var i in g_GameObjectManager.gameObjects) {
       var object = g_GameObjectManager.gameObjects[i];
       if(object.destructible && this.direction != object.team && this.collision_area().intersects(object.collision_area())) {
+        if(object.invulnerable > 0) {
+          break;
+        }
         object.health -= this.damage;
         g_ApplicationManager.updateHealth();
         if(object.health <= 0) {
