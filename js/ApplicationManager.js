@@ -55,8 +55,9 @@ function ApplicationManager()
 	
 	this.updateHealth = function()
 	{
-	  var health = document.getElementById("health");
-	  health.innerHTML = g_player.health;
+	  var health = document.getElementById("current_health");
+	  health.style.width = 334 * (g_player.health / g_player.max_health) + 'px';
+	  health.setAttribute('class', (g_player.invulnerable > 0 ? 'invulnerable' : null));
 	};
 }
 ApplicationManager.prototype = new GameObject();

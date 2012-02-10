@@ -11,7 +11,8 @@ function Player() {
   this.cooldown     = 0;
   this.screenBorder = 20;
   this.fire_speed   = 0.50; // weapon cooldown in seconds. 0.5 is default
-  this.health = 20;
+  this.health = 50;
+  this.max_health = 50;
   
   this.gun = { x : 50, y : 15 };
   
@@ -67,6 +68,9 @@ function Player() {
     }
     
     this.invulnerable -= dt;
+    if(this.invulnerable < 0 && this.invulnerable + dt > 0) {
+      this.updateHealth();
+    }
     
     if(this.x - 15 <= 0) {
       this.x = 15;
