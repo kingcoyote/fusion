@@ -43,7 +43,7 @@ function InvaderController() {
         this.y_drop += this.row_drop;
         this.x_speed = Math.abs(this.x_speed) + this.speed_increment;
       }
-      if(Math.random() > 0.999 && this.invaders[i].cooldown <= 0) {
+      if(Math.random() > 0.995 && this.invaders[i].cooldown <= 0) {
         this.invaders[i].shoot();
       }
     };
