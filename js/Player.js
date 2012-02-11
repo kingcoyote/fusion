@@ -69,7 +69,7 @@ function Player() {
     
     this.invulnerable -= dt;
     if(this.invulnerable < 0 && this.invulnerable + dt > 0) {
-      this.updateHealth();
+      g_ApplicationManager.updateHealth();
     }
     
     if(this.x - 15 <= 0) {
