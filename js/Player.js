@@ -11,8 +11,8 @@ function Player() {
   this.cooldown     = 0;
   this.screenBorder = 20;
   this.fire_speed   = 0.50; // weapon cooldown in seconds. 0.5 is default
-  this.health = 50;
-  this.max_health = 50;
+  this.health       = 20;
+  this.max_health   = 20;
   
   this.gun = { x : 50, y : 15 };
   
