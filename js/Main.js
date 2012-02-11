@@ -6,7 +6,11 @@ var FPS = 30,
   g_score = 0,
   g_level = 0,
   g_lives = 0,
-  g_player = null;
+  g_player = null,
+  g_store = null,
+  g_health = 20
+  g_speed = 275,
+  g_firespeed = 0.50;
 
 window.onload = function() {
   new GameObjectManager().startupGameObjectManager();

@@ -48,11 +48,10 @@ function InvaderController() {
       }
     };
     if(alive === false) {
-      var new_level = this.level + 1;
-      g_level = new_level;
+      g_level = this.level + 1;
       g_ApplicationManager.updateLevel();
       setTimeout(function(){
-        new InvaderController().startupInvaderController(new_level);
+        g_store.showStore();
       }, 3000)
       this.shutdownGameObject();
     }

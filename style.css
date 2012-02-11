@@ -17,6 +17,16 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #hud_bottom #current_health { height:16px; width:334px; background-color:#cc0; display:block;  }
 #hud_bottom #current_health.invulnerable { background-color:#00f; }
 
+#store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; }
+#store_header { padding: 15px; text-align: center;}
+#store_footer { padding: 15px; text-align:center;}
+#store_inventory { margin:0 35px; border:1px solid #666; background-color:#333; height: 350px; padding:15px; }
+#store_close { margin:0 auto; }
+
+#store_inventory div.inventory { width:156px; float:left; margin:5px; text-align:center; }
+#store_inventory div.inventory div.name { font-size:18px; font-weight:bold; }
+#store_inventory div.inventory div.cost { font-size:28px; font-weight:bold; }
+
 #game_over { display:none; position:absolute; width:350px; height: 120px; top: 324px; left: 337px; text-align:center; background-color:#000; border:2px solid #fff; }
 #game_over p { font-weight:bold; font-size:24px; }
 #game_over span { cursor: pointer; font-size: 16px; }

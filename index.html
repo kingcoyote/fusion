@@ -21,14 +21,12 @@
     <script type="text/javascript" src="js/Background.js"></script>
     <script type="text/javascript" src="js/ApplicationManager.js"></script>
     <script type="text/javascript" src="js/GameObjectManager.js"></script>
+    <script type="text/javascript" src="js/Store.js"></script>
     <script type="text/javascript" src="js/Main.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="game">
-      <div id="hud_top">
-      
-      </div>
       <canvas id="canvas" width="1024" height="768">
         <p>Your browser does not support the canvas element!</p>
       </canvas>
@@ -46,6 +44,15 @@
           <div id="score" class="detail">0</div>
           <h2>Level</h2>
           <div id="level" class="detail">0</div>
+        </div>
+      </div>
+      <div id="store">
+        <div id="store_header">
+          <p>You can purchase items from the store. You have <span id="store_score">0</span> points to spend.</p>
+        </div>
+        <div id="store_inventory"></div>
+        <div id="store_footer">
+          <input type="button" id="store_close" value="Close Store" />
         </div>
       </div>
       <div id="game_over">

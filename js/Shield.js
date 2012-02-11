@@ -3,6 +3,7 @@ Shield = function() {
   this.destructible = true;
   this.points = 0;
   this.health = 1;
+  this.shield = true;
   this.startupShield = function(x, y) {
     this.startupVisualGameObject(g_ResourceManager.shield, x, y, 1);
   };

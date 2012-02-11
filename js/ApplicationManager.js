@@ -16,14 +16,14 @@ function ApplicationManager()
 	{
 		g_ApplicationManager = this;
 		
+		g_store = new Store().startupStore();
+		
 		this.background0 = new Background().startupBackground(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105);
     this.background1 = new Background().startupBackground(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95);
 		
     g_player = new Player().startupPlayer();
-    
-		for(var i in ShieldList) {
-			new Shield().startupShield(ShieldList[i][0], ShieldList[i][1]);
-		}
+		
+		this.startShields();
 		g_level = 1;
 		new InvaderController().startupInvaderController(g_level);
 		this.updateScore();
@@ -34,11 +34,22 @@ function ApplicationManager()
 		return this;
 	};
 
-
+	this.startShields = function() {
+	  for(var i in g_GameObjectManager.gameObjects) {
+	    var o = g_GameObjectManager.gameObjects[i];
+	    if(o.shield == true) {
+	      o.shutdownVisualGameObject();
+	    }
+	  }
+	  for(var i in ShieldList) {
+      new Shield().startupShield(ShieldList[i][0], ShieldList[i][1]);
+    }
+	};
+	
 	this.updateScore = function()
 	{
-		var score = document.getElementById("score");
-		score.innerHTML = String(g_score);
+		document.getElementById("score").innerHTML = String(g_score);
+		document.getElementById('store_score').innerHTML = g_score;
 	};
 	
 	this.updateLevel = function()
