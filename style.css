@@ -23,7 +23,8 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #store_inventory { margin:0 35px; border:1px solid #666; background-color:#333; height: 350px; padding:15px; }
 #store_close { margin:0 auto; }
 
-#store_inventory div.inventory { width:156px; float:left; margin:5px; text-align:center; }
+#store_inventory div.inventory { width:146px; float:left; margin:5px; text-align:center; cursor:pointer; padding:5px; }
+#store_inventory div.inventory:hover { background-color:#222; }
 #store_inventory div.inventory div.name { font-size:18px; font-weight:bold; }
 #store_inventory div.inventory div.cost { font-size:28px; font-weight:bold; }
 
