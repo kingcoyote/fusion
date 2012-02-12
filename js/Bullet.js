@@ -64,12 +64,12 @@ function Bullet() {
   this.die = function() {
     if(this.direction == 1) {
       image = g_ResourceManager.smallExploRed;
-      x_offset = -14;
-      y_offset = 14;
+      x_offset = (this.image.width/2) - (image.height/2);
+      y_offset = (this.image.height) - (this.image.width/2) - (image.height/2);
     } else {
       image = g_ResourceManager.smallExploBlue;
-      x_offset = -14;
-      y_offset = -14;
+      x_offset = (this.image.width/2) - (image.height/2);
+      y_offset = (this.image.width/2) - (image.height/2);
     }
     var explosion = new AnimatedGameObject().startupAnimatedGameObject(
         image, 
@@ -77,9 +77,9 @@ function Bullet() {
         this.y + y_offset,
         1,
         5,
-        10
+        20
     );
-    setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
+    setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 250);
     this.shutdownVisualGameObject();
   };
 }
