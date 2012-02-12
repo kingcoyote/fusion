@@ -19,11 +19,11 @@ function Store() {
     new_div.setAttribute('class', 'inventory');
     new_div.innerHTML =
         '<div class="name">'+item.name+'</div>' +
-        '<div class="icon"><img src="'+item.icon+'" width="64px" height="64px" /></div>' +
+        '<div class="icon '+item.icon+'" /></div>' +
         '<div class="cost">'+item.cost+'</div>';
     
     document.getElementById('store_inventory').appendChild(new_div);
-    new_div.onclick = item.callback;
+    new_div.childNodes[1].onclick = item.callback;
   }
   
   this.extraLife = function() {
@@ -75,11 +75,11 @@ function Store() {
   };
   
   this.StoreInventory = [
-     /* extra life */     { name: "Extra Life", icon : "images/store/ExtraLife.png", cost: "80", callback: this.extraLife },
-     /* shield restore */ { name: "Repair Shields", icon : "images/store/RepairShields.png", cost: "100", callback: this.shieldRestore },
-     /* more health */    { name: "Increased Health", icon : "images/store/IncreasedHealth.png", cost: "150", callback: this.increasedHealth },
-     /* engine boost */   { name: "Speed Boost", icon : "images/store/SpeedBoost.png", cost: "150", callback: this.speedBoost },
-     /* engine boost */   { name: "Faster Firing", icon : "images/store/FasterFiring.png", cost: "200", callback: this.fasterFiring }
+     /* extra life */     { name: "Extra Life", icon : "extralife", cost: "80", callback: this.extraLife },
+     /* shield restore */ { name: "Repair Shields", icon : "repairshields", cost: "100", callback: this.shieldRestore },
+     /* more health */    { name: "Increased Health", icon : "increasedhealth", cost: "150", callback: this.increasedHealth },
+     /* engine boost */   { name: "Speed Boost", icon : "speedboost", cost: "150", callback: this.speedBoost },
+     /* engine boost */   { name: "Faster Firing", icon : "fasterfiring", cost: "200", callback: this.fasterFiring }
    ];
   
   this.showStore = function() {
