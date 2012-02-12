@@ -118,10 +118,6 @@ function Player() {
     this.shutdownVisualGameObject();
     setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
   };
-  
-  this.collision_area = function() {
-    return new Rectangle().startupRectangle(this.x, this.y, 100, 85);
-  };
 }
 
 Player.prototype = new VisualGameObject;

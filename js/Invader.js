@@ -29,10 +29,6 @@ function Invader() {
     this.cooldown -= dt;
   };
   
-  this.collision_area = function() {
-    return new Rectangle().startupRectangle(this.x, this.y, this.type.width, this.type.height);
-  };
-  
   this.shoot = function() {
     new Bullet().startupBullet(this.x + this.type.gun.x, this.y + this.type.gun.y, 1);
     new TempVisualGameObject().startupTempVisualGameObject(g_ResourceManager.flashDown, this.x + this.type.gun.x - 27 , this.y + this.type.gun.y, 5, 0.05);

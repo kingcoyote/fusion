@@ -18,9 +18,9 @@ function Bullet() {
   this.startupBullet = function(x, y, direction) {
     this.direction = direction;
     if(direction == 1) {
-      this.startupVisualGameObject(g_ResourceManager.bulletDown, x - (this.width/2), y, 1);
+      this.startupVisualGameObject(g_ResourceManager.bulletDown, x - (g_ResourceManager.bulletDown.width/2), y, 1);
     } else {
-      this.startupVisualGameObject(g_ResourceManager.bulletUp, x - (this.width/2), y - this.width, 1);
+      this.startupVisualGameObject(g_ResourceManager.bulletUp, x - (g_ResourceManager.bulletUp.width/2), y - g_ResourceManager.bulletDown.width, 1);
       this.speed = 0 - this.speed;
     }
     
@@ -39,11 +39,12 @@ function Bullet() {
     
     if(this.y + 80 - yScroll < 0 || this.y - 80 > g_GameObjectManager.canvas.height) {
       this.shutdownVisualGameObject();
+      return;
     }
     
     for(var i in g_GameObjectManager.gameObjects) {
       var object = g_GameObjectManager.gameObjects[i];
-      if(object.destructible && this.direction != object.team && this.collision_area().intersects(object.collision_area())) {
+      if(object.destructible && this.direction != object.team && this.collisionArea().intersects(object.collisionArea())) {
         if(object.invulnerable > 0) {
           break;
         }
