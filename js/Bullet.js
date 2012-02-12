@@ -54,14 +54,32 @@ function Bullet() {
           g_score += object.points;
           g_ApplicationManager.updateScore();
         }
-        this.shutdownVisualGameObject();
+        this.die();
         break;
       };
     }
   };
   
-  this.collision_area = function() {
-    return new Rectangle().startupRectangle(this.x, this.y, this.width, this.height);
+  this.die = function() {
+    if(this.direction == 1) {
+      image = g_ResourceManager.smallExploRed;
+      x_offset = -14;
+      y_offset = 14;
+    } else {
+      image = g_ResourceManager.smallExploBlue;
+      x_offset = -14;
+      y_offset = -14;
+    }
+    var explosion = new AnimatedGameObject().startupAnimatedGameObject(
+        image, 
+        this.x + x_offset,
+        this.y + y_offset,
+        1,
+        5,
+        10
+    );
+    setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
+    this.shutdownVisualGameObject();
   };
 }
 
