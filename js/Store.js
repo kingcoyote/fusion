@@ -65,7 +65,7 @@ function Store() {
   };
   
   this.fasterFiring = function() {
-    if(g_score >= 200 & g_firespeed > 0.2) {
+    if(g_score >= 200 & g_ship.firespeed > 0.2) {
       g_score -= 200;
       g_ApplicationManager.updateScore();
       g_ship.firespeed -= 0.1;
