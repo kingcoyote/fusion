@@ -4,15 +4,15 @@
     @class
  */
 function Player() {
-  this.speed        = g_speed; // base speed. between 50 and 500 is reasonable. 275 is default
+  this.speed        = g_ship.speed; // base speed. between 50 and 500 is reasonable. 275 is default
   this.left         = false;
   this.right        = false;
   this.fire         = false;
   this.cooldown     = 0;
   this.screenBorder = 20;
-  this.fire_speed   = g_firespeed; // weapon cooldown in seconds. 0.5 is default
-  this.health       = g_health;
-  this.max_health   = g_health;
+  this.fire_speed   = g_ship.firespeed; // weapon cooldown in seconds. 0.5 is default
+  this.health       = g_ship.health;
+  this.max_health   = g_ship.health;
   
   this.gun = { x : 50, y : 15 };
   

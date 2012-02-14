@@ -8,9 +8,12 @@ var FPS = 30,
   g_lives = 0,
   g_player = null,
   g_store = null,
-  g_health = 20
-  g_speed = 275,
-  g_firespeed = 0.50;
+  g_ship_defaults = {
+      health : 20,
+      speed  : 275,
+      firespeed : 0.50
+  },
+  g_ship = {};
 
 window.onload = function() {
   new GameObjectManager().startupGameObjectManager();

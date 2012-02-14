@@ -47,7 +47,7 @@ function Store() {
     if(g_score >= 150) {
       g_score -= 150;
       g_ApplicationManager.updateScore();
-      g_health += 10;
+      g_ship.health += 10;
       g_player.shutdownVisualGameObject();
       g_player = new Player().startupPlayer();
       g_ApplicationManager.updateHealth();
@@ -58,7 +58,7 @@ function Store() {
     if(g_score >= 150) {
       g_score -= 150;
       g_ApplicationManager.updateScore();
-      g_speed += 25;
+      g_ship.speed += 25;
       g_player.shutdownVisualGameObject();
       g_player = new Player().startupPlayer();
     }
@@ -68,7 +68,7 @@ function Store() {
     if(g_score >= 200 & g_firespeed > 0.2) {
       g_score -= 200;
       g_ApplicationManager.updateScore();
-      g_firespeed -= 0.1;
+      g_ship.firespeed -= 0.1;
       g_player.shutdownVisualGameObject();
       g_player = new Player().startupPlayer();
     }
