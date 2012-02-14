@@ -169,24 +169,16 @@ function GameObjectManager()
       if ( numLoaded == g_ResourceManager.imageProperties.length )
       {
         // create a new ApplicationManager
+        document.getElementById('hud_bottom').style.display = 'block';
+        document.getElementById('loading').style.display = 'none';
         new ApplicationManager().startupApplicationManager(this.canvas.width, this.canvas.height);
         this.resourcesLoaded = true;
       }
       else
       {
-        this.loadingScreenCol += this.loadingScreenColDirection * this.loadingScreenColSpeed * dt;
-        if (this.loadingScreenCol > 255)
-        {
-          this.loadingScreenCol = 255;
-          this.loadingScreenColDirection = -1;
-        }
-        else if (this.loadingScreenCol < 0)
-        {
-          this.loadingScreenCol = 0;
-          this.loadingScreenColDirection = 1;	
-        }
-        this.context2D.fillStyle = "rgb(" + parseInt(this.loadingScreenCol) + "," + parseInt(this.loadingScreenCol) + "," + parseInt(this.loadingScreenCol) + ")";
-        this.context2D.fillRect (0, 0, this.canvas.width, this.canvas.height);
+        document.getElementById('loading_count_current').innerHTML = numLoaded;
+        document.getElementById('loading_count_max').innerHTML = g_ResourceManager.imageProperties.length;
+        document.getElementById('loading_percent').style.width = numLoaded / g_ResourceManager.imageProperties.length * 300 + 'px';
       }
     }
 

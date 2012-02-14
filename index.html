@@ -27,6 +27,17 @@
   </head>
   <body>
     <div id="game">
+      <div id="loading">
+        <h1>Fusion</h1>
+        <div id="loading_progress">
+          <div>
+            Loading assets... <span id="loading_count_current">0</span> / <span id="loading_count_max">0</span>
+          </div>
+          <div id="loading_bar">
+            <div id="loading_percent"></div>
+          </div>
+        </div>
+      </div>
       <canvas id="canvas" width="1024" height="768">
         <p>Your browser does not support the canvas element!</p>
       </canvas>
