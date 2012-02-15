@@ -11,7 +11,7 @@ function Store() {
     }
     
     return this;
-  }
+  };
   
   this.addStoreInventory = function(item, i) {
     var new_div = document.createElement('div');
@@ -24,7 +24,7 @@ function Store() {
     
     document.getElementById('store_inventory').appendChild(new_div);
     new_div.childNodes[1].onclick = item.callback;
-  }
+  };
   
   this.extraLife = function() {
     if(g_score >= 80 && g_lives <= 5) {
