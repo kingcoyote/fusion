@@ -15,6 +15,24 @@ var FPS = 30,
   },
   g_ship = {};
 
+g_resources = {
+  'background0' : 'images/bg0.jpg',
+  'background1' : 'images/bg1-alt.png',
+  'bulletUp' : 'images/BulletUp.png',
+  'bulletDown' : 'images/BulletDown.png',
+  'hammer' : 'images/HammerT1.png',
+  'invader1' : 'images/Invader1.png',
+  'invader2' : 'images/Invader2.png',
+  'invader3': 'images/Invader3.png',
+  'explosion': 'images/explosion1.png',
+  'smallExploRed': 'images/SmallExploRed.png',
+  'smallExploBlue': 'images/SmallExploBlue.png',
+  'flashUp': 'images/FlashUp.png',
+  'flashDown': 'images/FlashDown.png',
+  'shield': 'images/shieldChunk.png',
+  'storeSpritesheet': 'images/store/spritesheet.png'
+};
+
 window.onload = function() {
   new GameObjectManager().startupGameObjectManager();
   document.getElementById('restart').onclick = function() {

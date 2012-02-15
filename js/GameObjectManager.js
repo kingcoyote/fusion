@@ -124,22 +124,7 @@ function GameObjectManager()
     }
 
     // create a new ResourceManager
-    new ResourceManager().startupResourceManager(
-        [{name: 'background0', src: 'images/bg0.jpg'},
-         {name: 'background1', src: 'images/bg1-alt.png'},
-         {name: 'bulletUp', src: 'images/BulletUp.png'},
-         {name: 'bulletDown', src: 'images/BulletDown.png'},
-         {name: 'hammer', src: 'images/HammerT1.png'},
-         {name: 'invader1', src: 'images/Invader1.png'},
-         {name: 'invader2', src: 'images/Invader2.png'},
-         {name: 'invader3', src: 'images/Invader3.png'},
-         {name: 'explosion', src: 'images/explosion1.png'},
-         {name: 'smallExploRed', src: 'images/SmallExploRed.png'},
-         {name: 'smallExploBlue', src: 'images/SmallExploBlue.png'},
-         {name: 'flashUp', src: 'images/FlashUp.png'},
-         {name: 'flashDown', src: 'images/FlashDown.png'},
-         {name: 'shield', src: 'images/shieldChunk.png'},
-         {name: 'storeSpritesheet', src: 'images/store/spritesheet.png'}]);
+    new ResourceManager().startupResourceManager(g_resources);
 
     // use setInterval to call the draw function
     this.loop = setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
