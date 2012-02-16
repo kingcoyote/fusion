@@ -38,10 +38,11 @@ function ApplicationManager()
 	};
 
 	this.startShields = function() {
-	  for(var i in g_GameObjectManager.gameObjects) {
+	  var length = g_GameObjectManager.gameObjects.length;
+	  for(var i = length -1; i >= 0; --i) {
 	    var o = g_GameObjectManager.gameObjects[i];
 	    if(o.shield == true) {
-	      o.shutdownVisualGameObject();
+	      o.shutdownDestructibleGameObject()
 	    }
 	  }
 	  for(var i in ShieldList) {
