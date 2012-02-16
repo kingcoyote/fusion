@@ -29,12 +29,14 @@ function Player() {
    * @return
    */
   this.startupPlayer = function() {
-    this.startupVisualGameObject(
+    this.startupSpriteGameObject(
         g_ResourceManager.hammer, 
         g_GameObjectManager.canvas.width / 2 - 50, 
         g_GameObjectManager.canvas.height - 100, 
-        5
+        5,
+        7
     );
+    this.setFrame(3);
     return this;
   };
 
@@ -60,11 +62,19 @@ function Player() {
    */
   this.update = function (dt, context, xScroll, yScroll) {
     this.y = yScroll + g_GameObjectManager.canvas.height - 115;
+    this.setFrame(3);
+    
     if (this.left) {
       this.x -= this.speed * dt;
+      this.setFrame(0);
     }
     if (this.right) {
       this.x += this.speed * dt;
+      this.setFrame(6);
+    }
+    
+    if(this.right && this.left) {
+      this.setFrame(3);
     }
     
     this.invulnerable -= dt;
@@ -120,4 +130,4 @@ function Player() {
   };
 }
 
-Player.prototype = new VisualGameObject;
+Player.prototype = new SpriteGameObject;

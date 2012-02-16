@@ -20,7 +20,7 @@ g_resources = {
   'background1' : 'images/bg1-alt.png',
   'bulletUp' : 'images/BulletUp.png',
   'bulletDown' : 'images/BulletDown.png',
-  'hammer' : 'images/HammerT1.png',
+  'hammer' : 'images/HammerFrames.png',
   'invader1' : 'images/Invader1.png',
   'invader2' : 'images/Invader2.png',
   'invader3': 'images/Invader3.png',
