@@ -9,28 +9,18 @@ function GameObjectManager()
         @type Arary
    */
   this.gameObjects = new Array();
-  /**
-    Removes a number of objects from the array
-    @param from The first object to remove
-    @param to (Optional) The last object to remove
-  */
-  this.gameObjects.remove = function(/**Number*/ from, /**Number*/ to)
-  {
-    var rest = this.slice((to || from) + 1 || this.length);
-    this.length = from < 0 ? this.length + from : from;
-    return this.push.apply(this, rest);
-  };
+  
   /**
     Removes a specific object from the array
     @param object The object to remove
   */
-  this.gameObjects.removeObject = function(object)
+  this.removeObject = function(object)
   {
-    for (var i = 0; i < this.length; ++i)
+    for (var i in this.gameObjects)
     {
-        if (this[i] === object)
+        if (this.gameObjects[i] === object)
         {
-            this.remove(i);
+            this.gameObjects.splice(i, 1);
             break;
         }
     }
@@ -218,7 +208,7 @@ function GameObjectManager()
    */
   this.removeGameObject = function(gameObject)
   {
-    this.gameObjects.removeObject(gameObject);
+    this.removeObject(gameObject);
   };
 
   this.keyDown = function(event)
