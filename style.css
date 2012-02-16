@@ -9,7 +9,7 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #loading_bar { border:1px solid black; width:300px; margin:0 auto;}
 #loading_percent { background-color:#f00; height:15px; width:1px; }
 
-#hud_bottom { position:absolute; bottom:0; padding:5px; width:1014px; display:none; }
+#hud_bottom { position:absolute; top:30px; padding:5px; width:1014px; display:none; }
 #hud_bottom h2, #hud_bottom div { display:inline; }
 #hud_bottom h2 { font-size: 18px; font-weight:normal; }
 #hud_bottom .detail { font-size:24px; font-weight:bold; }

@@ -32,7 +32,7 @@ function Player() {
     this.startupSpriteGameObject(
         g_ResourceManager.hammer, 
         g_GameObjectManager.canvas.width / 2 - 50, 
-        g_GameObjectManager.canvas.height - 100, 
+        g_GameObjectManager.canvas.height - 140, 
         5,
         7
     );
@@ -61,7 +61,6 @@ function Player() {
     @param number  The global scrolling value of the y axis
    */
   this.update = function (dt, context, xScroll, yScroll) {
-    this.y = yScroll + g_GameObjectManager.canvas.height - 115;
     this.setFrame(3);
     
     if (this.left) {

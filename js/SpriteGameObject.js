@@ -2,6 +2,7 @@ function SpriteGameObject() {
   this.currentFrame = 0;
   this.frameWidth = 0;
   this.image = null;
+  this.mirrored = false;
   
   this.startupSpriteGameObject = function(image, x, y, z, frameCount){
     this.image = image;
@@ -21,17 +22,34 @@ function SpriteGameObject() {
   };
 
   this.draw = function(dt, context, xScroll, yScroll) {
-    context.drawImage(
-      this.image, 
-      this.currentFrame * this.frameWidth, //sx
-      0, //sy
-      this.frameWidth, //sw 
-      this.image.height, //sh
-      this.x, //dx
-      this.y, //dy
-      this.frameWidth, //dw 
-      this.image.height //dh
-    );
+    if(this.mirrored) {
+      context.translate(context.width,0);
+      context.scale(-1,1);
+      context.drawImage(
+        this.image, 
+        this.currentFrame * this.frameWidth, //sx
+        0, //sy
+        this.frameWidth, //sw 
+        this.image.height, //sh
+        0 - this.x, //dx
+        this.y, //dy
+        this.frameWidth, //dw 
+        this.image.height //dh
+      );
+      context.scale(-1,1);
+    } else {
+      context.drawImage(
+        this.image, 
+        this.currentFrame * this.frameWidth, //sx
+        0, //sy
+        this.frameWidth, //sw 
+        this.image.height, //sh
+        this.x, //dx
+        this.y, //dy
+        this.frameWidth, //dw 
+        this.image.height //dh
+      );
+    }
   };
 
   this.collisionArea = function() {

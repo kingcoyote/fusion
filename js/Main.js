@@ -30,7 +30,9 @@ g_resources = {
   'flashUp': 'images/FlashUp.png',
   'flashDown': 'images/FlashDown.png',
   'shield': 'images/shieldChunk.png',
-  'storeSpritesheet': 'images/store/spritesheet.png'
+  'storeSpritesheet': 'images/store/spritesheet.png',
+  'genBase' : 'images/GenBase.png',
+  'genTower' : 'images/GenTower.png'
 };
 
 window.onload = function() {

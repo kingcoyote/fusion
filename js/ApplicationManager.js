@@ -27,6 +27,7 @@ function ApplicationManager()
     g_player = new Player().startupPlayer();
 		
 		this.startShields();
+		this.startGenerators();
 		g_level = 1;
 		new InvaderController().startupInvaderController(g_level);
 		this.updateScore();
@@ -37,6 +38,14 @@ function ApplicationManager()
 		return this;
 	};
 
+	this.startGenerators = function() {
+	  new Generator().startupGenerator(0);
+	  new Generator().startupGenerator(1);
+	  new Generator().startupGenerator(2);
+	  new Generator().startupGenerator(3);
+	  new Generator().startupGenerator(4);
+	}
+	
 	this.startShields = function() {
 	  var length = g_GameObjectManager.gameObjects.length;
 	  for(var i = length -1; i >= 0; --i) {
