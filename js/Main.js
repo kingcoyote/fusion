@@ -16,23 +16,23 @@ var FPS = 30,
   g_ship = {};
 
 g_resources = {
-  'background0' : 'images/bg0.jpg',
-  'background1' : 'images/bg1-alt.png',
-  'bulletUp' : 'images/BulletUp.png',
-  'bulletDown' : 'images/BulletDown.png',
-  'hammer' : 'images/HammerFrames.png',
-  'invader1' : 'images/Invader1.png',
-  'invader2' : 'images/Invader2.png',
-  'invader3': 'images/Invader3.png',
-  'explosion': 'images/explosion1.png',
-  'smallExploRed': 'images/SmallExploRed.png',
-  'smallExploBlue': 'images/SmallExploBlue.png',
-  'flashUp': 'images/FlashUp.png',
-  'flashDown': 'images/FlashDown.png',
-  'shield': 'images/shieldChunk.png',
-  'storeSpritesheet': 'images/store/spritesheet.png',
-  'genBase' : 'images/GenBase.png',
-  'genTower' : 'images/GenTower.png'
+  'background0' : 'images/backgrounds/bg0.jpg',
+  'background1' : 'images/backgrounds/bg1-alt.png',
+  'bulletUp' : 'images/effects/BulletUp.png',
+  'bulletDown' : 'images/effects/BulletDown.png',
+  'hammer' : 'images/player/HammerFrames.png',
+  'invader1' : 'images/enemies/Invader1.png',
+  'invader2' : 'images/enemies/Invader2.png',
+  'invader3': 'images/enemies/Invader3.png',
+  'explosion': 'images/effects/explosion1.png',
+  'smallExploRed': 'images/effects/SmallExploRed.png',
+  'smallExploBlue': 'images/effects/SmallExploBlue.png',
+  'flashUp': 'images/effects/FlashUp.png',
+  'flashDown': 'images/effects/FlashDown.png',
+  'shield': 'images/objects/shieldChunk.png',
+  'storeSpritesheet': 'images/HUD/spritesheet.png',
+  'genBase' : 'images/objects/GenBase.png',
+  'genTower' : 'images/objects/GenTower.png'
 };
 
 window.onload = function() {

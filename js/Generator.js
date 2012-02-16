@@ -16,14 +16,14 @@ function Generator() {
     );
     this.arm_left = new SpriteGameObject().startupSpriteGameObject(
         g_ResourceManager.genTower,
-        this.x + 10,
+        this.x + 17,
         this.y - 20,
         1,
         5
     );
     this.arm_right = new SpriteGameObject().startupSpriteGameObject(
         g_ResourceManager.genTower,
-        this.x + 90,
+        this.x + 83,
         this.y - 20,
         1,
         5

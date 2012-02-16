@@ -17,7 +17,7 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #hud_bottom #hud_middle { position:absolute; bottom:5px; left:338px; width:338px; }
 #hud_bottom #hud_right { position:absolute; bottom:5px; right:5px;  }
 
-#hud_bottom #lives { background:url(images/LifeIcon.png) repeat-x; display:block; height:34px; width: 0px; }
+#hud_bottom #lives { background:url(images/HUD/LifeIcon.png) repeat-x; display:block; height:34px; width: 0px; }
 #hud_bottom #health { display:block; border:2px solid #fff; }
 #hud_bottom #current_health { height:16px; width:334px; background-color:#cc0; display:block;  }
 #hud_bottom #current_health.invulnerable { background-color:#00f; }
