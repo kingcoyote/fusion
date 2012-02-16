@@ -3,6 +3,7 @@ function Generator() {
   this.destructible = true;
   this.health = 500;
   this.alive = true;
+  this.points = 0;
   
   this.startupGenerator = function(i) {
     var image = g_ResourceManager.genBase;
