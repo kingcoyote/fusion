@@ -10,7 +10,7 @@ function Generator() {
     this.startupSpriteGameObject(
         image,
         (i * 199) + 64,
-        g_GameObjectManager.canvas.height - image.height + 5,
+        g_GameObjectManager.canvas.height - image.height -5,
         2,
         3
     );
