@@ -189,7 +189,6 @@ function GameObjectManager()
   this.endLoop = function()
   {
     clearInterval(this.loop);
-    document.getElementById('game_over').style.display='block';
   };
   
   /**

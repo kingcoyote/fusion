@@ -29,7 +29,8 @@ function Generator() {
         5
     );
     this.arm_right.mirrored = true;
-  }
+    return this;
+  };
   
   this.update = function(dt, context, x, y) {
     if(this.health <= 400) {
@@ -52,10 +53,10 @@ function Generator() {
     if(this.health <= 0) {
       this.setFrame(2);
     }
-  }
+  };
   
   this.shutdownDestructibleGameObject = function() {
-    this.setFrame(2)
+    this.setFrame(2);
     this.arm_left.shutdownVisualGameObject();
     this.arm_right.shutdownVisualGameObject();
     if(this.alive) {
@@ -69,7 +70,14 @@ function Generator() {
           10
       );
       setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
+      
+      for(var i in g_ApplicationManager.generators) {
+        if(g_ApplicationManager.generators[i].alive) {
+          return;
+        }
+      }
+      g_ApplicationManager.gameOver();
     }
-  }
+  };
 }
 Generator.prototype = new SpriteGameObject();

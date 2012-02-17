@@ -119,9 +119,7 @@ function Player() {
         g_ApplicationManager.updateHealth();
       }, 3000);
     } else {
-      setTimeout(function(){
-        g_GameObjectManager.endLoop();
-      }, 1000);
+      g_ApplicationManager.gameOver();
     }
     
     this.shutdownVisualGameObject();
