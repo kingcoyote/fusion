@@ -95,5 +95,15 @@ function ApplicationManager()
   	  document.getElementById('game_over').style.display='block';
 	  }, 1000);
 	};
+	
+	this.updateCountdown = function() {
+	  var countdown = document.getElementById('countdown');
+	  countdown.innerHTML = Math.ceil(g_countdown);
+	  if(g_countdown >= 0) {
+	    countdown.style.display = 'block';
+	  } else {
+	    countdown.style.display = 'none';
+	  }
+	};
 }
 ApplicationManager.prototype = new GameObject();

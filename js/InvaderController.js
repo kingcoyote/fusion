@@ -4,29 +4,43 @@ function InvaderController() {
   this.speed_increment = 0;
   this.x_speed = 0;
   this.y_drop = 0;
+  this.countdown = 3;
   
   this.startupInvaderController = function(level) {
     this.startupGameObject(15, 15, -1);
-    this.level = level;
     if(! InvaderWaves[level]) {
       level = InvaderWaves.length - 1;
     }
-    this.speed_increment = InvaderWaves[level].speed_increment;
-    this.row_drop = InvaderWaves[level].row_drop;
-    this.x_speed = InvaderWaves[level].x_speed;
-    for(var i in InvaderWaves[level].invaders) {
+    this.level = level;
+  };
+  
+  this.initInvaders = function() {
+    this.speed_increment = InvaderWaves[this.level].speed_increment;
+    this.row_drop = InvaderWaves[this.level].row_drop;
+    this.x_speed = InvaderWaves[this.level].x_speed;
+    for(var i in InvaderWaves[this.level].invaders) {
       var invader = new Invader();
       invader.startupInvader(
-        InvaderWaves[level].invaders[i][0],
-        InvaderWaves[level].invaders[i][1],
-        InvaderWaves[level].invaders[i][2],
+        InvaderWaves[this.level].invaders[i][0],
+        InvaderWaves[this.level].invaders[i][1],
+        InvaderWaves[this.level].invaders[i][2],
         this
       );
       this.invaders.push(invader);
     }
   };
-
+  
   this.update = function(dt, context, xScroll, yScroll) {
+    if(this.countdown > 0) {
+      this.countdown -= dt;
+      if(this.countdown <= 0) {
+        this.initInvaders();
+      }
+      g_countdown = this.countdown;
+      g_ApplicationManager.updateCountdown();
+      return;
+    }
+      
     alive = false;
     for(var i in this.invaders) {
       if(this.invaders[i].dead) continue;

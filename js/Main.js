@@ -13,7 +13,8 @@ var FPS = 30,
       speed  : 275,
       firespeed : 0.50
   },
-  g_ship = {};
+  g_ship = {},
+  g_countdown = 0;
 
 g_resources = {
   'background0' : 'images/backgrounds/bg0.jpg',
