@@ -30,6 +30,16 @@ function ApplicationManager()
     g_player = new Player().startupPlayer();
 		
 		this.startShields();
+		
+		shield_store_div = document.getElementById('store_shield');
+    shield_store_div.style.top = "533px";
+    shield_store_div.style.left = "55px";
+    shield_store_div.style.width = "914px";
+    shield_store_div.style.height = "55px";
+    shield_store_div.onclick = function() {
+      g_store.showInventory(Shield.StoreInventory);
+    };
+		
 		this.generators = [];
 		this.startGenerators();
 		g_level = 1;

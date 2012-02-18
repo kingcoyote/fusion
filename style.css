@@ -1,10 +1,10 @@
-body { background-color:#333; color: #fff; text-align:center; padding:0; margin:0; font-family:Arial, Helvetica, sans-serif; }
+body { background-color:#333; color: #fff; text-align:center; padding:0; margin:0; font-family:Arial, Helvetica, sans-serif; text-shadow: 2px 2px #000000; }
 
 #game { margin:0 auto; text-align:left; width:1024px; height:768px; background-color:#000; position:relative; }
 
 #canvas { background-color: #000; }
 
-#loading { position:absolute; background-color:#fff; color:#000; width:400px; left:319px; top:300px; text-align:center; padding:5px;}
+#loading { position:absolute; background-color:#fff; color:#000; width:400px; left:319px; top:300px; text-align:center; padding:5px; text-shadow:none; }
 #loading h1{ margin:0; }
 #loading_bar { border:1px solid black; width:300px; margin:0 auto;}
 #loading_percent { background-color:#f00; height:15px; width:1px; }
@@ -13,8 +13,8 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 
 #hud_bottom { position:absolute; top:30px; padding:5px; width:1014px; display:none; }
 #hud_bottom h2, #hud_bottom div { display:inline; }
-#hud_bottom h2 { font-size: 18px; font-weight:normal; text-shadow: 2px 2px #000000 }
-#hud_bottom .detail { font-size:24px; font-weight:bold; text-shadow: 2px 2px #000000 }
+#hud_bottom h2 { font-size: 18px; font-weight:normal;  }
+#hud_bottom .detail { font-size:24px; font-weight:bold; }
 #hud_bottom #hud_left { position:absolute; bottom:5px; left:5px; }
 #hud_bottom #hud_middle { position:absolute; bottom:5px; left:338px; width:338px; }
 #hud_bottom #hud_right { position:absolute; bottom:5px; right:5px;  }
@@ -24,10 +24,12 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #hud_bottom #current_health { height:16px; width:334px; background-color:#cc0; display:block;  }
 #hud_bottom #current_health.invulnerable { background-color:#00f; }
 
+#store_hud { position:absolute; top:-5px; left:-5px; width: 1029px; height:773px; }
+#store_header { position: absolute; text-align:center; top: 50px; width:450px; padding:0 287px; }
+#store_player, #store_generator_0, #store_generator_1, #store_generator_2, #store_generator_3, #store_generator_4, #store_shield { background-color:lightgreen; opacity:0.5; border-radius: 10px; position: absolute; cursor:pointer; padding:5px; }
 #store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; text-shadow: 2px 2px #000000 }
-#store_header { padding: 15px; text-align: center;}
-#store_footer { padding: 15px; text-align:center;}
-#store_inventory { margin:0 35px; border:1px solid #666; background-color:#333; height: 350px; padding:15px; }
+#store_footer { text-align:center;}
+#store_inventory { margin: 25px; border:1px solid #666; background-color:#333; height: 390px; padding:15px; }
 #store_close { margin:0 auto; }
 
 #store_inventory div.inventory { width:146px; float:left; margin:5px; text-align:center; padding:5px; }

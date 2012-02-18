@@ -1,4 +1,6 @@
 function Generator() {
+  var self = this;
+  
   this.team = -1;
   this.destructible = true;
   this.health = 500;
@@ -29,6 +31,12 @@ function Generator() {
         5
     );
     this.arm_right.mirrored = true;
+    this.store_div = document.getElementById('store_generator_' + i);
+    this.store_div.style.top  = this.y + 'px';
+    this.store_div.style.left = this.x + 'px';
+    this.store_div.style.width = this.image.width / 3 + 'px';
+    this.store_div.style.height = this.image.height + 'px';
+    this.store_div.onclick = this.showStore;
     return this;
   };
   
@@ -79,5 +87,24 @@ function Generator() {
       g_ApplicationManager.gameOver();
     }
   };
+  
+  this.showStore = function() {
+    g_store.showInventory(self.StoreInventory);
+  };
+  
+  this.minorHealth = function() {
+    if(g_score >= 150) {
+      g_score -= 150;
+      g_ApplicationManager.updateScore();
+      self.health += 100;
+      if(self.health >= 500) {
+        self.health = 500;
+      }
+    }
+  };
+  
+  this.StoreInventory = [
+    { name: "+100 Health", icon : "gen100health", cost: "150", callback: this.minorHealth },
+  ];
 }
 Generator.prototype = new SpriteGameObject();

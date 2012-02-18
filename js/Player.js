@@ -4,6 +4,7 @@
     @class
  */
 function Player() {
+  var self = this;
   this.speed        = g_ship.speed; // base speed. between 50 and 500 is reasonable. 275 is default
   this.left         = false;
   this.right        = false;
@@ -36,6 +37,8 @@ function Player() {
         5,
         7
     );
+    this.store_div = document.getElementById('store_player');
+    this.store_div.onclick = this.showStore;
     this.setFrame(3);
     return this;
   };
@@ -93,6 +96,11 @@ function Player() {
       this.cooldown = this.fire_speed;
       this.shoot();
     }
+    
+    this.store_div.style.top = this.y + 'px';
+    this.store_div.style.left = this.x + 'px';
+    this.store_div.style.width = this.image.width / 7 + 'px';
+    this.store_div.style.height = this.image.height + 'px';
   };
   
   this.shoot = function() {
@@ -125,6 +133,57 @@ function Player() {
     this.shutdownVisualGameObject();
     setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
   };
+  
+  this.showStore = function() {
+    g_store.showInventory(self.StoreInventory);
+  };
+  
+  this.extraLife = function() {
+    if(g_score >= 80 && g_lives <= 5) {
+      g_score -= 80;
+      g_ApplicationManager.updateScore();
+      g_lives++;
+      g_ApplicationManager.updateLives();
+    }
+  };
+  
+  this.increasedHealth = function() {
+    if(g_score >= 150) {
+      g_score -= 150;
+      g_ApplicationManager.updateScore();
+      g_ship.health += 10;
+      g_player.shutdownVisualGameObject();
+      g_player = new Player().startupPlayer();
+      g_ApplicationManager.updateHealth();
+    }
+  };
+  
+  this.speedBoost = function() {
+    if(g_score >= 150) {
+      g_score -= 150;
+      g_ApplicationManager.updateScore();
+      g_ship.speed += 25;
+      g_player.shutdownVisualGameObject();
+      g_player = new Player().startupPlayer();
+    }
+  };
+  
+  this.fasterFiring = function() {
+    if(g_score >= 200 & g_ship.firespeed > 0.2) {
+      g_score -= 200;
+      g_ApplicationManager.updateScore();
+      g_ship.firespeed -= 0.1;
+      g_player.shutdownVisualGameObject();
+      g_player = new Player().startupPlayer();
+    }
+  };
+  
+  this.StoreInventory = [
+     /* extra life */     { name: "Extra Life", icon : "extralife", cost: "80", callback: this.extraLife },
+     /* more health */    { name: "Increased Health", icon : "increasedhealth", cost: "150", callback: this.increasedHealth },
+     /* engine boost */   { name: "Speed Boost", icon : "speedboost", cost: "150", callback: this.speedBoost },
+     /* engine boost */   { name: "Faster Firing", icon : "fasterfiring", cost: "200", callback: this.fasterFiring }
+   ];
 }
 
 Player.prototype = new SpriteGameObject;

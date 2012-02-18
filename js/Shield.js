@@ -1,4 +1,5 @@
 Shield = function() {
+  var self = this;
   this.team = 0;
   this.destructible = true;
   this.points = 0;
@@ -8,13 +9,21 @@ Shield = function() {
     this.startupVisualGameObject(g_ResourceManager.shield, x, y, 1);
   };
   
-  this.collision_area = function() {
-    return new Rectangle().startupRectangle(this.x, this.y, 15, 15);
-  };
-  
   this.shutdownDestructibleGameObject = function() {
     this.shutdownVisualGameObject();
   } ;
 };
 
 Shield.prototype = new VisualGameObject;
+
+Shield.shieldRestore = function() {
+  if(g_score >= 100) {
+    g_score -=100;
+    g_ApplicationManager.updateScore();
+    g_ApplicationManager.startShields();
+  }
+};
+
+Shield.StoreInventory = [
+  /* shield restore */   { name: "Shield Restore", icon : "shieldRestore", cost: "150", callback: Shield.shieldRestore }
+];
