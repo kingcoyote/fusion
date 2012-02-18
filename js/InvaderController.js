@@ -59,7 +59,7 @@ function InvaderController() {
       }
     };
     if(alive === false) {
-      g_level = this.level + 1;
+      g_level++;
       g_ApplicationManager.updateLevel();
       setTimeout(function(){
         g_store.showStore();
