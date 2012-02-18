@@ -58,6 +58,10 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #store_inventory div.inventory div.icon.fasterfiring:hover { background-position:-56px -224px; }
 #store_inventory div.inventory div.icon.fasterfiring.click { background-position:-112px -224px; }
 
+#store_inventory div.inventory div.icon.gen100health { background-position:0 -224px; }
+#store_inventory div.inventory div.icon.gen100health:hover { background-position:-56px -280px; }
+#store_inventory div.inventory div.icon.gen100health.click { background-position:-112px -280px; }
+
 #game_over { display:none; position:absolute; width:350px; height: 120px; top: 324px; left: 337px; text-align:center; background-color:#000; border:2px solid #fff; }
 #game_over p { font-weight:bold; font-size:24px; }
 #game_over span { cursor: pointer; font-size: 16px; }
