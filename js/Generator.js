@@ -14,21 +14,24 @@ function Generator() {
         (i * 199) + 64,
         g_GameObjectManager.canvas.height - image.height -5,
         2,
-        3
+        3,
+        1
     );
     this.arm_left = new SpriteGameObject().startupSpriteGameObject(
         g_ResourceManager.genTower,
         this.x + 17,
         this.y - 20,
         1,
-        5
+        5,
+        1
     );
     this.arm_right = new SpriteGameObject().startupSpriteGameObject(
         g_ResourceManager.genTower,
         this.x + 83,
         this.y - 20,
         1,
-        5
+        5,
+        1
     );
     this.arm_right.mirrored = true;
     this.store_div = document.getElementById('store_generator_' + i);

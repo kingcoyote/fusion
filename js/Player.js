@@ -35,7 +35,8 @@ function Player() {
         g_GameObjectManager.canvas.width / 2 - 50, 
         g_GameObjectManager.canvas.height - 165, 
         5,
-        7
+        7,
+        1
     );
     this.store_div = document.getElementById('store_player');
     this.store_div.onclick = this.showStore;
