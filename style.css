@@ -24,7 +24,7 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #hud_bottom #current_health { height:16px; width:334px; background-color:#cc0; display:block;  }
 #hud_bottom #current_health.invulnerable { background-color:#00f; }
 
-#store_hud { position:absolute; top:-5px; left:-5px; width: 1029px; height:773px; }
+#store_hud { position:absolute; top:-5px; left:-5px; width: 1029px; height:773px; display:none; }
 #store_header { position: absolute; text-align:center; top: 50px; width:450px; padding:0 287px; }
 #store_player, #store_generator_0, #store_generator_1, #store_generator_2, #store_generator_3, #store_generator_4, #store_shield { background-color:lightgreen; opacity:0.5; border-radius: 10px; position: absolute; cursor:pointer; padding:5px; }
 #store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; text-shadow: 2px 2px #000000 }
@@ -57,6 +57,10 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #store_inventory div.inventory div.icon.fasterfiring { background-position:0 -224px; }
 #store_inventory div.inventory div.icon.fasterfiring:hover { background-position:-56px -224px; }
 #store_inventory div.inventory div.icon.fasterfiring.click { background-position:-112px -224px; }
+
+#store_inventory div.inventory div.icon.gen100health { background-position:0 -280px; }
+#store_inventory div.inventory div.icon.gen100health:hover { background-position:-56px -280px; }
+#store_inventory div.inventory div.icon.gen100health.click { background-position:-112px -280px; }
 
 #game_over { display:none; position:absolute; width:350px; height: 120px; top: 324px; left: 337px; text-align:center; background-color:#000; border:2px solid #fff; }
 #game_over p { font-weight:bold; font-size:24px; }
