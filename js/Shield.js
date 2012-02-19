@@ -17,13 +17,9 @@ Shield = function() {
 Shield.prototype = new VisualGameObject;
 
 Shield.shieldRestore = function() {
-  if(g_score >= 100) {
-    g_score -=100;
-    g_ApplicationManager.updateScore();
-    g_ApplicationManager.startShields();
-  }
+  g_ApplicationManager.startShields();
 };
 
 Shield.StoreInventory = [
-  /* shield restore */   { name: "Shield Restore", icon : "shieldRestore", cost: "150", callback: Shield.shieldRestore }
+  /* shield restore */   { name: "Shield Restore", icon : "repairshields", cost: "150", callback: Shield.shieldRestore }
 ];

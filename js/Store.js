@@ -33,7 +33,14 @@ function Store() {
         '<div class="cost">'+item.cost+'</div>';
     
     this.store_inventory.appendChild(new_div);
-    new_div.childNodes[1].onclick = item.callback;
+    
+    new_div.childNodes[1].onclick = function(){
+      if(g_score >= item.cost) {
+        g_score -= item.cost;
+        g_ApplicationManager.updateScore();
+        item.callback();
+      }
+    };
   };
   
   this.showStore = function() {

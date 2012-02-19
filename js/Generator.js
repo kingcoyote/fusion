@@ -93,13 +93,9 @@ function Generator() {
   };
   
   this.minorHealth = function() {
-    if(g_score >= 150) {
-      g_score -= 150;
-      g_ApplicationManager.updateScore();
-      self.health += 100;
-      if(self.health >= 500) {
-        self.health = 500;
-      }
+    self.health += 100;
+    if(self.health >= 500) {
+      self.health = 500;
     }
   };
   

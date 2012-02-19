@@ -135,54 +135,46 @@ function Player() {
   };
   
   this.showStore = function() {
-    g_store.showInventory(self.StoreInventory);
+    inventory = Array.prototype.slice.call(self.StoreInventory);
+    
+    if(g_ship.firespeed <= 0.3) {
+      inventory.splice(3, 1);
+    }
+    
+    if(g_lives >= 5) {
+      inventory.splice(0, 1);
+    }
+    
+    g_store.showInventory(inventory);
   };
   
   this.extraLife = function() {
-    if(g_score >= 80 && g_lives <= 5) {
-      g_score -= 80;
-      g_ApplicationManager.updateScore();
-      g_lives++;
-      g_ApplicationManager.updateLives();
-    }
+    g_lives++;
+    g_ApplicationManager.updateLives();
   };
   
   this.increasedHealth = function() {
-    if(g_score >= 150) {
-      g_score -= 150;
-      g_ApplicationManager.updateScore();
-      g_ship.health += 10;
-      g_player.shutdownVisualGameObject();
-      g_player = new Player().startupPlayer();
-      g_ApplicationManager.updateHealth();
-    }
+    g_ship.health += 10;
+    self.health += 10;
+    self.max_health += 10;
+    g_ApplicationManager.updateHealth();
   };
   
   this.speedBoost = function() {
-    if(g_score >= 150) {
-      g_score -= 150;
-      g_ApplicationManager.updateScore();
-      g_ship.speed += 25;
-      g_player.shutdownVisualGameObject();
-      g_player = new Player().startupPlayer();
-    }
+    g_ship.speed += 25;
+    self.speed += 25;
   };
   
   this.fasterFiring = function() {
-    if(g_score >= 200 & g_ship.firespeed > 0.2) {
-      g_score -= 200;
-      g_ApplicationManager.updateScore();
-      g_ship.firespeed -= 0.1;
-      g_player.shutdownVisualGameObject();
-      g_player = new Player().startupPlayer();
-    }
+    g_ship.firespeed -= 0.1;
+    self.fire_speed -= 0.1;
   };
   
   this.StoreInventory = [
      /* extra life */     { name: "Extra Life", icon : "extralife", cost: "80", callback: this.extraLife },
      /* more health */    { name: "Increased Health", icon : "increasedhealth", cost: "150", callback: this.increasedHealth },
      /* engine boost */   { name: "Speed Boost", icon : "speedboost", cost: "150", callback: this.speedBoost },
-     /* engine boost */   { name: "Faster Firing", icon : "fasterfiring", cost: "200", callback: this.fasterFiring }
+     /* faster firing */  { name: "Faster Firing", icon : "fasterfiring", cost: "200", callback: this.fasterFiring }
    ];
 }
 
