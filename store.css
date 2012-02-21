@@ -16,10 +16,6 @@
 #store_inventory div.inventory div.icon.extralife:hover { background-position:-56px 0; }
 #store_inventory div.inventory div.icon.extralife.click { background-position:-112px 0; }
 
-#store_inventory div.inventory div.icon.repairshields { background-position:0 -56px; }
-#store_inventory div.inventory div.icon.repairshields:hover { background-position:-56px -56px; }
-#store_inventory div.inventory div.icon.repairshields.click { background-position:-112px -56px; }
-
 #store_inventory div.inventory div.icon.increasedhealth { background-position:0 -112px; }
 #store_inventory div.inventory div.icon.increasedhealth:hover { background-position:-56px -112px; }
 #store_inventory div.inventory div.icon.increasedhealth.click { background-position:-112px -112px; }
@@ -32,10 +28,18 @@
 #store_inventory div.inventory div.icon.fasterfiring:hover { background-position:-56px -224px; }
 #store_inventory div.inventory div.icon.fasterfiring.click { background-position:-112px -224px; }
 
-#store_inventory div.inventory div.icon.gen100health { background-position:0 -280px; }
-#store_inventory div.inventory div.icon.gen100health:hover { background-position:-56px -280px; }
-#store_inventory div.inventory div.icon.gen100health.click { background-position:-112px -280px; }
+#store_inventory div.inventory div.icon.shieldrestore { background-position:0 -56px; }
+#store_inventory div.inventory div.icon.shieldrestore:hover { background-position:-56px -56px; }
+#store_inventory div.inventory div.icon.shieldrestore.click { background-position:-112px -56px; }
 
-#store_inventory div.inventory div.icon.genweakturret { background-position:0 -336px; }
-#store_inventory div.inventory div.icon.genweakturret:hover { background-position:-56px -336px; }
-#store_inventory div.inventory div.icon.genweakturret.click { background-position:-112px -336px; }
+#store_inventory div.inventory div.icon.shieldhealth { background-position:0 -458px; }
+#store_inventory div.inventory div.icon.shieldhealth:hover { background-position:-56px -458px; }
+#store_inventory div.inventory div.icon.shieldhealth.click { background-position:-112px -458px; }
+
+#store_inventory div.inventory div.icon.gen100health { background-position:0 -336px; }
+#store_inventory div.inventory div.icon.gen100health:hover { background-position:-56px -336px; }
+#store_inventory div.inventory div.icon.gen100health.click { background-position:-112px -336px; }
+
+#store_inventory div.inventory div.icon.genweakturret { background-position:0 -392px; }
+#store_inventory div.inventory div.icon.genweakturret:hover { background-position:-56px -392px; }
+#store_inventory div.inventory div.icon.genweakturret.click { background-position:-112px -392px; }

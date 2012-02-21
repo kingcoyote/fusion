@@ -152,7 +152,7 @@ function Generator() {
   
   self.StoreInventory = [
     { name: "+100 Health", icon : "gen100health", cost: "150", callback: self.minorHealth },
-    { name: "Weak Turret", icon : "genWeakTurret", cost: "100", callback: self.weakTurret }
+    { name: "Weak Turret", icon : "genweakturret", cost: "100", callback: self.weakTurret }
   ];
 }
 Generator.prototype = new SpriteGameObject();
