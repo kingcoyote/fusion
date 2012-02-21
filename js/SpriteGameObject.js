@@ -6,6 +6,11 @@ function SpriteGameObject() {
   this.image = null;
   this.mirrored = false;
   
+  this.delay = 0;
+  this.delay_cooldown = 0;
+  this.returnFrame = 0;
+  this.endFrame = 0;
+  
   this.startupSpriteGameObject = function(image, x, y, z, frameCount, rowCount) {
     this.image = image;
     this.startupVisualGameObject(image, x, y, z);
@@ -20,7 +25,7 @@ function SpriteGameObject() {
     this.shutdownVisualGameObject();       
   };
 
-  this.setFrame = function(i, r) {
+  this.setFrame = function(i) {
     this.currentFrame = i;
   };
   
@@ -29,6 +34,19 @@ function SpriteGameObject() {
   }
 
   this.draw = function(dt, context, xScroll, yScroll) {
+    if(this.delay_cooldown > 0) {
+      this.delay_cooldown -= dt;
+      if(this.delay_cooldown <= 0) {
+        if(this.currentFrame == this.endFrame) {
+          this.delay_cooldown = 0;
+          this.currentFrame = this.returnFrame;
+        } else {
+          this.delay_cooldown = this.delay + this.delay_cooldown
+          this.currentFrame++
+        }
+      }
+    }
+    
     if(this.mirrored) {
       context.translate(context.width,0);
       context.scale(-1,1);
@@ -62,6 +80,14 @@ function SpriteGameObject() {
   this.collisionArea = function() {
     return new Rectangle().startupRectangle(this.x, this.y, this.frameWidth, this.frameHeight);
   };
+  
+  this.startAnimation = function(start, end, life) {
+    this.returnFrame = this.currentFrame;
+    this.setFrame(start);
+    this.endFrame = end;
+    this.delay = life / (end - start);
+    this.delay_cooldown = this.delay;
+  }
 }
 
 SpriteGameObject.prototype = new VisualGameObject;

@@ -78,8 +78,7 @@ function Generator() {
         if(turret.cooldown <= 0) {
           new Bullet().startupBullet(turret.gun.x + 32, turret.gun.y + 5, -1);
           turret.cooldown = 2.5;
-          // start the recoil animation
-          // set cooldown
+          turret.gun.startAnimation(1,6,0.4);
         }
       }
     }
