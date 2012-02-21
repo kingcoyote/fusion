@@ -31,7 +31,7 @@ function SpriteGameObject() {
   
   this.setRow = function(r) {
     this.currentRow = r;
-  }
+  };
 
   this.draw = function(dt, context, xScroll, yScroll) {
     if(this.delay_cooldown > 0) {
@@ -41,8 +41,8 @@ function SpriteGameObject() {
           this.delay_cooldown = 0;
           this.currentFrame = this.returnFrame;
         } else {
-          this.delay_cooldown = this.delay + this.delay_cooldown
-          this.currentFrame++
+          this.delay_cooldown = this.delay + this.delay_cooldown;
+          this.currentFrame++;
         }
       }
     }
@@ -87,7 +87,7 @@ function SpriteGameObject() {
     this.endFrame = end;
     this.delay = life / (end - start);
     this.delay_cooldown = this.delay;
-  }
+  };
 }
 
 SpriteGameObject.prototype = new VisualGameObject;

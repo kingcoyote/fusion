@@ -17,11 +17,11 @@ function Store() {
     for(var i in inventory) {
       this.addStoreInventory(inventory[i], i);
     }
-  }
+  };
   
   this.hideInventory = function() {
     g_store.store_div.style.display = 'none';
-  }
+  };
   
   this.addStoreInventory = function(item, i) {
     var new_div = document.createElement('div');
