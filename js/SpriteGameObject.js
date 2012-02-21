@@ -41,7 +41,7 @@ function SpriteGameObject() {
         0 - this.x, //dx
         this.y, //dy
         this.frameWidth, //dw 
-        this.image.height //dh
+        this.frameHeight //dh
       );
       context.scale(-1,1);
     } else {
@@ -54,7 +54,7 @@ function SpriteGameObject() {
         this.x, //dx
         this.y, //dy
         this.frameWidth, //dw 
-        this.image.height //dh
+        this.frameHeight //dh
       );
     }
   };

@@ -38,7 +38,8 @@ g_resources = {
   'shield': 'images/objects/shieldChunk.png',
   'storeSpritesheet': 'images/HUD/spritesheet.png',
   'genBase' : 'images/objects/GenBase.png',
-  'genTower' : 'images/objects/GenTower.png'
+  'genTower' : 'images/objects/GenTower.png',
+  'turret'   : 'images/objects/BasicTurret.png'
 };
 
 window.onload = function() {

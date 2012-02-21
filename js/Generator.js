@@ -1,15 +1,22 @@
 function Generator() {
   var self = this;
   
-  this.team = -1;
-  this.destructible = true;
-  this.health = 500;
-  this.alive = true;
-  this.points = 0;
+  self.team = -1;
+  self.destructible = true;
+  self.health = 500;
+  self.alive = true;
+  self.points = 0;
+  self.addons = [];
+  self.addon_positions = [
+    {x:-5, y:-45},
+    {x:50, y: -55},
+    {x:105, y:-45} 
+  ];
   
-  this.startupGenerator = function(i) {
+  self.startupGenerator = function(i) {
     var image = g_ResourceManager.genBase;
-    this.startupSpriteGameObject(
+    self.store_div = document.getElementById('store_generator_' + i);
+    self.startupSpriteGameObject(
         image,
         (i * 199) + 64,
         g_GameObjectManager.canvas.height - image.height -5,
@@ -17,65 +24,77 @@ function Generator() {
         3,
         1
     );
-    this.arm_left = new SpriteGameObject().startupSpriteGameObject(
+    self.arm_left = new SpriteGameObject().startupSpriteGameObject(
         g_ResourceManager.genTower,
-        this.x + 17,
-        this.y - 20,
+        self.x + 17,
+        self.y - 20,
         1,
         5,
         1
     );
-    this.arm_right = new SpriteGameObject().startupSpriteGameObject(
+    self.arm_right = new SpriteGameObject().startupSpriteGameObject(
         g_ResourceManager.genTower,
-        this.x + 83,
-        this.y - 20,
+        self.x + 83,
+        self.y - 20,
         1,
         5,
         1
     );
-    this.arm_right.mirrored = true;
-    this.store_div = document.getElementById('store_generator_' + i);
-    this.store_div.style.top  = this.y + 'px';
-    this.store_div.style.left = this.x + 'px';
-    this.store_div.style.width = this.image.width / 3 + 'px';
-    this.store_div.style.height = this.image.height + 'px';
-    this.store_div.onclick = this.showStore;
-    return this;
+    self.arm_right.mirrored = true;
+    self.store_div.style.top  = self.y + 'px';
+    self.store_div.style.left = self.x + 'px';
+    self.store_div.style.width = self.image.width / 3 + 'px';
+    self.store_div.style.height = self.image.height + 'px';
+    self.store_div.onclick = self.showStore;
+    return self;
   };
   
-  this.update = function(dt, context, x, y) {
-    if(this.health <= 400) {
-      this.arm_left.setFrame(1);
-      this.arm_right.setFrame(1);
+  self.update = function(dt, context, x, y) {
+    if(self.health <= 400) {
+      self.arm_left.setFrame(1);
+      self.arm_right.setFrame(1);
     }
-    if(this.health <= 300) { 
-      this.arm_left.setFrame(2);
-      this.arm_right.setFrame(2);
+    if(self.health <= 300) { 
+      self.arm_left.setFrame(2);
+      self.arm_right.setFrame(2);
     }
-    if(this.health <= 200) {
-      this.setFrame(1);
-      this.arm_left.setFrame(3);
-      this.arm_right.setFrame(3);
+    if(self.health <= 200) {
+      self.setFrame(1);
+      self.arm_left.setFrame(3);
+      self.arm_right.setFrame(3);
     }
-    if(this.health <= 100) {
-      this.arm_left.setFrame(4);
-      this.arm_right.setFrame(4);
+    if(self.health <= 100) {
+      self.arm_left.setFrame(4);
+      self.arm_right.setFrame(4);
     }
-    if(this.health <= 0) {
-      this.setFrame(2);
+    if(self.health <= 0) {
+      self.setFrame(2);
+    }
+    
+    if(this.addons.length) {
+      for(var i in this.addons) {
+        var turret = this.addons[i];
+        turret.cooldown -= dt;
+        if(turret.cooldown <= 0) {
+          new Bullet().startupBullet(turret.gun.x + 32, turret.gun.y + 5, -1);
+          turret.cooldown = 2.5;
+          // start the recoil animation
+          // set cooldown
+        }
+      }
     }
   };
   
-  this.shutdownDestructibleGameObject = function() {
-    this.setFrame(2);
-    this.arm_left.shutdownVisualGameObject();
-    this.arm_right.shutdownVisualGameObject();
-    if(this.alive) {
-      this.alive = false;
+  self.shutdownDestructibleGameObject = function() {
+    self.setFrame(2);
+    self.arm_left.shutdownVisualGameObject();
+    self.arm_right.shutdownVisualGameObject();
+    if(self.alive) {
+      self.alive = false;
       var explosion = new AnimatedGameObject().startupAnimatedGameObject(
           g_ResourceManager.explosion, 
-          this.x + (this.image.width / (2*this.frameCount)) - 62,
-          this.y + (this.image.height / (2*this.frameCount)) - 62,
+          self.x + (self.image.width / (2*self.frameCount)) - 62,
+          self.y + (self.image.height / (2*self.frameCount)) - 62,
           5,
           5,
           10
@@ -91,19 +110,50 @@ function Generator() {
     }
   };
   
-  this.showStore = function() {
+  self.showStore = function() {
+    var inventory = Array.prototype.slice.call(self.StoreInventory);
+    if(self.addons.length >= 3) {
+      inventory.slice(1,1);
+    }
     g_store.showInventory(self.StoreInventory);
   };
   
-  this.minorHealth = function() {
+  self.minorHealth = function() {
     self.health += 100;
     if(self.health >= 500) {
       self.health = 500;
     }
   };
   
-  this.StoreInventory = [
-    { name: "+100 Health", icon : "gen100health", cost: "150", callback: this.minorHealth },
+  self.weakTurret = function() {
+    var turret = {};
+    turret.position = self.addons.length;
+    turret.mount = new SpriteGameObject().startupSpriteGameObject(
+        g_ResourceManager.turret,
+        self.x + self.addon_positions[turret.position].x - (g_ResourceManager.turret.width / 14),
+        self.y + self.addon_positions[turret.position].y - (g_ResourceManager.turret.height / 4),
+        2,
+        7,
+        2
+    );
+    turret.mount.setFrame(0);
+    turret.gun = new SpriteGameObject().startupSpriteGameObject(
+        g_ResourceManager.turret,
+        self.x + self.addon_positions[turret.position].x - (g_ResourceManager.turret.width / 14),
+        self.y + self.addon_positions[turret.position].y - (g_ResourceManager.turret.height / 4),
+        3,
+        7,
+        2
+    );
+    turret.gun.setRow(1);
+    turret.gun.setFrame(0);
+    turret.cooldown = Math.random() * 2.5;
+    self.addons.push(turret);
+  };
+  
+  self.StoreInventory = [
+    { name: "+100 Health", icon : "gen100health", cost: "150", callback: self.minorHealth },
+    { name: "Weak Turret", icon : "genWeakTurret", cost: "100", callback: self.weakTurret }
   ];
 }
 Generator.prototype = new SpriteGameObject();
