@@ -1,13 +1,13 @@
 function Invader() {
   this.invaders = {
-    invader1 : { image : g_ResourceManager.invader1, width: 35, height: 45, gun : [{ x : 17, y : 41 }], cooldown: 2.5, health: 10, points : 10 },
-    invader2 : { image : g_ResourceManager.invader2, width: 50, height: 49, gun : [{ x : 25, y : 44 }], cooldown: 2.5, health: 10, points : 15 },
-    invader3 : { image : g_ResourceManager.invader3, width: 54, height: 89, gun : [{ x : 11, y : 40 }, { x : 43, y : 40}], cooldown: 2.5, health: 20, points:25 },
-    invader4 : { image : g_ResourceManager.invader4, width: 120, height: 106, gun : [{ x : 18, y : 57 }, { x : 100, y : 57}, { x : 59, y : 105}], cooldown: 2, health: 100, points:50 },
-    invader5 : { image : g_ResourceManager.invader5, width: 75, height: 72, gun : [{ x : 37, y : 52 }], cooldown: 1, health: 30, points: 35 },
-    invader6 : { image : g_ResourceManager.bossWingLeft, width: 214, height: 281, gun : [{ x : 86, y : 280}], cooldown: 0.75, health: 200, points:0 },
-    invader7 : { image : g_ResourceManager.bossWingRight, width: 214, height: 281, gun : [{ x : 127, y : 280}], cooldown: 0.75, health: 200, points:0 },
-    invader8 : { image : g_ResourceManager.bossBody, width: 184, height: 234, gun : [{ x : 16, y : 223}, { x : 92, y : 186}, { x : 167, y : 223}], cooldown: 0.5, health: 250, points:300 }
+    invader1 : { image : g_ResourceManager.invader1, width: 35, height: 45, gun : [{ x : 17, y : 41 }], cooldown: 2.5, health: 10, points : 10, z:1 },
+    invader2 : { image : g_ResourceManager.invader2, width: 50, height: 49, gun : [{ x : 25, y : 44 }], cooldown: 2.5, health: 10, points : 15, z:1 },
+    invader3 : { image : g_ResourceManager.invader3, width: 54, height: 89, gun : [{ x : 11, y : 40 }, { x : 43, y : 40}], cooldown: 2.5, health: 20, points:25, z:1 },
+    invader4 : { image : g_ResourceManager.invader4, width: 120, height: 106, gun : [{ x : 18, y : 57 }, { x : 100, y : 57}, { x : 59, y : 105}], cooldown: 2, health: 100, points:50, z:1 },
+    invader5 : { image : g_ResourceManager.invader5, width: 75, height: 72, gun : [{ x : 37, y : 52 }], cooldown: 1, health: 30, points: 35, z:1 },
+    invader6 : { image : g_ResourceManager.bossWingLeft, width: 214, height: 281, gun : [{ x : 86, y : 280}], cooldown: 0.75, health: 200, points:0, z:2 },
+    invader7 : { image : g_ResourceManager.bossWingRight, width: 214, height: 281, gun : [{ x : 127, y : 280}], cooldown: 0.75, health: 200, points:0, z:2 },
+    invader8 : { image : g_ResourceManager.bossBody, width: 184, height: 234, gun : [{ x : 16, y : 223}, { x : 92, y : 186}, { x : 167, y : 223}], cooldown: 0.5, health: 250, points:300, z:1 }
   };
   
   this.controller = false;
@@ -26,7 +26,7 @@ function Invader() {
     this.points = this.type.points;
     this.cooldown = Math.random() * this.type.cooldown;
     this.original_y = y;
-    this.startupVisualGameObject(this.invaders['invader' + type].image, x, y, 1);
+    this.startupVisualGameObject(this.invaders['invader' + type].image, x, y, this.type.z);
   };
   
   this.update = function(dt, context, xScroll, yScroll) {
