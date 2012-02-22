@@ -66,8 +66,6 @@ function Player() {
     @param number  The global scrolling value of the y axis
    */
   this.update = function (dt, context, xScroll, yScroll) {
-    this.setFrame(3);
-    
     if (this.left) {
       this.x -= this.speed * dt;
       this.setFrame(0);
@@ -77,7 +75,7 @@ function Player() {
       this.setFrame(6);
     }
     
-    if(this.right && this.left) {
+    if(this.right && this.left || (!this.right && !this.left)) {
       this.setFrame(3);
     }
     
