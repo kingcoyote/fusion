@@ -9,7 +9,7 @@ function InvaderController() {
   this.startupInvaderController = function(level) {
     this.startupGameObject(15, 15, -1);
     if(! InvaderWaves[level]) {
-      level = InvaderWaves.length - 1;
+      g_ApplicationManager.gameOver();
     }
     this.level = level;
   };
