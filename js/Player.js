@@ -14,6 +14,7 @@ function Player() {
   this.firespeed   = Player.stats.firespeed; // weapon cooldown in seconds. 0.5 is default
   this.health       = Player.stats.health;
   this.max_health   = Player.stats.health;
+  this.armor = 0;
   
   this.gun = { x : 50, y : 15 };
   

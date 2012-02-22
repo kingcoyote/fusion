@@ -36,6 +36,10 @@
 #store_inventory div.inventory div.icon.shieldhealth:hover { background-position:-56px -458px; }
 #store_inventory div.inventory div.icon.shieldhealth.click { background-position:-112px -458px; }
 
+#store_inventory div.inventory div.icon.genarmor { background-position:0 -280px; }
+#store_inventory div.inventory div.icon.genarmor:hover { background-position:-56px -280px; }
+#store_inventory div.inventory div.icon.genarmor.click { background-position:-112px -280px; }
+
 #store_inventory div.inventory div.icon.gen100health { background-position:0 -336px; }
 #store_inventory div.inventory div.icon.gen100health:hover { background-position:-56px -336px; }
 #store_inventory div.inventory div.icon.gen100health.click { background-position:-112px -336px; }

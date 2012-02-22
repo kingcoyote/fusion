@@ -12,6 +12,7 @@ function Generator() {
     {x:50, y: -55},
     {x:105, y:-45} 
   ];
+  self.armor = 1;
   
   self.startupGenerator = function(i) {
     var image = g_ResourceManager.genBase;
@@ -151,9 +152,15 @@ function Generator() {
     self.StoreInventory.genweakturret.cost += 100;
   };
   
-  self.StoreInventory = [
-    { name: "+100 Health", icon : "gen100health", cost: "150", callback: self.minorHealth },
-    { name: "Weak Turret", icon : "genweakturret", cost: "100", callback: self.weakTurret }
-  ];
+  self.increaseArmor = function() {
+    self.armor += 1;
+    self.StoreInventory.genarmor.cost += 50;
+  }
+  
+  self.StoreInventory = {
+    gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: self.minorHealth },
+    genweakturret: { name: "Weak Turret", icon : "genweakturret", cost: 100, callback: self.weakTurret },
+    genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: self.increaseArmor }
+  };
 }
 Generator.prototype = new SpriteGameObject();

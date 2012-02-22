@@ -4,6 +4,7 @@ Shield = function() {
   this.points = 0;
   this.health = Shield.stats.health;
   this.shield = true;
+  this.armor = 0;
   this.startupShield = function(x, y) {
     this.startupVisualGameObject(g_ResourceManager.shield, x, y, 1);
   };

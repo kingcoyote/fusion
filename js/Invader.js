@@ -17,6 +17,7 @@ function Invader() {
   this.type = {};
   this.dead = false;
   this.health = 1;
+  this.armor = 0;
   
   this.startupInvader = function(type, x, y, controller) {
     this.controller = controller;
