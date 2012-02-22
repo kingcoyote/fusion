@@ -110,11 +110,11 @@ function Generator() {
   };
   
   self.showStore = function() {
-    var inventory = Array.prototype.slice.call(self.StoreInventory);
+    var inventory = Object.create(self.StoreInventory).__proto__;
     if(self.addons.length >= 3) {
-      inventory.slice(1,1);
+      delete inventory.genweakturret;
     }
-    g_store.showInventory(self.StoreInventory);
+    g_store.showInventory(inventory);
   };
   
   self.minorHealth = function() {
@@ -148,6 +148,7 @@ function Generator() {
     turret.gun.setFrame(0);
     turret.cooldown = Math.random() * 2.5;
     self.addons.push(turret);
+    self.StoreInventory.genweakturret.cost += 100;
   };
   
   self.StoreInventory = [

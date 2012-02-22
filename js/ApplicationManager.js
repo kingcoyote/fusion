@@ -23,8 +23,9 @@ function ApplicationManager()
 		
 		this.background0 = new Background().startupBackground(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105);
     this.background1 = new Background().startupBackground(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95);
-		for(var i in g_ship_defaults) {
-		  g_ship[i] = g_ship_defaults[i];
+    Player.stats = {};
+		for(var i in Player.stats_default) {
+		  Player.stats[i] = Player.stats_default[i];
 		}
 		  
     g_player = new Player().startupPlayer();

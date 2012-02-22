@@ -5,15 +5,15 @@
  */
 function Player() {
   var self = this;
-  this.speed        = g_ship.speed; // base speed. between 50 and 500 is reasonable. 275 is default
+  this.speed        = Player.stats.speed; // base speed. between 50 and 500 is reasonable. 275 is default
   this.left         = false;
   this.right        = false;
   this.fire         = false;
   this.cooldown     = 0;
   this.screenBorder = 20;
-  this.fire_speed   = g_ship.firespeed; // weapon cooldown in seconds. 0.5 is default
-  this.health       = g_ship.health;
-  this.max_health   = g_ship.health;
+  this.firespeed   = Player.stats.firespeed; // weapon cooldown in seconds. 0.5 is default
+  this.health       = Player.stats.health;
+  this.max_health   = Player.stats.health;
   
   this.gun = { x : 50, y : 15 };
   
@@ -94,7 +94,7 @@ function Player() {
     
     this.cooldown -= dt;
     if(this.fire && this.cooldown <= 0) {
-      this.cooldown = this.fire_speed;
+      this.cooldown = this.firespeed;
       this.shoot();
     }
     
@@ -136,14 +136,14 @@ function Player() {
   };
   
   this.showStore = function() {
-    inventory = Array.prototype.slice.call(self.StoreInventory);
+    var inventory = Object.create(self.StoreInventory).__proto__;
     
-    if(g_ship.firespeed <= 0.3) {
-      inventory.splice(3, 1);
+    if(Player.stats.firespeed <= 0.3) {
+      delete inventory.fasterfiring;
     }
     
     if(g_lives >= 5) {
-      inventory.splice(0, 1);
+      delete inventory.extralife;
     }
     
     g_store.showInventory(inventory);
@@ -155,28 +155,36 @@ function Player() {
   };
   
   this.increasedHealth = function() {
-    g_ship.health += 10;
+    Player.stats.health += 10;
     self.health += 10;
     self.max_health += 10;
     g_ApplicationManager.updateHealth();
+    self.StoreInventory.increasedhealth.cost += 50;
   };
   
   this.speedBoost = function() {
-    g_ship.speed += 25;
+    Player.stats.speed += 25;
     self.speed += 25;
+    self.StoreInventory.speedboost.cost += 50;
   };
   
   this.fasterFiring = function() {
-    g_ship.firespeed -= 0.1;
-    self.fire_speed -= 0.1;
+    Player.stats.firespeed -= 0.05;
+    self.firespeed -= 0.05;
+    self.StoreInventory.fasterfiring.cost += 50;
   };
   
-  this.StoreInventory = [
-     /* extra life */     { name: "Extra Life", icon : "extralife", cost: "80", callback: this.extraLife },
-     /* more health */    { name: "Increased Health", icon : "increasedhealth", cost: "150", callback: this.increasedHealth },
-     /* engine boost */   { name: "Speed Boost", icon : "speedboost", cost: "150", callback: this.speedBoost },
-     /* faster firing */  { name: "Faster Firing", icon : "fasterfiring", cost: "200", callback: this.fasterFiring }
-   ];
+  self.StoreInventory = {
+      extralife:       { name: "Extra Life", icon : "extralife", cost: 80, callback: self.extraLife },
+      increasedhealth: { name: "Increased Health", icon : "increasedhealth", cost: 50, callback: self.increasedHealth },
+      speedboost:      { name: "Speed Boost", icon : "speedboost", cost: 50, callback: self.speedBoost },
+      fasterfiring:    { name: "Faster Firing", icon : "fasterfiring", cost: 100, callback: self.fasterFiring }
+   }; 
 }
-
 Player.prototype = new SpriteGameObject;
+Player.stats_default = {
+    health : 20,
+    speed  : 275,
+    firespeed : 0.50
+};
+Player.stats = {};

@@ -22,12 +22,13 @@ Shield.shieldRestore = function() {
 Shield.shieldHealth = function() {
   Shield.stats.health += 10;
   g_ApplicationManager.startShields();
+  Shield.StoreInventory.increasehealth.cost += 25;
 };
 
-Shield.StoreInventory = [
-  /* shield restore */   { name: "Shield Restore", icon : "shieldrestore", cost: "150", callback: Shield.shieldRestore },
-  /* shield health */ { name : "Increase Health", icon : "shieldhealth", cost:"150", callback: Shield.shieldHealth }
-];
+Shield.StoreInventory = {
+  shieldrestore :   { name: "Shield Restore", icon : "shieldrestore", cost: 150, callback: Shield.shieldRestore },
+  increasehealth : { name : "Increase Health", icon : "shieldhealth", cost:150, callback: Shield.shieldHealth }
+};
 
 Shield.stats = {
   health : 10
