@@ -99,8 +99,9 @@ function ApplicationManager()
 	  health.setAttribute('class', (g_player.invulnerable > 0 ? 'invulnerable' : null));
 	};
 	
-	this.gameOver = function()
+	this.gameOver = function(message)
 	{
+	  document.getElementById('game_over_message').innerHTML = message;
 	  setTimeout(function(){
   	  g_GameObjectManager.endLoop();
   	  document.getElementById('game_over').style.display='block';

@@ -8,9 +8,6 @@ function InvaderController() {
   
   this.startupInvaderController = function(level) {
     this.startupGameObject(15, 15, -1);
-    if(! InvaderWaves[level]) {
-      g_ApplicationManager.gameOver();
-    }
     this.level = level;
   };
   
@@ -61,6 +58,9 @@ function InvaderController() {
     if(alive === false) {
       g_level++;
       g_ApplicationManager.updateLevel();
+      if(! InvaderWaves[g_level]) {
+        g_ApplicationManager.gameOver('Congratulations for beating game!');
+      }
       setTimeout(function(){
         g_store.showStore();
       }, 3000);

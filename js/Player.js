@@ -127,7 +127,7 @@ function Player() {
         g_ApplicationManager.updateHealth();
       }, 3000);
     } else {
-      g_ApplicationManager.gameOver();
+      g_ApplicationManager.gameOver('You are out of lives!');
     }
     
     this.shutdownVisualGameObject();

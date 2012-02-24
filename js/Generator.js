@@ -106,7 +106,7 @@ function Generator() {
           return;
         }
       }
-      g_ApplicationManager.gameOver();
+      g_ApplicationManager.gameOver('All generators have died!');
     }
   };
   

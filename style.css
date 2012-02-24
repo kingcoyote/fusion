@@ -25,7 +25,7 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #hud_bottom #current_health.invulnerable { background-color:#00f; }
 
 #game_over { display:none; position:absolute; width:350px; height: 120px; top: 324px; left: 337px; text-align:center; background-color:#000; border:2px solid #fff; }
-#game_over p { font-weight:bold; font-size:24px; }
+#game_over p { font-weight:bold; font-size:20px; }
 #game_over span { cursor: pointer; font-size: 16px; }
 
 .clearfix:after { content:"."; visibility:hidden; display:block; clear:both; color:#000; }
