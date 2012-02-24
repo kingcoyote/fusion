@@ -54,11 +54,9 @@ function ApplicationManager()
 	};
 
 	this.startGenerators = function() {
-	  this.generators.push(new Generator().startupGenerator(0));
 	  this.generators.push(new Generator().startupGenerator(1));
 	  this.generators.push(new Generator().startupGenerator(2));
 	  this.generators.push(new Generator().startupGenerator(3));
-	  this.generators.push(new Generator().startupGenerator(4));
 	};
 	
 	this.startShields = function() {

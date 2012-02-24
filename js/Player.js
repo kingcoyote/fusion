@@ -137,7 +137,7 @@ function Player() {
   this.showStore = function() {
     var inventory = Object.create(self.StoreInventory).__proto__;
     
-    if(Player.stats.firespeed <= 0.3) {
+    if(Player.stats.firespeed <= 0.25) {
       delete inventory.fasterfiring;
     }
     
@@ -154,9 +154,9 @@ function Player() {
   };
   
   this.increasedHealth = function() {
-    Player.stats.health += 10;
-    self.health += 10;
-    self.max_health += 10;
+    Player.stats.health += 20;
+    self.health += 20;
+    self.max_health += 20;
     g_ApplicationManager.updateHealth();
     self.StoreInventory.increasedhealth.cost += 50;
   };
@@ -174,7 +174,7 @@ function Player() {
   };
   
   self.StoreInventory = {
-      extralife:       { name: "Extra Life", icon : "extralife", cost: 80, callback: self.extraLife },
+      extralife:       { name: "Extra Life", icon : "extralife", cost: 150, callback: self.extraLife },
       increasedhealth: { name: "Increased Health", icon : "increasedhealth", cost: 50, callback: self.increasedHealth },
       speedboost:      { name: "Speed Boost", icon : "speedboost", cost: 50, callback: self.speedBoost },
       fasterfiring:    { name: "Faster Firing", icon : "fasterfiring", cost: 100, callback: self.fasterFiring }
@@ -182,8 +182,8 @@ function Player() {
 }
 Player.prototype = new SpriteGameObject;
 Player.stats_default = {
-    health : 20,
-    speed  : 275,
-    firespeed : 0.50
+    health : 60,
+    speed  : 325,
+    firespeed : 0.4
 };
 Player.stats = {};
