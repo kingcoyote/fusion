@@ -48,7 +48,7 @@ function Bullet() {
         if(object.invulnerable > 0) {
           break;
         }
-        var damage = (this.damage - object.armor)
+        var damage = (this.damage - object.armor);
         object.health -= (damage >= 1 ? damage : 1);
         g_ApplicationManager.updateHealth();
         if(object.health <= 0) {

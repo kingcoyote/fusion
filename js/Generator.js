@@ -155,7 +155,7 @@ function Generator() {
   self.increaseArmor = function() {
     self.armor += 1;
     self.StoreInventory.genarmor.cost += 50;
-  }
+  };
   
   self.StoreInventory = {
     gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: self.minorHealth },
