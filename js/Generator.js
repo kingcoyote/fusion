@@ -72,7 +72,7 @@ function Generator() {
       self.setFrame(2);
     }
     
-    if(this.addons.length) {
+    if(this.addons.length && self.alive) {
       for(var i in this.addons) {
         var turret = this.addons[i];
         turret.cooldown -= dt;
