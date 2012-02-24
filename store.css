@@ -32,9 +32,9 @@
 #store_inventory div.inventory div.icon.shieldrestore:hover { background-position:-56px -56px; }
 #store_inventory div.inventory div.icon.shieldrestore.click { background-position:-112px -56px; }
 
-#store_inventory div.inventory div.icon.shieldhealth { background-position:0 -458px; }
-#store_inventory div.inventory div.icon.shieldhealth:hover { background-position:-56px -458px; }
-#store_inventory div.inventory div.icon.shieldhealth.click { background-position:-112px -458px; }
+#store_inventory div.inventory div.icon.shieldhealth { background-position:0 -448px; }
+#store_inventory div.inventory div.icon.shieldhealth:hover { background-position:-56px -448px; }
+#store_inventory div.inventory div.icon.shieldhealth.click { background-position:-112px -448px; }
 
 #store_inventory div.inventory div.icon.genarmor { background-position:0 -280px; }
 #store_inventory div.inventory div.icon.genarmor:hover { background-position:-56px -280px; }
