@@ -31,17 +31,18 @@ function Player() {
    * @return
    */
   this.startupPlayer = function() {
-    this.startupSpriteGameObject(
+    this.startupVisualGameObject(
         g_ResourceManager.hammer, 
         g_GameObjectManager.canvas.width / 2 - 50, 
         g_GameObjectManager.canvas.height - 165, 
-        5,
-        7,
-        1
+        5
     );
+    this.sprite.initFrames(7,1);
+    this.sprite.setFrame(3,0);
+    
     this.store_div = document.getElementById('store_player');
     this.store_div.onclick = this.showStore;
-    this.setFrame(3);
+    
     return this;
   };
 
@@ -68,15 +69,15 @@ function Player() {
   this.update = function (dt, context, xScroll, yScroll) {
     if (this.left) {
       this.x -= this.speed * dt;
-      this.setFrame(0);
+      this.sprite.setFrame(0);
     }
     if (this.right) {
       this.x += this.speed * dt;
-      this.setFrame(6);
+      this.sprite.setFrame(6);
     }
     
     if(this.right && this.left || (!this.right && !this.left)) {
-      this.setFrame(3);
+      this.sprite.setFrame(3);
     }
     
     this.invulnerable -= dt;
@@ -99,8 +100,8 @@ function Player() {
     
     this.store_div.style.top = this.y + 'px';
     this.store_div.style.left = this.x + 'px';
-    this.store_div.style.width = this.image.width / 7 + 'px';
-    this.store_div.style.height = this.image.height + 'px';
+    this.store_div.style.width = this.sprite.width + 'px';
+    this.store_div.style.height = this.sprite.height + 'px';
   };
   
   this.shoot = function() {
@@ -109,15 +110,14 @@ function Player() {
   };
   
   this.shutdownDestructibleGameObject = function() {
-    var explosion = new AnimatedGameObject().startupAnimatedGameObject(
+    var explosion = new VisualGameObject().startupVisualGameObject(
         g_ResourceManager.explosion, 
         this.x + (100 / 2) - 62,
         this.y + (85 / 2) - 62,
-        1,
-        5,
-        10
+        1
     );
-    
+    explosion.sprite.initFrames(5);
+    explosion.sprite = AnimatedSprite(explosion.sprite, [2,3,4], 0.50, false);
     g_lives--;
     g_ApplicationManager.updateLives();
     if(g_lives) {
@@ -131,7 +131,7 @@ function Player() {
     }
     
     this.shutdownVisualGameObject();
-    setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 500);
+    setTimeout(function(){ explosion.shutdownVisualGameObject();}, 500);
   };
   
   this.showStore = function() {
@@ -180,7 +180,9 @@ function Player() {
       fasterfiring:    { name: "Faster Firing", icon : "fasterfiring", cost: 100, callback: self.fasterFiring }
    }; 
 }
-Player.prototype = new SpriteGameObject;
+
+Player.prototype = new VisualGameObject;
+
 Player.stats_default = {
     health : 60,
     speed  : 325,

@@ -67,8 +67,8 @@ function ApplicationManager()
 	      o.shutdownDestructibleGameObject();
 	    }
 	  }
-	  for(var i in ShieldList) {
-      new Shield().startupShield(ShieldList[i][0], ShieldList[i][1]);
+	  for(var i in Shield.ShieldList) {
+      new Shield().startupShield(Shield.ShieldList[i][0], Shield.ShieldList[i][1]);
     }
 	};
 	

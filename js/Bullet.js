@@ -1,20 +1,10 @@
-/**
-    A class to represent the player on the screen
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
- */
 function Bullet() {
   this.speed        = 500; // base speed
   this.direction = 0;
   this.width = 12;
   this.height = 40;
   this.damage = 10;
-  /**
-   * construct the player object
-   * 
-   * @param level
-   * @return
-   */
+  
   this.startupBullet = function(x, y, direction) {
     this.direction = direction;
     if(direction == 1) {
@@ -27,13 +17,7 @@ function Bullet() {
     return this;
   };
 
-  /**
-    Updates the object
-    @param number  The time since the last frame in seconds
-    @param context The drawing context
-    @param number  The global scrolling value of the x axis
-    @param number  The global scrolling value of the y axis
-   */
+  
   this.update = function (dt, context, xScroll, yScroll) {
     this.y += this.speed * dt;
     
@@ -65,22 +49,23 @@ function Bullet() {
   this.die = function() {
     if(this.direction == 1) {
       image = g_ResourceManager.smallExploRed;
-      x_offset = (this.image.width/2) - (image.height/2);
-      y_offset = (this.image.height) - (this.image.width/2) - (image.height/2);
+      x_offset = (this.sprite.width/2) - (image.height/2);
+      y_offset = (this.sprite.height) - (this.sprite.width/2) - (image.height/2);
     } else {
       image = g_ResourceManager.smallExploBlue;
-      x_offset = (this.image.width/2) - (image.height/2);
-      y_offset = (this.image.width/2) - (image.height/2);
+      x_offset = (this.sprite.width/2) - (image.height/2);
+      y_offset = (this.sprite.width/2) - (image.height/2);
     }
-    var explosion = new AnimatedGameObject().startupAnimatedGameObject(
+    var explosion = new VisualGameObject().startupVisualGameObject(
         image, 
         this.x + x_offset,
         this.y + y_offset,
-        1,
-        5,
-        20
+        1
     );
-    setTimeout(function(){ explosion.shutdownAnimatedGameObject();}, 250);
+    explosion.sprite.initFrames(5);
+    explosion.sprite = AnimatedSprite(explosion.sprite, [2,3,4], 0.25, false);
+    
+    setTimeout(function(){ explosion.shutdownVisualGameObject();}, 250);
     this.shutdownVisualGameObject();
   };
 }

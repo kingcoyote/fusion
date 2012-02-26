@@ -25,11 +25,11 @@ function Background(){
 	};
 	
 	this.draw = function(dt, context, xScroll, yScroll) {
-      context.drawImage(this.image, this.x, this.y);
+      context.drawImage(this.sprite.source, this.x, this.y);
       
       // if the y value is above 0, we need to duplicate the image on top
       if(this.y >= 0) {
-        context.drawImage(this.image, this.x, this.y - this.height);
+        context.drawImage(this.sprite.source, this.x, this.y - this.height);
       }
       
       // if the y value is above canvas height, we need to reset the image
