@@ -22,21 +22,39 @@ function Sprite(source) {
 }
 
 Sprite.prototype.draw = function(context, x, y) {
-  context.drawImage(this.canvas, x, y);
+  context.drawImage(this.canvas, x - (this.canvas.width - this.width) / 2, y - (this.canvas.height - this.height) / 2);
 };
 
 Sprite.prototype.drawSprite = function() {
-  this.canvas.width  = this.width  * this.scale_x;
-  this.canvas.height = this.height * this.scale_y;
+  var context = this.canvas.getContext('2d');
   
-  this.canvas.getContext('2d').clearRect(0,0,this.canvas.width, this.canvas.height);
-  this.canvas.getContext('2d').translate(
+  // clear the canvas
+  this.canvas.width  = Math.sqrt(this.width * this.width + this.height * this.height);
+  this.canvas.height = this.canvas.width; 
+  context.clearRect(0,0,this.canvas.width, this.canvas.height);
+  context.translate(
+    (this.canvas.width - this.width) / 2,
+    (this.canvas.height - this.height) / 2
+  );
+  
+  // mirror
+  context.translate(
     this.reflect_x == 1 ? 0 : this.width,
     this.reflect_y == 1 ? 0 : this.height
   );
-  this.canvas.getContext('2d').scale(this.reflect_x, this.reflect_y);
+  context.scale(this.reflect_x, this.reflect_y);
   
-  this.canvas.getContext('2d').drawImage(
+  // rotate
+  context.translate(
+    this.width / 2, this.height / 2
+  );
+  context.rotate(Math.PI * 2 * (this.angle / 360));
+  context.translate(
+    0 - this.width / 2, 0 - this.height / 2
+  );
+  
+  // draw and scale
+  context.drawImage(
     this.source,
     this.width  * this.frame_x,
     this.height * this.frame_y,
@@ -44,11 +62,9 @@ Sprite.prototype.drawSprite = function() {
     this.height,
     0,
     0,
-    this.canvas.width,
-    this.canvas.height
+    this.width * this.scale_x,
+    this.height * this.scale_y
   );
-  
-  this.canvas.getContext('2d').scale(this.reflect_x, this.reflect_y);
 };
 
 Sprite.prototype.initFrames = function(cols, rows) {

@@ -18,7 +18,7 @@ function AnimatedSprite(sprite, frames, duration, loop) {
       frames = Array.prototype.slice.call(frames);
     }
     update.call(sprite, dt);
-  }
+  };
   
   return sprite;
 };
