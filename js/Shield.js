@@ -1,20 +1,14 @@
-Shield = function() {
+Shield = function(x,y) {
   this.team = 0;
   this.destructible = true;
   this.points = 0;
   this.health = Shield.stats.health;
   this.shield = true;
   this.armor = 0;
-  this.startupShield = function(x, y) {
-    this.startupVisualGameObject(g_ResourceManager.shield, x, y, 1);
-  };
-  
-  this.shutdownDestructibleGameObject = function() {
-    this.shutdownVisualGameObject();
-  } ;
+  VisualGameObject.call(this, g_ResourceManager.shield, x, y, 1);
 };
 
-Shield.prototype = new VisualGameObject;
+Shield.prototype = VisualGameObject;
 
 Shield.shieldRestore = function() {
   g_ApplicationManager.startShields();

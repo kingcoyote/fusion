@@ -10,5 +10,5 @@ function TempGameObject(gameobject, duration) {
     }
   }
   
-  return gameobject
+  return gameobject;
 }

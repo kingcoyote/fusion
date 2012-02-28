@@ -37,9 +37,9 @@ g_resources = {
 };
 
 window.onload = function() {
-  new GameObjectManager().startupGameObjectManager();
+  g_GameObjectManager = new GameObjectManager();
   document.getElementById('restart').onclick = function() {
-    g_GameObjectManager = new GameObjectManager().startupGameObjectManager();
+    g_GameObjectManager = new GameObjectManager();
   };
 };
 
