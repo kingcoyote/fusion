@@ -9,6 +9,8 @@ function Bullet(x, y, direction) {
     VisualGameObject.call(this, g_ResourceManager.bulletUp, x - (g_ResourceManager.bulletUp.width/2), y - g_ResourceManager.bulletDown.width, 1);
     this.speed = 0 - this.speed;
   }
+  
+  this.damage = 10;
 };
 
 Bullet.prototype = new VisualGameObject;
