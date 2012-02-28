@@ -38,7 +38,7 @@ function Invader() {
     for(var i in this.type.gun) {
       gun = this.type.gun[i];
       new Bullet().startupBullet(this.x + gun.x, this.y + gun.y, 1);
-      new TempVisualGameObject().startupTempVisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5, 0.05);
+      TempGameObject(new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1);
     }
 
     this.cooldown = this.type.cooldown + (Math.random() * this.type.cooldown);
@@ -54,8 +54,9 @@ function Invader() {
     );
   	explosion.sprite.initFrames(5);
   	explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.5, false);
+  	TempGameObject(explosion, 0.50);
+  	
     this.shutdownVisualGameObject();
-    setTimeout(function(){ explosion.shutdownVisualGameObject();}, 500);
   };
 }
 

@@ -63,9 +63,10 @@ function Bullet() {
         1
     );
     explosion.sprite.initFrames(5);
-    explosion.sprite = AnimatedSprite(explosion.sprite, [2,3,4], 0.25, false);
+    explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.25, false);
     
-    setTimeout(function(){ explosion.shutdownVisualGameObject();}, 250);
+    TempGameObject(explosion, 0.25);
+    
     this.shutdownVisualGameObject();
   };
 }

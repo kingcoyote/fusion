@@ -30,6 +30,8 @@ function VisualGameObject() {
     this.collisionArea = function() {
         return new Rectangle().startupRectangle(this.x, this.y, this.sprite.width, this.sprite.height);
     };
+    
+    return this;
 }
 
 VisualGameObject.prototype = new GameObject;

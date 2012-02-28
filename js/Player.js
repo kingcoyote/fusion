@@ -106,7 +106,10 @@ function Player() {
   
   this.shoot = function() {
     new Bullet().startupBullet(this.x + this.gun.x, this.y + this.gun.y, -1);
-    new TempVisualGameObject().startupTempVisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54, 5, 0.05);
+    TempGameObject(
+      new VisualGameObject().startupVisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54, 5),
+      0.05
+    );
   };
   
   this.shutdownDestructibleGameObject = function() {
@@ -130,8 +133,9 @@ function Player() {
       g_ApplicationManager.gameOver('You are out of lives!');
     }
     
+    TempGameObject(explosion, 0.5);
+    
     this.shutdownVisualGameObject();
-    setTimeout(function(){ explosion.shutdownVisualGameObject();}, 500);
   };
   
   this.showStore = function() {

@@ -104,7 +104,7 @@ function Generator() {
           5
       );
       explosion.sprite.initFrames(5);
-      setTimeout(function(){ explosion.shutdownVisualGameObject();}, 500);
+      TempGameObject(explosion, 0.5);
       
       for(var i in g_ApplicationManager.generators) {
         if(g_ApplicationManager.generators[i].alive) {
