@@ -1,7 +1,4 @@
 function ResourceManager(images) {
-  // set the global variable
-  g_ResourceManager = this;
-
   // initialize internal state.
   this.imageProperties = new Array();
 

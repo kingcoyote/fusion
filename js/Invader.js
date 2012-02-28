@@ -20,8 +20,8 @@ Invader.prototype = VisualGameObject;
 Invader.prototype.shoot = function() {
   for(var i in this.type.gun) {
     gun = this.type.gun[i];
-    new Bullet(this.x + gun.x, this.y + gun.y, 1);
-    TempGameObject(new VisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1);
+    g_GameObjectManager.addGameObject(new Bullet(this.x + gun.x, this.y + gun.y, 1));
+    g_GameObjectManager.addGameObject(TempGameObject(new VisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1));
   }
 
   this.cooldown = this.type.cooldown + (Math.random() * this.type.cooldown);
@@ -38,7 +38,7 @@ Invader.prototype.shutdown = function() {
 	explosion.sprite.initFrames(5);
 	explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.5, false);
 	TempGameObject(explosion, 0.50);
-	
+	g_GameObjectManager.addGameObject(explosion);
   VisualGameObject.prototype.shutdown.call(this);
 };
 
@@ -70,11 +70,13 @@ InvaderController.prototype.update = function(dt) {
   if(this.countdown > 0) {
     this.countdown -= dt;
     if(this.countdown <= 0) {
-      this.invaders.push(new Invader(
+      var new_invader = new Invader(
         this.wave.invaders.splice(0,1), 
         Math.random() * (g_GameObjectManager.canvas.width - 50) + 25,
         50
-      ));
+      );
+      this.invaders.push(new_invader);
+      g_GameObjectManager.addGameObject(new_invader);
     }
     g_countdown = this.countdown;
     g_ApplicationManager.updateCountdown();
@@ -84,11 +86,13 @@ InvaderController.prototype.update = function(dt) {
   this.interval -= dt;
   this.wave.duration -= dt;
   if(this.interval <= 0 && this.wave.invaders.length > 0) {
-    this.invaders.push(new Invader(
+    var new_invader = new Invader(
       this.wave.invaders.splice(0,1), 
       Math.random() * (g_GameObjectManager.canvas.width - 50) + 25,
       50
-    ));
+    );
+    this.invaders.push(new_invader);
+    g_GameObjectManager.addGameObject(new_invader);
     this.interval = this.wave.duration / this.wave.invaders.length;
   }
   
@@ -107,7 +111,7 @@ InvaderController.prototype.update = function(dt) {
       g_store.showStore();
     }, 3000);
     GameObject.prototype.shutdown.call(this);
-  }
+  };
 };
 
 var InvaderWaves = [ null, 

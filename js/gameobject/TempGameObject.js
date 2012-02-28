@@ -8,7 +8,7 @@ function TempGameObject(gameobject, duration) {
     } else {
       update.call(gameobject, dt);
     }
-  }
+  };
   
   return gameobject;
 }

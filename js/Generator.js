@@ -40,7 +40,10 @@ function Generator(i) {
   );
   this.arm_right.sprite.initFrames(5);
   this.arm_right.sprite.reflect(true, false);
-
+  
+  g_GameObjectManager.addGameObject(this.arm_left);
+  g_GameObjectManager.addGameObject(this.arm_right);
+  
   this.store_div = document.getElementById('store_generator_' + i);
   this.store_div.style.top  = this.y + 'px';
   this.store_div.style.left = this.x + 'px';
@@ -84,7 +87,7 @@ Generator.prototype.update = function(dt) {
       var turret = this.addons[i];
       turret.cooldown -= dt;
       if(turret.cooldown <= 0) {
-        new Bullet(turret.gun.x + 32, turret.gun.y + 5, -1);
+        g_GameObjectManager.addGameObject(new Bullet(turret.gun.x + 32, turret.gun.y + 5, -1));
         turret.cooldown = 2.5;
         turret.gun.sprite = AnimatedSprite(turret.gun.sprite, [2,3,4,5,0], 0.4, false);
       }
@@ -105,6 +108,7 @@ Generator.prototype.shutdown = function() {
         5
     );
     explosion.sprite.initFrames(5);
+    g_GameObjectManager.addGameObject(explosion);
     TempGameObject(explosion, 0.5);
 
     for(var i in g_ApplicationManager.generators) {
@@ -141,7 +145,9 @@ Generator.prototype.weakTurret = function() {
       2
   );
   turret.mount.sprite.initFrames(7,2);
-
+  
+  g_GameObjectManager.addGameObject(turret.mount);
+  
   turret.gun = new VisualGameObject(
       g_ResourceManager.turret,
       this.x + this.addon_positions[turret.position].x - (g_ResourceManager.turret.width / 14),
@@ -151,6 +157,8 @@ Generator.prototype.weakTurret = function() {
   turret.gun.sprite.initFrames(7,2);
   turret.gun.sprite.setFrame(0,1);
 
+  g_GameObjectManager.addGameObject(turret.gun);
+  
   turret.cooldown = Math.random() * 2.5;
   this.addons.push(turret);
   this.StoreInventory.genweakturret.cost += 100;

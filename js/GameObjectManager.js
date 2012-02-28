@@ -28,7 +28,7 @@ function GameObjectManager() {
   this.backBufferContext2D = this.backBuffer.getContext('2d');
 
   // create a new ResourceManager
-  new ResourceManager(g_resources);
+  g_ResourceManager = new ResourceManager(g_resources);
 
   // use setInterval to call the draw function
   this.loop = setInterval(function(){ g.draw(); }, SECONDS_BETWEEN_FRAMES);

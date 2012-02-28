@@ -88,11 +88,11 @@ Player.prototype.update = function (dt) {
 };
   
 Player.prototype.shoot = function() {
-  new Bullet(this.x + this.gun.x, this.y + this.gun.y, -1);
-  TempGameObject(
+  g_GameObjectManager.addGameObject(new Bullet(this.x + this.gun.x, this.y + this.gun.y, -1));
+  g_GameObjectManager.addGameObject(TempGameObject(
     new VisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54, 5),
     0.05
-  );
+  ));
 };
   
 Player.prototype.shutdown = function() {
@@ -104,6 +104,7 @@ Player.prototype.shutdown = function() {
   );
   explosion.sprite.initFrames(5);
   explosion.sprite = AnimatedSprite(explosion.sprite, [2,3,4], 0.50, false);
+  g_GameObjectManager.addGameObject(explosion);
   g_lives--;
   g_ApplicationManager.updateLives();
   if(g_lives) {

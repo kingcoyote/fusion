@@ -59,8 +59,8 @@ Bullet.prototype.die = function() {
   );
   explosion.sprite.initFrames(5);
   explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.25, false);
-
+  
   TempGameObject(explosion, 0.25);
-
+  g_GameObjectManager.addGameObject(explosion);
   VisualGameObject.prototype.shutdown.call(this);
 };

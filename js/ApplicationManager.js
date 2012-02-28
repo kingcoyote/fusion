@@ -3,15 +3,15 @@ function ApplicationManager(canvasWidth, canvasHeight) {
 
   g_store = new Store();
 
-  this.background0 = new Background(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105);
-  this.background1 = new Background(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95);
+  g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105));
+  g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95));
   Player.stats = {};
   for(var i in Player.stats_default) {
     Player.stats[i] = Player.stats_default[i];
   }
 
   g_player = new Player();
-
+  g_GameObjectManager.addGameObject(g_player);
   this.startShields();
 
   shield_store_div = document.getElementById('store_shield');
@@ -26,7 +26,7 @@ function ApplicationManager(canvasWidth, canvasHeight) {
   this.generators = [];
   this.startGenerators();
   g_level = 1;
-  new InvaderController(g_level);
+  g_GameObjectManager.addGameObject(new InvaderController(g_level));
   this.updateScore();
   this.updateLevel();
   this.updateLives();
@@ -39,6 +39,10 @@ ApplicationManager.prototype.startGenerators = function() {
   this.generators.push(new Generator(1));
   this.generators.push(new Generator(2));
   this.generators.push(new Generator(3));
+  
+  g_GameObjectManager.addGameObject(this.generators[0]);
+  g_GameObjectManager.addGameObject(this.generators[1]);
+  g_GameObjectManager.addGameObject(this.generators[2]);
 };
 
 ApplicationManager.prototype.startShields = function() {
@@ -50,7 +54,7 @@ ApplicationManager.prototype.startShields = function() {
     }
   }
   for(var i in Shield.ShieldList) {
-    new Shield(Shield.ShieldList[i][0], Shield.ShieldList[i][1]);
+    g_GameObjectManager.addGameObject(new Shield(Shield.ShieldList[i][0], Shield.ShieldList[i][1]));
   }
 };
 
