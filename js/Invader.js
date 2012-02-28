@@ -96,7 +96,7 @@ function InvaderController() {
     
     this.interval -= dt;
     this.wave.duration -= dt;
-    if(this.interval <= 0) {
+    if(this.interval <= 0 && this.wave.invaders.length > 0) {
       this.invaders.push(new Invader().startupInvader(
         this.wave.invaders.splice(0,1), 
         Math.random() * (g_GameObjectManager.canvas.width - 50) + 25,
