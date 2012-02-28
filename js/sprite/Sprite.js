@@ -1,4 +1,5 @@
 function Sprite(source) {
+  if(typeof source == 'undefined') return;
   this.source = source;
   
   this.frame_x   = 0;

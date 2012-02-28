@@ -54,7 +54,7 @@ function Generator(i) {
   return this;
 };
 
-Generator.prototype = VisualGameObject;
+Generator.prototype = new VisualGameObject;
 
 Generator.prototype.update = function(dt) {
   this.sprite.setFrame(0);

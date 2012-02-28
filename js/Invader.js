@@ -6,15 +6,15 @@ function Invader(type, x, y) {
   this.health = 1;
   this.armor = 0;
 
-  this.type = this.invaders['invader' + type];
+  this.type = Invader.invaders['invader' + type];
   this.health = this.type.health;
   this.points = this.type.points;
   this.cooldown = Math.random() * this.type.cooldown;
   this.original_y = y;
-  VisualGameObject.call(this, g_RsourceManager[this.invaders['invader' + type].image], x, y, this.type.z);
+  VisualGameObject.call(this, g_ResourceManager[Invader.invaders['invader' + type].image], x, y, this.type.z);
 };
 
-Invader.prototype = VisualGameObject;
+Invader.prototype = new VisualGameObject;
 
 
 Invader.prototype.shoot = function() {
@@ -56,15 +56,13 @@ Invader.invaders = {
 function InvaderController(level) {
   this.invaders = [];
   this.countdown = 3;
-  this.wave = null;
-
-  GameObject.call(this, 15, 15, -1);
   this.level = level;
-  this.wave = InvaderWaves[this.level];
+  this.wave = InvaderWaves[level];
   this.interval = this.wave.duration / this.wave.invaders.length;
+  GameObject.call(this, 15, 15, -1);
 };
 
-InvaderController.prototype = GameObject;
+InvaderController.prototype = new GameObject();
 
 InvaderController.prototype.update = function(dt) {
   if(this.countdown > 0) {

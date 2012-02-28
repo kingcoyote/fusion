@@ -4,7 +4,7 @@ function TempGameObject(gameobject, duration) {
   gameobject.update = function(dt) {
     duration -= dt;
     if(duration <= 0) {
-      gameobject.shutdownGameObject();
+      gameobject.shutdown();
     } else {
       update.call(gameobject, dt);
     }

@@ -12,7 +12,7 @@ function Background(image, width, height, speed_x, speed_y, start_x, start_y, re
   this.spawn_repeat = false;
 };
 
-Background.prototype = VisualGameObject;
+Background.prototype = new VisualGameObject;
 
 Background.prototype.draw = function(context) {
   context.drawImage(this.sprite.source, this.x, this.y);

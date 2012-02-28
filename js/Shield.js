@@ -8,7 +8,7 @@ Shield = function(x,y) {
   VisualGameObject.call(this, g_ResourceManager.shield, x, y, 1);
 };
 
-Shield.prototype = VisualGameObject;
+Shield.prototype = new VisualGameObject;
 
 Shield.shieldRestore = function() {
   g_ApplicationManager.startShields();

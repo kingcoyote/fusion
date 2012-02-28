@@ -35,7 +35,7 @@ function Player() {
   return this;
 };
 
-Player.prototype = VisualGameObject;
+Player.prototype = new VisualGameObject;
   
 Player.prototype.keyDown = function(event) {
   this.left  = event.keyCode == 37 ? true : this.left;
