@@ -3,14 +3,12 @@ function Invader(type, x, y) {
   this.destructible = true;
   this.type = {};
   this.dead = false;
-  this.health = 1;
   this.armor = 0;
 
   this.type = Invader.invaders['invader' + type];
   this.health = this.type.health;
   this.points = this.type.points;
   this.cooldown = Math.random() * this.type.cooldown;
-  this.original_y = y;
   VisualGameObject.call(this, g_ResourceManager[Invader.invaders['invader' + type].image], x, y, this.type.z);
 };
 
