@@ -4,7 +4,7 @@ function AnimatedSprite(sprite, frames, duration, loop) {
       update = sprite.update,
       orig_frames = frames;
   
-  sprite.setFrame(frames[0]);
+  sprite.setFrame(frames.splice(0,1));
   
   sprite.update = function(dt) {
     tick -= dt;
