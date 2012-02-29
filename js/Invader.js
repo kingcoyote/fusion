@@ -21,8 +21,9 @@ Invader.prototype = new VisualGameObject;
 Invader.prototype.shoot = function() {
   for(var i in this.type.gun) {
     gun = this.type.gun[i];
-    g_GameObjectManager.addGameObject(new Bullet(this.x + gun.x, this.y + gun.y, 1));
-    g_GameObjectManager.addGameObject(TempGameObject(new VisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1));
+    var bullet = new Bullet(this.x + gun.x, this.y + gun.y, this.angle, 1);
+    g_GameObjectManager.addGameObject(bullet);
+    //g_GameObjectManager.addGameObject(TempGameObject(new VisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1));
   }
 
   this.cooldown = this.type.cooldown + (Math.random() * this.type.cooldown);
@@ -72,7 +73,13 @@ Invader.prototype.update = function(dt) {
   this.x += this.speed_x * dt;
   this.y += this.speed_y * dt;
   
-  if(Math.sqrt((this.x - this.target.x)*(this.x - this.target.x) + (this.y-this.target.y)*(this.y-this.target.y)) < 300) {
+  if(this.cooldown > 0) {
+    this.cooldown -= dt;
+  }
+  
+  if(this.speed_x == 0 && this.speed_y == 0 && this.cooldown <= 0) {
+    this.shoot();
+  } else if(Math.sqrt((this.x - this.target.x)*(this.x - this.target.x) + (this.y-this.target.y)*(this.y-this.target.y)) < 300) {
     this.speed_x = 0;
     this.speed_y = 0;
   }

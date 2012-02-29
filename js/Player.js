@@ -88,7 +88,7 @@ Player.prototype.update = function (dt) {
 };
   
 Player.prototype.shoot = function() {
-  g_GameObjectManager.addGameObject(new Bullet(this.x + this.gun.x, this.y + this.gun.y, -1));
+  g_GameObjectManager.addGameObject(new Bullet(this.x + this.gun.x, this.y + this.gun.y, Math.PI, -1));
   g_GameObjectManager.addGameObject(TempGameObject(
     new VisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54, 5),
     0.05
@@ -112,6 +112,7 @@ Player.prototype.shutdown = function() {
       g_player = new Player();
       g_player.invulnerable = 2;
       g_ApplicationManager.updateHealth();
+      g_GameObjectManager.addGameObject(g_player);
     }, 3000);
   } else {
     g_ApplicationManager.gameOver('You are out of lives!');
