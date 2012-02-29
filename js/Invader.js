@@ -10,6 +10,9 @@ function Invader(type, x, y) {
   this.points = this.type.points;
   this.cooldown = Math.random() * this.type.cooldown;
   VisualGameObject.call(this, g_ResourceManager[Invader.invaders['invader' + type].image], x, y, this.type.z);
+  
+  this.target = this.locateTarget();
+  this.setDirection(this.target.x, this.target.y);
 };
 
 Invader.prototype = new VisualGameObject;
@@ -40,8 +43,50 @@ Invader.prototype.shutdown = function() {
   VisualGameObject.prototype.shutdown.call(this);
 };
 
+Invader.prototype.locateTarget = function(){
+  var x = this.x + this.sprite.width / 2,
+    y = this.y + this.sprite.height / 2,
+    target = {
+      x : 0,
+      y : 0,
+      d : Infinity
+    };
+  
+  for(var i in g_ApplicationManager.generators) {
+    var g = g_ApplicationManager.generators[i],
+      gx = g.x + g.sprite.width / 2,
+      gy = g.y + g.sprite.height / 2,
+      gd = Math.sqrt(((gx - x) * (gx - x)) + ((gy - y) * (gy - y)));
+    
+    if(g.alive && gd < target.d) {
+      target.x = gx;
+      target.y = gy;
+      target.d = gd;
+    }
+  }
+  
+  return target;
+};
+
+Invader.prototype.update = function(dt) {
+  this.x += this.speed_x * dt;
+  this.y += this.speed_y * dt;
+  
+  if(Math.sqrt((this.x - this.target.x)*(this.x - this.target.x) + (this.y-this.target.y)*(this.y-this.target.y)) < 300) {
+    this.speed_x = 0;
+    this.speed_y = 0;
+  }
+};
+
+Invader.prototype.setDirection = function(x, y) {
+  this.angle = Math.atan2(x - this.x, y - this.y);
+  this.sprite.rotate(this.angle);
+  this.speed_x = Math.sin(this.angle) * this.type.speed;
+  this.speed_y = Math.cos(this.angle) * this.type.speed;
+};
+
 Invader.invaders = {
-  invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 17, y : 41 }], cooldown: 1.5, health: 10, points : 10, z:1 },
+  invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 17, y : 41 }], cooldown: 1.5, health: 10, points : 10, z:1, speed:100 },
   invader2 : { image : 'invader2', width: 50, height: 49, gun : [{ x : 25, y : 44 }], cooldown: 1.0, health: 30, points : 30, z:1 },
   invader3 : { image : 'invader3', width: 54, height: 89, gun : [{ x : 11, y : 40 }, { x : 43, y : 40}], cooldown: 1.5, health: 50, points:65, z:1 },
   invader4 : { image : 'invader4', width: 120, height: 106, gun : [{ x : 18, y : 57 }, { x : 100, y : 57}, { x : 59, y : 105}], cooldown: 1, health: 150, points:200, z:1 },
@@ -68,7 +113,7 @@ InvaderController.prototype.update = function(dt) {
     if(this.countdown <= 0) {
       var new_invader = new Invader(
         this.wave.invaders.splice(0,1), 
-        Math.random() * (g_GameObjectManager.canvas.width - 50) + 25,
+        Math.random() * (g_GameObjectManager.canvas.width - 100) + 50,
         50
       );
       this.invaders.push(new_invader);

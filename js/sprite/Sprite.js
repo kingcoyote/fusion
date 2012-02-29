@@ -49,7 +49,7 @@ Sprite.prototype.drawSprite = function() {
   context.translate(
     this.width / 2, this.height / 2
   );
-  context.rotate(Math.PI * 2 * (this.angle / 360));
+  context.rotate(0 - this.angle);
   context.translate(
     0 - this.width / 2, 0 - this.height / 2
   );
