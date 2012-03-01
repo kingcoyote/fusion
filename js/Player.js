@@ -9,6 +9,8 @@ function Player() {
   this.health       = Player.stats.health;
   this.max_health   = Player.stats.health;
   this.armor = 0;
+  this.angle = 0;
+  this.rotation_speed = 1;
   
   this.gun = { x : 50, y : 15 };
   

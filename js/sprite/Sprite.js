@@ -49,7 +49,7 @@ Sprite.prototype.drawSprite = function() {
   context.translate(
     this.width / 2, this.height / 2
   );
-  context.rotate(0 - this.angle);
+  context.rotate(this.angle);
   context.translate(
     0 - this.width / 2, 0 - this.height / 2
   );
@@ -94,8 +94,8 @@ Sprite.prototype.setFrame = function(x, y) {
   return this;
 };
 
-Sprite.prototype.rotate = function(deg) {
-  this.angle = deg;
+Sprite.prototype.rotate = function(rad) {
+  this.angle = rad;
   this.drawSprite();
 };
 
