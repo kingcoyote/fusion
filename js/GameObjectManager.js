@@ -9,12 +9,6 @@ function GameObjectManager() {
   this.canvasSupported     = false;
   this.resourcesLoaded     = false;
 
-  g_score = 0;
-  g_lives = 3;
-  g_level = 1;
-
-  document.getElementById('game_over').style.display='none';
-
   document.onkeydown = function(e) { g.keyDown(e); };
   document.onkeyup   = function(e) { g.keyUp(e); };
 
@@ -46,17 +40,10 @@ GameObjectManager.prototype.draw = function () {
       if (g_ResourceManager[g_ResourceManager.imageProperties[i]].complete)
         ++numLoaded;
     }
-
+    
     if ( numLoaded == g_ResourceManager.imageProperties.length ) {
-      // create a new ApplicationManager
-      document.getElementById('hud_bottom').style.display = 'block';
-      document.getElementById('loading').style.display = 'none';
-      new ApplicationManager();
+      g_GameObjectManager.addGameObject(new Player());
       this.resourcesLoaded = true;
-    } else {
-      document.getElementById('loading_count_current').innerHTML = numLoaded;
-      document.getElementById('loading_count_max').innerHTML = g_ResourceManager.imageProperties.length;
-      document.getElementById('loading_percent').style.width = numLoaded / g_ResourceManager.imageProperties.length * 300 + 'px';
     }
   }
 
@@ -82,10 +69,6 @@ GameObjectManager.prototype.draw = function () {
     // copy the back buffer to the displayed canvas
     this.context2D.drawImage(this.backBuffer, 0, 0);
   }        
-};
-
-GameObjectManager.prototype.endLoop = function() {
-  clearInterval(this.loop);
 };
 
 GameObjectManager.prototype.addGameObject = function(gameObject) {
