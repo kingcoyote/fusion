@@ -1,13 +1,19 @@
 function Player() {
-  this.speed        = 75; // base speed. between 50 and 500 is reasonable. 275 is default
+  this.speed        = 225; // base speed. between 50 and 500 is reasonable. 275 is default
   this.cooldown     = 0;
   this.firespeed    = 0.5; // weapon cooldown in seconds. 0.5 is default
   this.angle        = 0;
-  this.turn_speed   = 1;
-  this.gun          = { x : 50, y : 15 };
+  this.turn_speed   = 2;
+  this.gun          = { x : 0, y : -30 };
+  
+  this.gun.angle    = Math.PI / 2 - Math.atan2(this.gun.y, this.gun.x);
+  this.gun.distance = Math.sqrt(this.gun.x * this.gun.x + this.gun.y * this.gun.y);
+  
+  console.log(this.gun);
   
   this.left  = false;
   this.right = false;
+  this.up    = false;
   this.fire  = false;
   
   var image = g_ResourceManager.ship;
@@ -51,6 +57,19 @@ Player.prototype.update = function (dt) {
   if(this.up) {
     this.x += Math.sin(this.angle) * this.speed * dt;
     this.y -= Math.cos(this.angle) * this.speed * dt;
+  }
+  
+  if(this.fire && this.cooldown <= 0) {
+    var bullet = new Bullet(
+      (this.x + this.sprite.width / 2 ) + ((Math.sin(this.angle - this.gun.angle)) * this.gun.distance * -1), 
+      (this.y + this.sprite.height / 2) + ((Math.cos(this.angle - this.gun.angle)) * this.gun.distance), 
+      this.angle
+    );
+    g_GameObjectManager.addGameObject(bullet);
+    
+    this.cooldown = this.firespeed;
+  } else if (this.cooldown > 0) {
+    this.cooldown -= dt;
   }
   
   this.sprite.rotate(this.angle);
