@@ -50,7 +50,7 @@ Player.prototype.update = function (dt) {
   
   if(this.up) {
     this.x += Math.sin(this.angle) * this.speed * dt;
-    this.y += Math.cos(this.angle) * this.speed * dt;
+    this.y -= Math.cos(this.angle) * this.speed * dt;
   }
   
   this.sprite.rotate(this.angle);
