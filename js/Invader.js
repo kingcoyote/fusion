@@ -71,7 +71,7 @@ Invader.prototype.locateTarget = function(){
 
 Invader.prototype.update = function(dt) {
   this.x += this.speed_x * dt;
-  this.y += this.speed_y * dt;
+  this.y -= this.speed_y * dt;
   
   if(this.cooldown > 0) {
     this.cooldown -= dt;
@@ -86,7 +86,7 @@ Invader.prototype.update = function(dt) {
 };
 
 Invader.prototype.setDirection = function(x, y) {
-  this.angle = Math.atan2((y - this.y), (this.x - x));
+  this.angle = Math.atan2((this.y - y), (this.x - x)) - Math.PI / 2;
   this.sprite.rotate(this.angle);
   this.speed_x = Math.sin(this.angle) * this.type.speed;
   this.speed_y = Math.cos(this.angle) * this.type.speed;
