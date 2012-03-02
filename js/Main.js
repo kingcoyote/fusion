@@ -7,7 +7,8 @@ var FPS = 30,
 
 g_resources = {
   'bullet'    : 'images/bullet.png',
-  'ship'      : 'images/ship.png'
+  'ship'      : 'images/ship.png',
+  'turret'    : 'images/turret.png'
 };
 
 window.onload = function() {

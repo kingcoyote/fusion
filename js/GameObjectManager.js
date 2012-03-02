@@ -42,7 +42,12 @@ GameObjectManager.prototype.draw = function () {
     }
     
     if ( numLoaded == g_ResourceManager.imageProperties.length ) {
-      g_GameObjectManager.addGameObject(new Player());
+      g_player = new Player();
+      g_GameObjectManager.addGameObject(g_player);
+      g_GameObjectManager.addGameObject(new Turret(150,150));
+      g_GameObjectManager.addGameObject(new Turret(600,150));
+      g_GameObjectManager.addGameObject(new Turret(150,400));
+      g_GameObjectManager.addGameObject(new Turret(600,400));
       this.resourcesLoaded = true;
     }
   }
