@@ -12,7 +12,10 @@ function Player() {
   this.angle = 0;
   this.rotation_speed = 1;
   
-  this.gun = { x : 50, y : 15 };
+  this.gun = { x : 0, y : -30 };
+  
+  this.gun.angle    = Math.PI / 2 - Math.atan2(this.gun.y, this.gun.x);
+  this.gun.distance = Math.sqrt(this.gun.x * this.gun.x + this.gun.y * this.gun.y);
   
   this.team = -1;
   
@@ -90,11 +93,17 @@ Player.prototype.update = function (dt) {
 };
   
 Player.prototype.shoot = function() {
-  g_GameObjectManager.addGameObject(new Bullet(this.x + this.gun.x, this.y + this.gun.y, Math.PI, -1));
-  g_GameObjectManager.addGameObject(TempGameObject(
+  var bullet = new Bullet(
+    (this.x + this.sprite.width / 2) + (Math.sin(this.angle - this.gun.angle) * this.gun.distance), 
+    (this.y + this.sprite.height / 2) + (Math.cos(this.angle - this.gun.angle) * this.gun.distance), 
+    this.angle, 
+    -1
+  )
+  g_GameObjectManager.addGameObject(bullet);
+  /*g_GameObjectManager.addGameObject(TempGameObject(
     new VisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54, 5),
     0.05
-  ));
+  ));*/
 };
   
 Player.prototype.shutdown = function() {

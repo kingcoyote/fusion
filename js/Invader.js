@@ -90,7 +90,6 @@ Invader.prototype.setDirection = function(x, y) {
   this.sprite.rotate(this.angle);
   this.speed_x = Math.sin(this.angle) * this.type.speed;
   this.speed_y = Math.cos(this.angle) * this.type.speed;
-  console.log(this.x - x, this.y - y, this.angle, this.speed_x, this.speed_y);
 };
 
 Invader.invaders = {
