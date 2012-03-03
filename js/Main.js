@@ -7,7 +7,6 @@ var FPS = 30,
   g_level = 0,
   g_lives = 0,
   g_player = null,
-  g_store = null,
   g_countdown = 0;
 
 g_resources = {

@@ -1,4 +1,6 @@
 function Generator(i) {
+  if(typeof i == 'undefined') return;
+  var g = this;
   this.team = -1;
   this.destructible = true;
   this.health = 500;
@@ -49,8 +51,15 @@ function Generator(i) {
   this.store_div.style.left = this.x + 'px';
   this.store_div.style.width = this.sprite.width + 'px';
   this.store_div.style.height = this.sprite.height + 'px';
-  this.store_div.onclick = this.showStore;
-
+  
+  this.StoreInventory = {
+      gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
+      genweakturret: { name: "Weak Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
+      genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
+  };
+  
+  this.store_div.onclick = function() { Store.showInventory(g.getStoreInventory, g); };
+  
   return this;
 };
 
@@ -120,12 +129,12 @@ Generator.prototype.shutdown = function() {
   }
 };
 
-Generator.prototype.showStore = function() {
+Generator.prototype.getStoreInventory = function() {
   var inventory = Object.create(this.StoreInventory).__proto__;
   if(this.addons.length >= 3) {
     delete inventory.genweakturret;
   }
-  g_store.showInventory(inventory);
+  return inventory;
 };
 
 Generator.prototype.minorHealth = function() {
@@ -167,10 +176,4 @@ Generator.prototype.weakTurret = function() {
 Generator.prototype.increaseArmor = function() {
   this.armor += 1;
   this.StoreInventory.genarmor.cost += 50;
-};
-
-Generator.prototype.StoreInventory = {
-    gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
-    genweakturret: { name: "Weak Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
-    genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
 };

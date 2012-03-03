@@ -156,7 +156,7 @@ InvaderController.prototype.update = function(dt) {
       g_ApplicationManager.gameOver('Congratulations for beating game!');
     }
     setTimeout(function(){
-      g_store.showStore();
+      Store.showStore();
     }, 3000);
     GameObject.prototype.shutdown.call(this);
   };

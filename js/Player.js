@@ -134,7 +134,7 @@ Player.prototype.shutdown = function() {
   VisualGameObject.prototype.shutdown.call(this);
 };
   
-Player.prototype.showStore = function() {
+Player.prototype.getStoreInventory = function() {
   var inventory = Object.create(self.StoreInventory).__proto__;
   
   if(Player.stats.firespeed <= 0.25) {
@@ -145,7 +145,7 @@ Player.prototype.showStore = function() {
     delete inventory.extralife;
   }
   
-  g_store.showInventory(inventory);
+  return inventory;
 };
   
 Player.prototype.extraLife = function() {
