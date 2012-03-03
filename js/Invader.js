@@ -107,10 +107,16 @@ function InvaderController(level) {
   this.invaders = [];
   this.countdown = 3;
   this.level = level;
-  if(!InvaderWaves[level]) level = InvaderWaves.length - 1;
-  this.wave = InvaderWaves[level];
+  
+  if(!InvaderWaves[level]) {
+    level = InvaderWaves.length - 1;
+  }
+  this.wave = Object.create(InvaderWaves[level]);
+  
   this.interval = this.wave.duration / this.wave.invaders.length;
   GameObject.call(this, 15, 15, -1);
+  
+  this.invader_number = 0;
 };
 
 InvaderController.prototype = new GameObject();
@@ -120,7 +126,7 @@ InvaderController.prototype.update = function(dt) {
     this.countdown -= dt;
     if(this.countdown <= 0) {
       var new_invader = new Invader(
-        this.wave.invaders.splice(0,1), 
+        this.wave.invaders[this.invader_number++], 
         Math.random() * (g_GameObjectManager.canvas.width - 100) + 50,
         50
       );
@@ -134,9 +140,9 @@ InvaderController.prototype.update = function(dt) {
   
   this.interval -= dt;
   this.wave.duration -= dt;
-  if(this.interval <= 0 && this.wave.invaders.length > 0) {
+  if(this.interval <= 0 && this.wave.invaders.length > this.invader_number) {
     var new_invader = new Invader(
-      this.wave.invaders.splice(0,1), 
+        this.wave.invaders[this.invader_number++], 
       Math.random() * (g_GameObjectManager.canvas.width - 50) + 25,
       50
     );
