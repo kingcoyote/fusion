@@ -96,7 +96,7 @@ Generator.prototype.update = function(dt) {
       var turret = this.addons[i];
       turret.cooldown -= dt;
       if(turret.cooldown <= 0) {
-        g_GameObjectManager.addGameObject(new Bullet(turret.gun.x + 32, turret.gun.y + 5, -1));
+        g_GameObjectManager.addGameObject(new Bullet(turret.gun.x + 32, turret.gun.y + 5, 0, -1));
         turret.cooldown = 2.5;
         turret.gun.sprite = AnimatedSprite(turret.gun.sprite, [2,3,4,5,0], 0.4, false);
       }
@@ -153,7 +153,7 @@ Generator.prototype.weakTurret = function() {
       this.y + this.addon_positions[turret.position].y - (g_ResourceManager.turret.height / 4),
       2
   );
-  turret.mount.sprite.initFrames(7,2);
+  turret.mount.sprite.initFrames(7,4);
   
   g_GameObjectManager.addGameObject(turret.mount);
   
@@ -163,7 +163,7 @@ Generator.prototype.weakTurret = function() {
       this.y + this.addon_positions[turret.position].y - (g_ResourceManager.turret.height / 4),
       3
   );
-  turret.gun.sprite.initFrames(7,2);
+  turret.gun.sprite.initFrames(7,4);
   turret.gun.sprite.setFrame(0,1);
 
   g_GameObjectManager.addGameObject(turret.gun);
