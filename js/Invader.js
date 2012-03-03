@@ -56,7 +56,7 @@ Invader.prototype.locateTarget = function(){
   for(var i in g_ApplicationManager.generators) {
     var g = g_ApplicationManager.generators[i],
       gx = g.x + g.sprite.width / 2,
-      gy = g.y + g.sprite.height / 2,
+      gy = g.y,
       gd = Math.sqrt(((gx - x) * (gx - x)) + ((gy - y) * (gy - y)));
     
     if(g.alive && gd < target.d) {
@@ -94,7 +94,7 @@ Invader.prototype.setDirection = function(x, y) {
 
 Invader.invaders = {
   invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 17, y : 41 }], cooldown: 1.5, health: 10, points : 10, z:1, speed:100 },
-  invader2 : { image : 'invader2', width: 50, height: 49, gun : [{ x : 25, y : 44 }], cooldown: 1.0, health: 30, points : 30, z:1, speed : 50 },
+  invader2 : { image : 'invader2', width: 50, height: 49, gun : [{ x : 25, y : 44 }], cooldown: 0.25, health: 30, points : 30, z:1, speed : 50 },
   invader3 : { image : 'invader3', width: 54, height: 89, gun : [{ x : 11, y : 40 }, { x : 43, y : 40}], cooldown: 1.5, health: 50, points:65, z:1 },
   invader4 : { image : 'invader4', width: 120, height: 106, gun : [{ x : 18, y : 57 }, { x : 100, y : 57}, { x : 59, y : 105}], cooldown: 1, health: 150, points:200, z:1 },
   invader5 : { image : 'invader5', width: 75, height: 72, gun : [{ x : 37, y : 52 }], cooldown: 0.5, health: 80, points: 100, z:1 },
