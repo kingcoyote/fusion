@@ -107,6 +107,7 @@ function InvaderController(level) {
   this.invaders = [];
   this.countdown = 3;
   this.level = level;
+  if(!InvaderWaves[level]) level = InvaderWaves.length - 1;
   this.wave = InvaderWaves[level];
   this.interval = this.wave.duration / this.wave.invaders.length;
   GameObject.call(this, 15, 15, -1);
@@ -153,7 +154,7 @@ InvaderController.prototype.update = function(dt) {
     g_level++;
     g_ApplicationManager.updateLevel();
     if(! InvaderWaves[g_level]) {
-      g_ApplicationManager.gameOver('Congratulations for beating game!');
+      //g_ApplicationManager.gameOver('Congratulations for beating game!');
     }
     setTimeout(function(){
       Store.showStore();
