@@ -46,5 +46,6 @@ Store.showStore = function() {
 
 Store.closeStore = function() {
   Store.store_hud_div.style.display = 'none';
-  g_GameObjectManager.addGameObject(new InvaderController(g_level));
+  g_ApplicationManager.invaderController = new InvaderController(g_level);
+  g_GameObjectManager.addGameObject(g_ApplicationManager.invaderController);
 };

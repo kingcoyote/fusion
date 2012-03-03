@@ -9,8 +9,8 @@ function Generator(i) {
   this.addons = [];
   this.addon_positions = 
     [
-     {x:-5, y:-45},
      {x:50, y: -55},
+     {x:-5, y:-45},
      {x:105, y:-45} 
      ];
   this.armor = 1;
@@ -90,18 +90,6 @@ Generator.prototype.update = function(dt) {
   if(this.health <= 0) {
     this.sprite.setFrame(2);
   }
-
-  if(this.addons.length && this.alive) {
-    for(var i in this.addons) {
-      var turret = this.addons[i];
-      turret.cooldown -= dt;
-      if(turret.cooldown <= 0) {
-        g_GameObjectManager.addGameObject(new Bullet(turret.gun.x + 32, turret.gun.y + 5, 0, -1));
-        turret.cooldown = 2.5;
-        turret.gun.sprite = AnimatedSprite(turret.gun.sprite, [2,3,4,5,0], 0.4, false);
-      }
-    }
-  }
 };
 
 Generator.prototype.shutdown = function() {
@@ -145,30 +133,12 @@ Generator.prototype.minorHealth = function() {
 };
 
 Generator.prototype.weakTurret = function() {
-  var turret = {};
-  turret.position = this.addons.length;
-  turret.mount = new VisualGameObject(
-      g_ResourceManager.turret,
-      this.x + this.addon_positions[turret.position].x - (g_ResourceManager.turret.width / 14),
-      this.y + this.addon_positions[turret.position].y - (g_ResourceManager.turret.height / 4),
-      2
+  var position = this.addon_positions[this.addons.length];
+  var turret = new Turret(
+    this.x + position.x,
+    this.y + position.y
   );
-  turret.mount.sprite.initFrames(7,4);
-  
-  g_GameObjectManager.addGameObject(turret.mount);
-  
-  turret.gun = new VisualGameObject(
-      g_ResourceManager.turret,
-      this.x + this.addon_positions[turret.position].x - (g_ResourceManager.turret.width / 14),
-      this.y + this.addon_positions[turret.position].y - (g_ResourceManager.turret.height / 4),
-      3
-  );
-  turret.gun.sprite.initFrames(7,4);
-  turret.gun.sprite.setFrame(0,1);
-
-  g_GameObjectManager.addGameObject(turret.gun);
-  
-  turret.cooldown = Math.random() * 2.5;
+  g_GameObjectManager.addGameObject(turret);
   this.addons.push(turret);
   this.StoreInventory.genweakturret.cost += 100;
 };

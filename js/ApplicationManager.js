@@ -16,7 +16,8 @@ function ApplicationManager(canvasWidth, canvasHeight) {
   this.generators = [];
   this.startGenerators();
   g_level = 1;
-  g_GameObjectManager.addGameObject(new InvaderController(g_level));
+  this.invaderController = new InvaderController(g_level);
+  g_GameObjectManager.addGameObject(this.invaderController);
   this.updateScore();
   this.updateLevel();
   this.updateLives();
