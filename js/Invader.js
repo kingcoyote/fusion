@@ -125,10 +125,11 @@ InvaderController.prototype.update = function(dt) {
   if(this.countdown > 0) {
     this.countdown -= dt;
     if(this.countdown <= 0) {
+      var coords = this.getRandomCoords();
       var new_invader = new Invader(
         this.wave.invaders[this.invader_number++], 
-        Math.random() * (g_GameObjectManager.canvas.width - 100) + 50,
-        50
+        coords.x,
+        coords.y
       );
       this.invaders.push(new_invader);
       g_GameObjectManager.addGameObject(new_invader);
@@ -141,10 +142,11 @@ InvaderController.prototype.update = function(dt) {
   this.interval -= dt;
   this.wave.duration -= dt;
   if(this.interval <= 0 && this.wave.invaders.length > this.invader_number) {
+    var coords = this.getRandomCoords();
     var new_invader = new Invader(
-        this.wave.invaders[this.invader_number++], 
-      Math.random() * (g_GameObjectManager.canvas.width - 50) + 25,
-      50
+      this.wave.invaders[this.invader_number++], 
+      coords.x,
+      coords.y
     );
     this.invaders.push(new_invader);
     g_GameObjectManager.addGameObject(new_invader);
@@ -168,6 +170,28 @@ InvaderController.prototype.update = function(dt) {
     GameObject.prototype.shutdown.call(this);
   };
 };
+
+InvaderController.prototype.getRandomCoords = function() {
+  var s = Math.ceil(Math.random() * 3);
+  var coords = {};
+  
+  switch(s) {
+    case 1: // left side
+      coords.x = -100;
+      coords.y = Math.random() * 300;
+      break;
+    case 2: // top
+      coords.x = Math.random() * (g_GameObjectManager.canvas.width + 400) - 200;
+      coords.y = -100;
+      break;
+    case 3: // right side
+      coords.x = g_GameObjectManager.canvas.width + 100;
+      coords.y = Math.random() * 300;
+      break;
+  }
+  
+  return coords;
+}
 
 var InvaderWaves = [ null, 
    { duration : 10, invaders : [1,1,2,1,1,1,1,1] },
