@@ -2,6 +2,7 @@ function Turret(x,y) {
   this.firespeed = 0.75;
   this.cooldown  = 0;
   this.angle = 0;
+  this.range = 400;
   
   this.image = g_ResourceManager.turret;
   
@@ -63,7 +64,7 @@ Turret.prototype.locateTarget = function() {
     
     if(invader.dead) continue;
     
-    if(d < distance) {
+    if(d < distance && d < this.range) {
       target = invader;
       distance = d;
     }
