@@ -172,22 +172,9 @@ InvaderController.prototype.update = function(dt) {
 };
 
 InvaderController.prototype.getRandomCoords = function() {
-  var s = Math.ceil(Math.random() * 3);
-  var coords = {};
-  
-  switch(s) {
-    case 1: // left side
-      coords.x = -100;
-      coords.y = Math.random() * 300;
-      break;
-    case 2: // top
-      coords.x = Math.random() * (g_GameObjectManager.canvas.width + 400) - 200;
-      coords.y = -100;
-      break;
-    case 3: // right side
-      coords.x = g_GameObjectManager.canvas.width + 100;
-      coords.y = Math.random() * 300;
-      break;
+  var coords = {
+    x : Math.random() * (g_GameObjectManager.canvas.width),
+    y : -100
   }
   
   return coords;
