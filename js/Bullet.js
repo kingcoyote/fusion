@@ -1,5 +1,5 @@
 function Bullet(x, y, angle, team) {
-  this.speed = 400; // base speed
+  this.speed = 650; // base speed
   this.damage = 10;
   this.team = team;
   this.angle = angle;
