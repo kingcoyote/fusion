@@ -5,6 +5,7 @@ function ApplicationManager(canvasWidth, canvasHeight) {
 
   g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105));
   g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95));
+  g_GameObjectManager.addGameObject(new VisualGameObject(g_ResourceManager.platform, 0, 600, -1));
   Player.stats = {};
   for(var i in Player.stats_default) {
     Player.stats[i] = Player.stats_default[i];
@@ -27,9 +28,9 @@ function ApplicationManager(canvasWidth, canvasHeight) {
 };
 
 ApplicationManager.prototype.startGenerators = function() {
+  this.generators.push(new Generator(0));
   this.generators.push(new Generator(1));
   this.generators.push(new Generator(2));
-  this.generators.push(new Generator(3));
   
   g_GameObjectManager.addGameObject(this.generators[0]);
   g_GameObjectManager.addGameObject(this.generators[1]);

@@ -32,7 +32,8 @@ g_resources = {
   'storeSpritesheet': 'images/HUD/spritesheet.png',
   'genBase' : 'images/objects/GenBase.png',
   'genTower' : 'images/objects/GenTower.png',
-  'turret'   : 'images/objects/BasicTurret.png'
+  'turret'   : 'images/objects/BasicTurret.png',
+  'platform' : 'images/objects/platform.png'
 };
 
 window.onload = function() {

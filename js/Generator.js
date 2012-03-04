@@ -20,8 +20,8 @@ function Generator(i) {
   VisualGameObject.call(
       this,
       image,
-      (i * 199) + 64,
-      g_GameObjectManager.canvas.height - image.height -5,
+      (i * 335) + 125,
+      g_GameObjectManager.canvas.height - image.height - 30,
       2
   );
   this.sprite.initFrames(3);

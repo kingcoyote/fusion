@@ -28,7 +28,7 @@ function Player() {
       this,
       g_ResourceManager.hammer, 
       g_GameObjectManager.canvas.width / 2 - 50, 
-      g_GameObjectManager.canvas.height - 165, 
+      g_GameObjectManager.canvas.height - 235, 
       5
   );
   this.sprite.initFrames(7,1);
