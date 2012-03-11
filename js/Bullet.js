@@ -10,7 +10,7 @@ function Bullet(x, y, angle, team) {
     this.image, 
     x - this.image.width / 2, 
     y - this.image.height / 2, 
-    1
+    -1
   );
   
   this.sprite.rotate(this.angle);

@@ -6,6 +6,15 @@ function Invader(type, x, y) {
   this.armor = 0;
 
   this.type = Invader.invaders['invader' + type];
+  
+  for(var i in this.type.gun) {
+    var gun = this.type.gun[i];
+    if(gun.angle) continue;
+    
+    gun.distance = Math.sqrt((gun.x * gun.x) + (gun.y * gun.y));
+    gun.angle = Math.PI / 2 - Math.atan2(gun.y, gun.x);
+  }
+  
   this.health = this.type.health;
   this.points = this.type.points;
   this.cooldown = Math.random() * this.type.cooldown;
@@ -21,7 +30,12 @@ Invader.prototype = new VisualGameObject;
 Invader.prototype.shoot = function() {
   for(var i in this.type.gun) {
     gun = this.type.gun[i];
-    var bullet = new Bullet(this.x + gun.x, this.y + gun.y, this.angle, 1);
+    var bullet = new Bullet(
+        (this.x + this.sprite.width / 2) + (Math.sin(this.angle - gun.angle) * gun.distance), 
+        (this.y + this.sprite.height / 2) + (Math.cos(this.angle - gun.angle) * gun.distance), 
+        this.angle, 
+        1
+    );
     g_GameObjectManager.addGameObject(bullet);
     //g_GameObjectManager.addGameObject(TempGameObject(new VisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1));
   }
@@ -93,11 +107,11 @@ Invader.prototype.setDirection = function(x, y) {
 };
 
 Invader.invaders = {
-  invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 17, y : 41 }], cooldown: 1.5, health: 10, points : 10, z:1, speed:100 },
-  invader2 : { image : 'invader2', width: 50, height: 49, gun : [{ x : 25, y : 44 }], cooldown: 0.25, health: 30, points : 30, z:1, speed : 50 },
-  invader3 : { image : 'invader3', width: 54, height: 89, gun : [{ x : 11, y : 40 }, { x : 43, y : 40}], cooldown: 1.5, health: 50, points:65, z:1, speed: 75 },
-  invader4 : { image : 'invader4', width: 120, height: 106, gun : [{ x : 18, y : 57 }, { x : 100, y : 57}, { x : 59, y : 105}], cooldown: 1, health: 150, points:200, z:1, speed:100 },
-  invader5 : { image : 'invader5', width: 75, height: 72, gun : [{ x : 37, y : 52 }], cooldown: 0.5, health: 80, points: 100, z:1, speed:75 },
+  invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 0, y : -21 }], cooldown: 1.5, health: 10, points : 10, z:1, speed:100 },
+  invader2 : { image : 'invader2', width: 65, height: 65, gun : [{ x : 0, y : -22 }], cooldown: 0.25, health: 30, points : 30, z:1, speed : 50 },
+  invader3 : { image : 'invader3', width: 54, height: 89, gun : [{ x : -16, y : -5 }, { x : 16, y : -5 }], cooldown: 1.5, health: 50, points:65, z:1, speed: 75 },
+  invader4 : { image : 'invader4', width: 120, height: 106, gun : [{ x : -57, y : 7 }, { x : 0, y : -58}, { x : 57, y : 7}], cooldown: 1, health: 150, points:200, z:1, speed:100 },
+  invader5 : { image : 'invader5', width: 75, height: 72, gun : [{ x : 0, y : 16 }], cooldown: 0.5, health: 80, points: 100, z:1, speed:75 },
   invader6 : { image : 'bossWingLeft', width: 214, height: 281, gun : [{ x : 86, y : 280}], cooldown: 0.75, health: 200, points:0, z:2 },
   invader7 : { image : 'bossWingRight', width: 214, height: 281, gun : [{ x : 127, y : 280}], cooldown: 0.75, health: 200, points:0, z:2 },
   invader8 : { image : 'bossBody', width: 184, height: 234, gun : [{ x : 16, y : 223}, { x : 92, y : 186}, { x : 167, y : 223}], cooldown: 0.5, health: 250, points:0, z:1 }
