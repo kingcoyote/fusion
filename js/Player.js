@@ -35,7 +35,8 @@ function Player() {
   this.sprite.setFrame(3,0);
   
   this.store_div = document.getElementById('store_player');
-  this.store_div.onclick = this.showStore;
+  var p = this;
+  this.store_div.onclick = function() { Store.showInventory(p.getStoreInventory, p); };
   
   return this;
 };
@@ -131,7 +132,7 @@ Player.prototype.shutdown = function() {
 };
   
 Player.prototype.getStoreInventory = function() {
-  var inventory = Object.create(self.StoreInventory).__proto__;
+  var inventory = Object.create(Player.StoreInventory).__proto__;
   
   if(Player.stats.firespeed <= 0.25) {
     delete inventory.fasterfiring;
