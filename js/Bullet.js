@@ -61,5 +61,10 @@ Bullet.prototype.update = function (dt) {
 };
 
 Bullet.prototype.die = function() {
+  var explosion = new VisualGameObject(g_ResourceManager.smallExploBlue, this.x - 20, this.y - 20, 10);
+  explosion.sprite.initFrames(5);
+  explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.3, false);
+  TempGameObject(explosion, 0.3);
+  g_GameObjectManager.addGameObject(explosion);
   this.shutdown();
 };
