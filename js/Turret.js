@@ -13,7 +13,7 @@ function Turret(x,y) {
     y,
     1
   );
-  this.sprite.initFrames(7,4);
+  this.sprite.initFrames(7,5);
   this.sprite.setFrame(0,0);
   
   this.x -= this.sprite.width / 2;
@@ -25,7 +25,7 @@ function Turret(x,y) {
     this.y,
     2
   );
-  this.gun.sprite.initFrames(7,4);
+  this.gun.sprite.initFrames(7,5);
   this.gun.sprite.setFrame(0,1);
   g_GameObjectManager.addGameObject(this.gun);
   
