@@ -100,10 +100,6 @@ Player.prototype.shoot = function() {
     -1
   )
   g_GameObjectManager.addGameObject(bullet);
-  /*g_GameObjectManager.addGameObject(TempGameObject(
-    new VisualGameObject(g_ResourceManager.flashUp, this.x + this.gun.x - 27 , this.y + this.gun.y - 54, 5),
-    0.05
-  ));*/
 };
   
 Player.prototype.shutdown = function() {

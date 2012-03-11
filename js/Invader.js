@@ -37,7 +37,6 @@ Invader.prototype.shoot = function() {
         1
     );
     g_GameObjectManager.addGameObject(bullet);
-    //g_GameObjectManager.addGameObject(TempGameObject(new VisualGameObject(g_ResourceManager.flashDown, this.x + gun.x - 27 , this.y + gun.y, 5), 0.1));
   }
 
   this.cooldown = this.type.cooldown + (Math.random() * this.type.cooldown);
