@@ -12,6 +12,17 @@ function Bullet(x, y, angle) {
   );
   
   this.sprite.rotate(this.angle);
+  
+  var flash_image = g_ResourceManager.flash;
+  var flash = new VisualGameObject(
+      flash_image,
+      this.x,
+      this.y,
+      10
+  );
+  TempGameObject(flash, 0.25);
+  
+  g_GameObjectManager.addGameObject(flash);
 };
 
 Bullet.prototype = new VisualGameObject;
