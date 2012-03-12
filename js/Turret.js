@@ -15,6 +15,18 @@ function Turret(x,y) {
   
   this.sprite.initFrames(7,4);
   this.sprite.setFrame(1);
+  
+  this.gun = new VisualGameObject(
+      this.image,
+      x,
+      y,
+      2
+  );
+  
+  this.gun.sprite.initFrames(7,4);
+  this.gun.sprite.setFrame(0,1);
+  
+  g_GameObjectManager.addGameObject(this.gun);
 };
 
 Turret.prototype = new VisualGameObject();
@@ -28,6 +40,8 @@ Turret.prototype.update = function(dt) {
   
   // rotate at that angle
   this.sprite.rotate(this.angle);
+  
+  this.gun.sprite.rotate(this.angle);
   
   if(this.fire && this.cooldown <= 0) {
     g_GameObjectManager.addGameObject(new Bullet(
