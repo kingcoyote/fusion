@@ -17,16 +17,23 @@ function Bullet(x, y, angle, team) {
   
   // flash origin is at 26,45 from top left
   
-  var flash = new VisualGameObject(
-    g_ResourceManager.flashUp, 
-    x + Math.sin(Math.PI / 2 + this.angle) * 26, 
-    y + Math.cos(Math.PI / 2 + this.angle) * 45, 
+  var flash = {};
+  flash.distance = 17;
+  flash.angle = Math.PI;
+  flash.x = Math.sin(angle - flash.angle) * flash.distance * -1;
+  flash.y = Math.cos(angle - flash.angle) * flash.distance;
+  flash.image = g_ResourceManager.flashUp;
+  
+  flash.object = new VisualGameObject(
+    flash.image, 
+    x - flash.image.width / 2 + flash.x, 
+    y - flash.image.height / 2 + flash.y, 
     5
   );
-  TempGameObject(flash, 0.05);
-  g_GameObjectManager.addGameObject(flash);
+  TempGameObject(flash.object, 0.05);
+  g_GameObjectManager.addGameObject(flash.object);
   
-  flash.sprite.rotate(this.angle);
+  flash.object.sprite.rotate(this.angle);
 };
 
 Bullet.prototype = new VisualGameObject;

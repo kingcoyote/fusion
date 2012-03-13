@@ -31,7 +31,7 @@ Invader.prototype.shoot = function() {
   for(var i in this.type.gun) {
     gun = this.type.gun[i];
     var bullet = new Bullet(
-        (this.x + this.sprite.width / 2) + (Math.sin(this.angle - gun.angle) * gun.distance), 
+        (this.x + this.sprite.width / 2) + (Math.sin(this.angle - gun.angle) * gun.distance) * -1, 
         (this.y + this.sprite.height / 2) + (Math.cos(this.angle - gun.angle) * gun.distance), 
         this.angle, 
         1
