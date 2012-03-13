@@ -45,8 +45,8 @@ Turret.prototype.update = function(dt) {
   
   if(this.fire && this.cooldown <= 0) {
     g_GameObjectManager.addGameObject(new Bullet(
-        this.x + this.sprite.width / 2,
-        this.y + this.sprite.width / 2,
+        this.x + this.sprite.width / 2 + Math.sin(this.angle) * 21,
+        this.y + this.sprite.height / 2 - Math.cos(this.angle) * 21,
         this.angle
     ));
     
