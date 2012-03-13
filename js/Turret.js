@@ -50,6 +50,8 @@ Turret.prototype.update = function(dt) {
         this.angle
     ));
     
+    this.gun.sprite = AnimatedSprite(this.gun.sprite, [2,3,4,5], 0.5, false);
+    
     this.cooldown = this.firespeed;
   } else if (this.cooldown > 0) {
     this.cooldown -= dt;
