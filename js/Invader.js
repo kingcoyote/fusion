@@ -30,10 +30,13 @@ Invader.prototype = new VisualGameObject;
 Invader.prototype.shoot = function() {
   for(var i in this.type.gun) {
     gun = this.type.gun[i];
+    var x = (this.x + this.sprite.width / 2) + (Math.sin(this.angle - gun.angle) * gun.distance) * -1;
+    var y = (this.y + this.sprite.height / 2) + (Math.cos(this.angle - gun.angle) * gun.distance);
+    var angle = Math.atan2(this.target.y - y, this.target.x - x) + Math.PI / 2;
     var bullet = new Bullet(
-        (this.x + this.sprite.width / 2) + (Math.sin(this.angle - gun.angle) * gun.distance) * -1, 
-        (this.y + this.sprite.height / 2) + (Math.cos(this.angle - gun.angle) * gun.distance), 
-        this.angle, 
+        x, 
+        y, 
+        angle, 
         1
     );
     g_GameObjectManager.addGameObject(bullet);
@@ -99,7 +102,7 @@ Invader.prototype.update = function(dt) {
 };
 
 Invader.prototype.setDirection = function(x, y) {
-  this.angle = Math.atan2((this.y - y), (this.x - x)) - Math.PI / 2;
+  this.angle = Math.atan2(((this.y + this.sprite.height / 2) - y), ((this.x + this.sprite.width / 2) - x)) - Math.PI / 2;
   this.sprite.rotate(this.angle);
   this.speed_x = Math.sin(this.angle) * this.type.speed;
   this.speed_y = Math.cos(this.angle) * this.type.speed;
