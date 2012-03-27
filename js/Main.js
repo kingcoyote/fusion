@@ -30,10 +30,11 @@ g_resources = {
   'flashDown': 'images/effects/FlashDown.png',
   'shield': 'images/objects/shieldChunk.png',
   'storeSpritesheet': 'images/HUD/spritesheet.png',
-  'genBase' : 'images/objects/GenBase.png',
+  'genBase' : 'images/objects/Gen.png',
   'genTower' : 'images/objects/GenTower.png',
   'turret'   : 'images/objects/BasicTurret.png',
-  'platform' : 'images/objects/platform.png'
+  'platform' : 'images/objects/platform.png',
+  'platformex' : 'images/objects/PlatformExpansion.png'
 };
 
 window.onload = function() {

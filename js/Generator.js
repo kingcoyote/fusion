@@ -9,35 +9,40 @@ function Generator(i) {
   this.addons = [];
   this.addon_positions = 
     [
-     {x:50, y: -55},
-     {x:-5, y:-45},
-     {x:105, y:-45} 
+     {x:88, y: -75},
+     {x:7, y:-15},
+     {x:171, y:-15} 
      ];
   this.armor = 1;
-
+  this.positions = [
+    {x : 87, y : 666 },
+    {x : 423, y : 666 },
+    {x : 759, y : 666 },
+  ];
+  
   var image = g_ResourceManager.genBase;
 
   VisualGameObject.call(
       this,
       image,
-      (i * 335) + 125,
-      g_GameObjectManager.canvas.height - image.height - 30,
+      this.positions[i].x,
+      this.positions[i].y,
       2
   );
-  this.sprite.initFrames(3);
+  this.sprite.initFrames(2,3);
 
   this.arm_left = new VisualGameObject(
       g_ResourceManager.genTower,
-      this.x + 17,
-      this.y - 20,
+      this.x + 49,
+      this.y - 30,
       1
   );
   this.arm_left.sprite.initFrames(5);
 
   this.arm_right = new VisualGameObject(
       g_ResourceManager.genTower,
-      this.x + 58,
-      this.y - 20,
+      this.x + 102,
+      this.y - 30,
       1
   );
   this.arm_right.sprite.initFrames(5);
