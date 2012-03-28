@@ -15,9 +15,11 @@ function GameObjectManager() {
 
   document.getElementById('game_over').style.display='none';
 
-  document.onkeydown = function(e) { g.keyDown(e); };
-  document.onkeyup   = function(e) { g.keyUp(e); };
-
+  document.onkeydown   = function(e) { g.keyDown(e); };
+  document.onkeyup     = function(e) { g.keyUp(e); };
+  document.onmousedown = function(e) { g.mouseDown(e); }; 
+  document.onmouseup   = function(e) { g.mouseUp(e); };
+  
   // get references to the canvas elements and their 2D contexts
   this.canvas = document.getElementById('canvas');
   
@@ -118,6 +120,22 @@ GameObjectManager.prototype.keyUp = function(event) {
   for (x in this.gameObjects) {
     if (this.gameObjects[x].keyUp) {
       this.gameObjects[x].keyUp(event);
+    }
+  }
+};
+
+GameObjectManager.prototype.mouseDown = function(event) {
+  for (x in this.gameObjects) {
+    if (this.gameObjects[x].mouseDown) {
+      this.gameObjects[x].mouseDown(event);
+    }
+  }
+};
+
+GameObjectManager.prototype.mouseUp = function(event) {
+  for (x in this.gameObjects) {
+    if (this.gameObjects[x].mouseUp) {
+      this.gameObjects[x].mouseUp(event);
     }
   }
 };

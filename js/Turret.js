@@ -38,6 +38,9 @@ function Turret(x,y) {
 Turret.prototype = new VisualGameObject();
 
 Turret.prototype.update = function(dt) {
+  this.gun.x = this.x;
+  this.gun.y = this.y;
+  
   this.locateTarget();
   if(this.target.x && this.target.y) {
     this.setDirection(Math.atan2(this.y - this.target.y, this.x - this.target.x) - Math.PI / 2);
@@ -56,7 +59,7 @@ Turret.prototype.update = function(dt) {
 Turret.prototype.locateTarget = function() {
   var distance = Infinity,
     target = { dead : true };
-  for(var i in g_ApplicationManager.invaderController.invaders) {
+  /*for(var i in g_ApplicationManager.invaderController.invaders) {
     var invader = g_ApplicationManager.invaderController.invaders[i],
       x = invader.x,
       y = invader.y,
@@ -68,7 +71,7 @@ Turret.prototype.locateTarget = function() {
       target = invader;
       distance = d;
     }
-  }
+  }*/
   
   this.target = target;
 };
@@ -82,7 +85,7 @@ Turret.prototype.shoot = function() {
   );
   
   g_GameObjectManager.addGameObject(bullet);
-}
+};
 
 Turret.prototype.setDirection = function(angle) {
   this.angle = angle;
