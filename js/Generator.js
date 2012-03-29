@@ -30,26 +30,6 @@ function Generator(i) {
       2
   );
   this.sprite.initFrames(2,3);
-
-  this.arm_left = new VisualGameObject(
-      g_ResourceManager.genTower,
-      this.x + 49,
-      this.y - 30,
-      1
-  );
-  this.arm_left.sprite.initFrames(5);
-
-  this.arm_right = new VisualGameObject(
-      g_ResourceManager.genTower,
-      this.x + 102,
-      this.y - 30,
-      1
-  );
-  this.arm_right.sprite.initFrames(5);
-  this.arm_right.sprite.reflect(true, false);
-  
-  g_GameObjectManager.addGameObject(this.arm_left);
-  g_GameObjectManager.addGameObject(this.arm_right);
   
   this.store_div = document.getElementById('store_generator_' + i);
   this.store_div.style.top  = this.y + 'px';
@@ -71,36 +51,11 @@ function Generator(i) {
 Generator.prototype = new VisualGameObject;
 
 Generator.prototype.update = function(dt) {
-  this.sprite.setFrame(0);
-  this.arm_left.sprite.setFrame(0);
-  this.arm_right.sprite.setFrame(0);
-
-  if(this.health <= 400) {
-    this.arm_left.sprite.setFrame(1);
-    this.arm_right.sprite.setFrame(1);
-  }
-  if(this.health <= 300) { 
-    this.arm_left.sprite.setFrame(2);
-    this.arm_right.sprite.setFrame(2);
-  }
-  if(this.health <= 200) {
-    this.sprite.setFrame(1);
-    this.arm_left.sprite.setFrame(3);
-    this.arm_right.sprite.setFrame(3);
-  }
-  if(this.health <= 100) {
-    this.arm_left.sprite.setFrame(4);
-    this.arm_right.sprite.setFrame(4);
-  }
-  if(this.health <= 0) {
-    this.sprite.setFrame(2);
-  }
+  
 };
 
 Generator.prototype.shutdown = function() {
   this.sprite.setFrame(2);
-  this.arm_left.sprite.setFrame(6);
-  this.arm_right.sprite.setFrame(6);
   if(this.alive) {
     this.alive = false;
     var explosion = new VisualGameObject(

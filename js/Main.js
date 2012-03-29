@@ -31,7 +31,6 @@ g_resources = {
   'shield': 'images/objects/shieldChunk.png',
   'storeSpritesheet': 'images/HUD/spritesheet.png',
   'genBase' : 'images/objects/Gen.png',
-  'genTower' : 'images/objects/GenTower.png',
   'turret'   : 'images/objects/BasicTurret.png',
   'platform' : 'images/objects/platform.png',
   'platformex' : 'images/objects/PlatformExpansion.png'
