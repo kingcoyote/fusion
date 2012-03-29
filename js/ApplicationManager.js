@@ -18,7 +18,7 @@ function ApplicationManager(canvasWidth, canvasHeight) {
   this.generators = [];
   this.startGenerators();
   g_level = 1;
-  var turretplacer = PlacerGameObject(new Turret(500,500));
+  var turretplacer = DraggableGameObject(new Turret(500,500));
   g_GameObjectManager.addGameObject(turretplacer);
   //this.invaderController = new InvaderController(g_level);
   //g_GameObjectManager.addGameObject(this.invaderController);

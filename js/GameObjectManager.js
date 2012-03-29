@@ -17,11 +17,12 @@ function GameObjectManager() {
 
   document.onkeydown   = function(e) { g.keyDown(e); };
   document.onkeyup     = function(e) { g.keyUp(e); };
-  document.onmousedown = function(e) { g.mouseDown(e); }; 
-  document.onmouseup   = function(e) { g.mouseUp(e); };
   
   // get references to the canvas elements and their 2D contexts
   this.canvas = document.getElementById('canvas');
+  
+  this.canvas.onmousedown = function(e) { g.mouseDown(e); }; 
+  this.canvas.onmouseup   = function(e) { g.mouseUp(e); };
   
   this.context2D = this.canvas.getContext('2d');
   this.backBuffer = document.createElement('canvas');
