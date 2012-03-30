@@ -46,6 +46,11 @@ Store.showStore = function() {
 
 Store.closeStore = function() {
   Store.store_hud_div.style.display = 'none';
+  for(var i in g_GameObjectManager.gameObjects) {
+    if(typeof(g_GameObjectManager.gameObjects[i].draggable == 'boolean')) {
+      g_GameObjectManager.gameObjects[i].draggable = false;
+    }
+  }
   g_ApplicationManager.invaderController = new InvaderController(g_level);
   g_GameObjectManager.addGameObject(g_ApplicationManager.invaderController);
 };

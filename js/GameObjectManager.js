@@ -21,8 +21,8 @@ function GameObjectManager() {
   // get references to the canvas elements and their 2D contexts
   this.canvas = document.getElementById('canvas');
   
-  this.canvas.onmousedown = function(e) { g.mouseDown(e); }; 
-  this.canvas.onmouseup   = function(e) { g.mouseUp(e); };
+  document.getElementById('game').onmousedown = function(e) { g.mouseDown(e); }; 
+  document.getElementById('game').onmouseup   = function(e) { g.mouseUp(e); };
   
   this.context2D = this.canvas.getContext('2d');
   this.backBuffer = document.createElement('canvas');
@@ -114,7 +114,8 @@ GameObjectManager.prototype.keyDown = function(event) {
     if (this.gameObjects[x].keyDown) {
       this.gameObjects[x].keyDown(event);
     }
-  }
+  }  canvas.onmousedown = function(e) { g.mouseDown(e); }; 
+  canvas.onmouseup   = function(e) { g.mouseUp(e); };
 };
 
 GameObjectManager.prototype.keyUp = function(event) {
@@ -127,8 +128,9 @@ GameObjectManager.prototype.keyUp = function(event) {
 
 GameObjectManager.prototype.mouseDown = function(event) {
   for (x in this.gameObjects) {
-    if (this.gameObjects[x].mouseDown) {
-      this.gameObjects[x].mouseDown(event);
+    var g = this.gameObjects[x];
+    if (g.mouseDown && g.collisionArea && g.collisionArea().intersects(new Rectangle(event.offsetX, event.offsetY, 1, 1))) {
+      g.mouseDown(event);
     }
   }
 };

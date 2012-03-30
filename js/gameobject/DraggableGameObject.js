@@ -1,5 +1,7 @@
 function DraggableGameObject(gameobject) {
   gameobject.mouseDown = function(event) {
+    if(gameobject.draggable != true) return false;
+    
     var rect = new Rectangle(event.offsetX, event.offsetY, 1, 1);
     if(gameobject.collisionArea().intersects(rect))
     {
@@ -16,6 +18,8 @@ function DraggableGameObject(gameobject) {
   gameobject.mouseUp = function(event) {
     document.onmousemove = null;
   };
+  
+  gameobject.draggable = true;
   
   return gameobject;
 }

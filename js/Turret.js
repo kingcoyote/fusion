@@ -59,7 +59,7 @@ Turret.prototype.update = function(dt) {
 Turret.prototype.locateTarget = function() {
   var distance = Infinity,
     target = { dead : true };
-  /*for(var i in g_ApplicationManager.invaderController.invaders) {
+  for(var i in g_ApplicationManager.invaderController.invaders) {
     var invader = g_ApplicationManager.invaderController.invaders[i],
       x = invader.x,
       y = invader.y,
@@ -71,7 +71,7 @@ Turret.prototype.locateTarget = function() {
       target = invader;
       distance = d;
     }
-  }*/
+  }
   
   this.target = target;
 };

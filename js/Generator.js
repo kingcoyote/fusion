@@ -96,10 +96,10 @@ Generator.prototype.weakTurret = function() {
   var position = this.addon_positions[this.addons.length];
   // hide the store div
   // create a new turret placer object
-  var turret = new Turret(
+  turret = DraggableGameObject(new Turret(
     this.x + position.x,
     this.y + position.y
-  );
+  ));
   g_GameObjectManager.addGameObject(turret);
   this.addons.push(turret);
   this.StoreInventory.genweakturret.cost += 100;
