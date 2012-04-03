@@ -84,6 +84,8 @@ Turret.prototype.shoot = function() {
     -1
   );
   
+  this.gun.sprite = AnimatedSprite(this.gun.sprite, [2,3,4,5], 0.5);
+  
   g_GameObjectManager.addGameObject(bullet);
 };
 
