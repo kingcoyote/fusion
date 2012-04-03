@@ -1,7 +1,6 @@
 #store_hud { position:absolute; top:-5px; left:-5px; width: 1029px; height:773px; display:none; }
 #store_header { position: absolute; text-align:center; top: 50px; width:450px; padding:0 287px; }
-#store_player, #store_generator_0, #store_generator_1, #store_generator_2, #store_generator_3, #store_generator_4, #store_shield { background-color:lightgreen; opacity:0.5; border-radius: 10px; position: absolute; cursor:pointer; padding:5px; }
-#store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; text-shadow: 2px 2px #000000 }
+#store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; text-shadow: 2px 2px #000000; z-index:100000; }
 #store_footer { text-align:center;}
 #store_inventory { margin: 25px; border:1px solid #666; background-color:#333; height: 390px; padding:15px; }
 #store_close { margin:0 auto; }

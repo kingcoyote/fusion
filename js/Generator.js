@@ -31,19 +31,13 @@ function Generator(i) {
   );
   this.sprite.initFrames(2,3);
   
-  this.store_div = document.getElementById('store_generator_' + i);
-  this.store_div.style.top  = this.y + 'px';
-  this.store_div.style.left = this.x + 'px';
-  this.store_div.style.width = this.sprite.width + 'px';
-  this.store_div.style.height = this.sprite.height + 'px';
-  
   this.StoreInventory = {
       gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
       genweakturret: { name: "Weak Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
   
-  this.store_div.onclick = function() { Store.showInventory(g.getStoreInventory, g); };
+  this.mouseClick = function() { Store.showInventory(g.getStoreInventory, g); };
   
   return this;
 };

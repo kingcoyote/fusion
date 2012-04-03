@@ -40,6 +40,7 @@
   </head>
   <body>
     <div id="game">
+      <div id="overlay"></div>
       <div id="loading">
         <h1>Fusion</h1>
         <div id="loading_progress">
@@ -76,17 +77,13 @@
           <p>You can purchase items from the store. You have <span id="store_score">0</span> points to spend. Click on a highlighted object to purchase upgrades. You can move turrets after buying them, but they will be locked in place when you exit the store mode.</p>
           <input type="button" id="store_close" value="Next Wave" />
         </div>
-        <div id="store_player"></div>
-        <div id="store_generator_0"></div>
-        <div id="store_generator_1"></div>
-        <div id="store_generator_2"></div>
-        <div id="store">
+      </div>
+      <div id="store">
           <div id="store_inventory"></div>
           <div id="store_footer">
             <input type="button" id="inventory_close" value="Close Store" />
           </div>
         </div>
-      </div>
       <div id="game_over">
         <p id="game_over_message"></p>
         <span id="restart">Restart</span>

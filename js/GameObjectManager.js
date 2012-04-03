@@ -8,7 +8,7 @@ function GameObjectManager() {
   this.backBufferContext2D = null;
   this.canvasSupported     = false;
   this.resourcesLoaded     = false;
-
+  this.overlay             = document.getElementById('overlay');
   g_score = 0;
   g_lives = 3;
   g_level = 1;
@@ -21,8 +21,9 @@ function GameObjectManager() {
   // get references to the canvas elements and their 2D contexts
   this.canvas = document.getElementById('canvas');
   
-  document.getElementById('game').onmousedown = function(e) { g.mouseDown(e); }; 
-  document.getElementById('game').onmouseup   = function(e) { g.mouseUp(e); };
+  this.overlay.onmousedown  = function(e) { g.mouseDown(e); }; 
+  this.overlay.onmouseup    = function(e) { g.mouseUp(e); };
+  this.overlay.onclick      = function(e) { g.mouseClick(e); }; 
   
   this.context2D = this.canvas.getContext('2d');
   this.backBuffer = document.createElement('canvas');
@@ -127,18 +128,28 @@ GameObjectManager.prototype.keyUp = function(event) {
 };
 
 GameObjectManager.prototype.mouseDown = function(event) {
+  var cursor = new Rectangle(event.offsetX, event.offsetY, 1, 1);
   for (x in this.gameObjects) {
-    var g = this.gameObjects[x];
-    if (g.mouseDown && g.collisionArea && g.collisionArea().intersects(new Rectangle(event.offsetX, event.offsetY, 1, 1))) {
-      g.mouseDown(event);
+    if (this.gameObjects[x].mouseDown && this.gameObjects[x].collisionArea().intersects(cursor)) {
+      this.gameObjects[x].mouseDown(event);
     }
   }
 };
 
 GameObjectManager.prototype.mouseUp = function(event) {
+  var cursor = new Rectangle(event.offsetX, event.offsetY, 1, 1);
   for (x in this.gameObjects) {
-    if (this.gameObjects[x].mouseUp) {
+    if (this.gameObjects[x].mouseUp && this.gameObjects[x].collisionArea().intersects(cursor)) {
       this.gameObjects[x].mouseUp(event);
+    }
+  }
+};
+
+GameObjectManager.prototype.mouseClick = function(event) {
+  var cursor = new Rectangle(event.offsetX, event.offsetY, 1, 1);
+  for (x in this.gameObjects) {
+    if (this.gameObjects[x].mouseClick && this.gameObjects[x].collisionArea().intersects(cursor)) {
+      this.gameObjects[x].mouseClick(event);
     }
   }
 };

@@ -1,6 +1,7 @@
 body { background-color:#333; color: #fff; text-align:center; padding:0; margin:0; font-family:Arial, Helvetica, sans-serif; text-shadow: 2px 2px #000000; }
 
 #game { margin:0 auto; text-align:left; width:1024px; height:768px; background-color:#000; position:relative; }
+#overlay { width:1024px; height:768px; position:absolute; z-index:9999; }
 
 #canvas { background-color: #000; }
 

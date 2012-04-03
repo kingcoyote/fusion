@@ -34,9 +34,8 @@ function Player() {
   this.sprite.initFrames(7,1);
   this.sprite.setFrame(3,0);
   
-  this.store_div = document.getElementById('store_player');
   var p = this;
-  this.store_div.onclick = function() { Store.showInventory(p.getStoreInventory, p); };
+  this.mouseClick = function() { Store.showInventory(p.getStoreInventory, p); };
   
   return this;
 };
@@ -86,11 +85,6 @@ Player.prototype.update = function (dt) {
     this.cooldown = this.firespeed;
     this.shoot();
   }
-  
-  this.store_div.style.top = this.y + 'px';
-  this.store_div.style.left = this.x + 'px';
-  this.store_div.style.width = this.sprite.width + 'px';
-  this.store_div.style.height = this.sprite.height + 'px';
 };
   
 Player.prototype.shoot = function() {
@@ -99,7 +93,7 @@ Player.prototype.shoot = function() {
     (this.y + this.sprite.height / 2) + (Math.cos(this.angle - this.gun.angle) * this.gun.distance), 
     this.angle, 
     -1
-  )
+  );
   g_GameObjectManager.addGameObject(bullet);
 };
   
