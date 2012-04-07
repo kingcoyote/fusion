@@ -111,7 +111,7 @@ GameObjectManager.prototype.removeObject = function(object) {
 };
 
 GameObjectManager.prototype.keyDown = function(event) {
-  for (x in this.gameObjects) {
+  for (var x in this.gameObjects) {
     if (this.gameObjects[x].keyDown) {
       this.gameObjects[x].keyDown(event);
     }
@@ -120,7 +120,7 @@ GameObjectManager.prototype.keyDown = function(event) {
 };
 
 GameObjectManager.prototype.keyUp = function(event) {
-  for (x in this.gameObjects) {
+  for (var x in this.gameObjects) {
     if (this.gameObjects[x].keyUp) {
       this.gameObjects[x].keyUp(event);
     }
@@ -129,7 +129,7 @@ GameObjectManager.prototype.keyUp = function(event) {
 
 GameObjectManager.prototype.mouseDown = function(event) {
   var cursor = new Rectangle(event.offsetX, event.offsetY, 1, 1);
-  for (x in this.gameObjects) {
+  for (var x in this.gameObjects) {
     if (this.gameObjects[x].mouseDown && this.gameObjects[x].collisionArea().intersects(cursor)) {
       this.gameObjects[x].mouseDown(event);
     }
@@ -138,7 +138,7 @@ GameObjectManager.prototype.mouseDown = function(event) {
 
 GameObjectManager.prototype.mouseUp = function(event) {
   var cursor = new Rectangle(event.offsetX, event.offsetY, 1, 1);
-  for (x in this.gameObjects) {
+  for (var x in this.gameObjects) {
     if (this.gameObjects[x].mouseUp && this.gameObjects[x].collisionArea().intersects(cursor)) {
       this.gameObjects[x].mouseUp(event);
     }
@@ -147,7 +147,7 @@ GameObjectManager.prototype.mouseUp = function(event) {
 
 GameObjectManager.prototype.mouseClick = function(event) {
   var cursor = new Rectangle(event.offsetX, event.offsetY, 1, 1);
-  for (x in this.gameObjects) {
+  for (var x in this.gameObjects) {
     if (this.gameObjects[x].mouseClick && this.gameObjects[x].collisionArea().intersects(cursor)) {
       this.gameObjects[x].mouseClick(event);
     }
