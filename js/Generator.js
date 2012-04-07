@@ -49,7 +49,7 @@ Generator.prototype.update = function(dt) {
 };
 
 Generator.prototype.shutdown = function() {
-  this.sprite.setFrame(2);
+  this.sprite.setFrame(1);
   if(this.alive) {
     this.alive = false;
     var explosion = new VisualGameObject(
