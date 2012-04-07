@@ -6,8 +6,10 @@ function ApplicationManager(canvasWidth, canvasHeight) {
   g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105));
   g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95));
   g_GameObjectManager.addGameObject(new VisualGameObject(g_ResourceManager.platform, 0, 651, -1));
-  g_platform = new VisualGameObject(g_ResourceManager.platformex, 20, 598, -2);
+  
+  g_platform = new Platform();
   g_GameObjectManager.addGameObject(g_platform);
+  
   Player.stats = {};
   for(var i in Player.stats_default) {
     Player.stats[i] = Player.stats_default[i];
@@ -17,6 +19,7 @@ function ApplicationManager(canvasWidth, canvasHeight) {
   g_GameObjectManager.addGameObject(g_player);
 
   this.generators = [];
+  this.turrets = [];
   this.startGenerators();
   g_level = 1;
   this.invaderController = new InvaderController(g_level);

@@ -33,7 +33,8 @@ g_resources = {
   'genBase' : 'images/objects/Gen.png',
   'turret'   : 'images/objects/BasicTurret.png',
   'platform' : 'images/objects/platform.png',
-  'platformex' : 'images/objects/PlatformExpansion.png'
+  'platformex' : 'images/objects/PlatformExpansion.png',
+  'platformex2' : 'images/objects/PlatformExpansion2.png'
 };
 
 window.onload = function() {

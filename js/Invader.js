@@ -186,6 +186,7 @@ InvaderController.prototype.update = function(dt) {
     if(! InvaderWaves[g_level]) {
       g_ApplicationManager.gameOver('Congratulations for beating game!');
     }
+    g_platform.extend(25);
     setTimeout(function(){
       Store.showStore();
     }, 3000);
