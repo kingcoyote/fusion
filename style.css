@@ -3,6 +3,8 @@ body { background-color:#333; color: #fff; text-align:center; padding:0; margin:
 #game { margin:0 auto; text-align:left; width:1024px; height:768px; background-color:#000; position:relative; }
 #overlay { width:1024px; height:768px; position:absolute; z-index:9999; }
 
+#store_close { z-index:10000; position:absolute; top:155px; left:470px; display:none; }
+
 #canvas { background-color: #000; }
 
 #loading { position:absolute; background-color:#fff; color:#000; width:400px; left:319px; top:300px; text-align:center; padding:5px; text-shadow:none; }

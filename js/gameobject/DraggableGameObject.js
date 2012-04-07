@@ -8,7 +8,7 @@ function DraggableGameObject(gameobject) {
       var x = event.offsetX - gameobject.x;
       var y = event.offsetY - gameobject.y;
       
-      document.onmousemove = function(event) {
+      g_GameObjectManager.overlay.onmousemove = function(event) {
         gameobject.x = event.offsetX - x;
         gameobject.y = event.offsetY - y;
       };
@@ -16,7 +16,7 @@ function DraggableGameObject(gameobject) {
   };
   
   gameobject.mouseUp = function(event) {
-    document.onmousemove = null;
+    g_GameObjectManager.overlay.onmousemove = null;
   };
   
   gameobject.draggable = true;

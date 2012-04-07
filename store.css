@@ -1,4 +1,4 @@
-#store_hud { position:absolute; top:-5px; left:-5px; width: 1029px; height:773px; display:none; }
+#store_hud { position:absolute; top:-5px; left:-5px; width: 1029px; height:773px; display:none; z-index:1000; }
 #store_header { position: absolute; text-align:center; top: 50px; width:450px; padding:0 287px; }
 #store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; text-shadow: 2px 2px #000000; z-index:100000; }
 #store_footer { text-align:center;}

@@ -1,5 +1,6 @@
 function Store() {
   Store.store_hud_div = document.getElementById('store_hud');
+  Store.button = document.getElementById('store_close');
   Store.store_div = document.getElementById('store');
   Store.store_inventory = document.getElementById('store_inventory');
   document.getElementById('store_close').onclick = Store.closeStore;
@@ -42,10 +43,12 @@ Store.addStoreInventory = function(item, i, scope) {
 
 Store.showStore = function() {
   Store.store_hud_div.style.display = 'block';
+  Store.button.style.display = 'block';
 };
 
 Store.closeStore = function() {
   Store.store_hud_div.style.display = 'none';
+  Store.button.style.display = 'none';
   for(var i in g_GameObjectManager.gameObjects) {
     if(typeof(g_GameObjectManager.gameObjects[i].draggable == 'boolean')) {
       g_GameObjectManager.gameObjects[i].draggable = false;
