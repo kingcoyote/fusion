@@ -64,8 +64,8 @@ Invader.prototype.locateTarget = function(){
   var x = this.x + this.sprite.width / 2,
     y = this.y + this.sprite.height / 2,
     target = {
-      x : 0,
-      y : 0,
+      x : g_player.x + g_player.sprite.width / 2,
+      y : g_player.y + g_player.sprite.height / 2,
       d : Infinity
     };
   
@@ -79,6 +79,7 @@ Invader.prototype.locateTarget = function(){
       target.x = gx;
       target.y = gy;
       target.d = gd;
+      target.gen = g;
     }
   }
   
@@ -98,6 +99,11 @@ Invader.prototype.update = function(dt) {
   } else if(Math.sqrt((this.x - this.target.x)*(this.x - this.target.x) + (this.y-this.target.y)*(this.y-this.target.y)) < 300) {
     this.speed_x = 0;
     this.speed_y = 0;
+  }
+  
+  if(this.target.gen && this.target.gen.health <= 0) {
+    this.target = this.locateTarget();
+    this.setDirection(this.target.x, this.target.y);
   }
 };
 
