@@ -102,7 +102,7 @@ Generator.prototype.weakTurret = function() {
   turret = DraggableGameObject(new Turret(
     this.x + position.x,
     this.y + position.y
-  ), g_platform.x, g_platform.y, g_platform.sprite.width, g_GameObjectManager.canvas.height - g_platform.y - 117);
+  ), g_platform.x, g_platform.y, g_platform.sprite.width, g_GameObjectManager.canvas.height - g_platform.y - g_ResourceManager.platform.height);
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
