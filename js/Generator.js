@@ -44,6 +44,14 @@ function Generator(i) {
 
 Generator.prototype = new VisualGameObject;
 
+Generator.prototype.draw = function(context) {
+  this.sprite.draw(context, Math.ceil(this.x), Math.ceil(this.y));
+  if(this.health > 0) {
+    context.fillStyle = "green";
+    context.fillRect(this.x + 31, this.y + 91, 113 * (this.health / 500), 6);
+  }
+};
+
 Generator.prototype.update = function(dt) {
   
 };
@@ -59,6 +67,7 @@ Generator.prototype.shutdown = function() {
         5
     );
     explosion.sprite.initFrames(5);
+    explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.5);
     g_GameObjectManager.addGameObject(explosion);
     TempGameObject(explosion, 0.5);
 
