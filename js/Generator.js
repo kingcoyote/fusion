@@ -93,7 +93,7 @@ Generator.prototype.weakTurret = function() {
   turret = DraggableGameObject(new Turret(
     this.x + position.x,
     this.y + position.y
-  ));
+  ), g_platform.x, g_platform.y, g_platform.sprite.width, g_platform.sprite.height - 117);
   g_GameObjectManager.addGameObject(turret);
   this.addons.push(turret);
   this.StoreInventory.genweakturret.cost += 100;
