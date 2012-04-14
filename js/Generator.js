@@ -7,12 +7,7 @@ function Generator(i) {
   this.alive = true;
   this.points = 0;
   this.addons = [];
-  this.addon_positions = 
-    [
-     {x:88, y: -75},
-     {x:7, y:-15},
-     {x:171, y:-15} 
-     ];
+  this.addon_positions = {x:88, y: -75};
   this.armor = 1;
   this.positions = [
     {x : 87, y : 666 },
@@ -82,9 +77,6 @@ Generator.prototype.shutdown = function() {
 
 Generator.prototype.getStoreInventory = function() {
   var inventory = Object.create(this.StoreInventory).__proto__;
-  if(this.addons.length >= 3) {
-    delete inventory.genweakturret;
-  }
   return inventory;
 };
 
@@ -99,10 +91,16 @@ Generator.prototype.weakTurret = function() {
   var position = this.addon_positions[this.addons.length];
   // hide the store div
   // create a new turret placer object
-  turret = DraggableGameObject(new Turret(
-    this.x + position.x,
-    this.y + position.y
-  ), g_platform.x, g_platform.y, g_platform.sprite.width, g_GameObjectManager.canvas.height - g_platform.y - g_ResourceManager.platform.height);
+  turret = DraggableGameObject(
+    new Turret(
+      this.x + position.x,
+      this.y + position.y
+    ), 
+    g_platform.x, 
+    g_platform.y, 
+    g_platform.sprite.width, 
+    g_GameObjectManager.canvas.height - g_platform.y - g_ResourceManager.platform.height
+  );
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
