@@ -35,7 +35,7 @@ function GameObjectManager() {
   g_ResourceManager = new ResourceManager(g_resources);
 
   // use setInterval to call the draw function
-  this.loop = setInterval(function(){ g.draw(); }, SECONDS_BETWEEN_FRAMES);
+  this.loop = setTimeout(function(){ g.draw(); }, SECONDS_BETWEEN_FRAMES);
 }
 
 GameObjectManager.prototype.draw = function () {
@@ -85,7 +85,9 @@ GameObjectManager.prototype.draw = function () {
     
     // copy the back buffer to the displayed canvas
     this.context2D.drawImage(this.backBuffer, 0, 0);
-  }        
+  }
+  var g = this;
+  this.loop = setTimeout(function(){ g.draw(); }, SECONDS_BETWEEN_FRAMES);
 };
 
 GameObjectManager.prototype.endLoop = function() {

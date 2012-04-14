@@ -6,9 +6,12 @@ function Store() {
   document.getElementById('store_close').onclick = Store.closeStore;
   document.getElementById('inventory_close').onclick = Store.hideInventory;
   Store.store_hud_div.style.display = 'none';
+  Store.active = false;
 };
   
 Store.showInventory = function(inventoryCallback, scope) {
+  if(!Store.active) return;
+  
   Store.store_div.style.display = 'block';
   Store.store_inventory.innerHTML = '';
   var inventory = inventoryCallback.call(scope);
@@ -44,9 +47,11 @@ Store.addStoreInventory = function(item, i, scope) {
 Store.showStore = function() {
   Store.store_hud_div.style.display = 'block';
   Store.button.style.display = 'block';
+  Store.active = true;
 };
 
 Store.closeStore = function() {
+  Store.active = false;
   Store.store_hud_div.style.display = 'none';
   Store.button.style.display = 'none';
   for(var i in g_GameObjectManager.gameObjects) {
