@@ -7,7 +7,7 @@ function Generator(i) {
   this.alive = true;
   this.points = 0;
   this.addons = [];
-  this.addon_positions = {x:88, y: -75};
+  this.addon_position = {x:88, y: -75};
   this.armor = 1;
   this.positions = [
     {x : 87, y : 666 },
@@ -28,7 +28,8 @@ function Generator(i) {
   
   this.StoreInventory = {
       gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
-      genweakturret: { name: "Weak Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
+      genweakturret: { name: "Gun Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
+      genlaserturret: { name: "Laser Turret", icon : "genweakturret", cost:100, callback: this.laserTurret },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
   
@@ -88,11 +89,12 @@ Generator.prototype.minorHealth = function() {
 };
 
 Generator.prototype.weakTurret = function() {
-  var position = this.addon_positions[this.addons.length];
+  var position = this.addon_position;
   // hide the store div
   // create a new turret placer object
   turret = DraggableGameObject(
     new Turret(
+      Turret.gun,
       this.x + position.x,
       this.y + position.y
     ), 
@@ -105,6 +107,27 @@ Generator.prototype.weakTurret = function() {
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
   this.StoreInventory.genweakturret.cost += 100;
+};
+
+Generator.prototype.laserTurret = function() {
+  var position = this.addon_position;
+  // hide the store div
+  // create a new turret placer object
+  turret = DraggableGameObject(
+    new Turret(
+      Turret.laser,
+      this.x + position.x,
+      this.y + position.y
+    ), 
+    g_platform.x, 
+    g_platform.y, 
+    g_platform.sprite.width, 
+    g_GameObjectManager.canvas.height - g_platform.y - g_ResourceManager.platform.height
+  );
+  g_GameObjectManager.addGameObject(turret);
+  g_ApplicationManager.turrets.push(turret);
+  this.addons.push(turret);
+  this.StoreInventory.genlaserturret.cost += 100;
 };
 
 Generator.prototype.increaseArmor = function() {
