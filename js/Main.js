@@ -14,6 +14,7 @@ g_resources = {
   'background1' : 'images/backgrounds/bg1-alt.png',
   'bulletUp' : 'images/effects/BulletUp.png',
   'bulletDown' : 'images/effects/BulletDown.png',
+  'greenLaser' : 'images/effects/GreenLaser.png',
   'hammer' : 'images/player/HammerFrames.png',
   'invader1' : 'images/enemies/Invader1.png',
   'invader2' : 'images/enemies/Invader2.png',

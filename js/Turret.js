@@ -33,7 +33,6 @@ Turret.prototype.update = function(dt) {
   this.gun.x = this.x;
   this.gun.y = this.y;
   
-  this.locateTarget();
   if(this.target.x && this.target.y) {
     this.setDirection(Math.atan2(this.y - this.target.y, this.x - this.target.x) - Math.PI / 2);
   } else {
@@ -45,6 +44,10 @@ Turret.prototype.update = function(dt) {
   if(this.cooldown <= 0 && ! this.target.dead) {
     this.shoot();
     this.cooldown = this.weapon.firespeed;
+  } 
+  
+  if(this.cooldown <= 0 && this.target.dead) {
+    this.locateTarget();
   }
 };
 
@@ -99,6 +102,7 @@ Turret.weapon.gun.init = function(turret) {
 }
 Turret.weapon.gun.shoot = function(turret) {
   var bullet = new Bullet(
+    Bullet.gun,
     turret.x + turret.sprite.width / 2,
     turret.y + turret.sprite.height / 2,
     turret.angle,
@@ -115,7 +119,6 @@ Turret.weapon.missile;
 
 // laser
 Turret.weapon.laser = {
-    firespeed : 0.25,
     range     : 800
 };
 Turret.weapon.laser.init = function(turret) {
@@ -131,12 +134,16 @@ Turret.weapon.laser.init = function(turret) {
 };
 Turret.weapon.laser.shoot = function(turret) {
   var bullet = new Bullet(
+    Bullet.laser,
     turret.x + turret.sprite.width / 2,
     turret.y + turret.sprite.height / 2,
     turret.angle,
     -1
   );
   g_GameObjectManager.addGameObject(bullet);
+  
+  turret.bullet = bullet;
+  bullet.turret = turret;
 };
 
 // twin

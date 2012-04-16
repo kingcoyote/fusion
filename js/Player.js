@@ -89,6 +89,7 @@ Player.prototype.update = function (dt) {
   
 Player.prototype.shoot = function() {
   var bullet = new Bullet(
+    Bullet.gun,
     (this.x + this.sprite.width / 2) + (Math.sin(this.angle - this.gun.angle) * this.gun.distance), 
     (this.y + this.sprite.height / 2) + (Math.cos(this.angle - this.gun.angle) * this.gun.distance), 
     this.angle, 
