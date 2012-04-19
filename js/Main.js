@@ -12,6 +12,7 @@ var FPS = 30,
 g_resources = {
   'background0' : 'images/backgrounds/bg0.jpg',
   'background1' : 'images/backgrounds/bg1-alt.png',
+  'planet1' : 'images/backgrounds/planet1.png',
   'bulletUp' : 'images/effects/BulletUp.png',
   'bulletDown' : 'images/effects/BulletDown.png',
   'hammer' : 'images/player/HammerFrames.png',
