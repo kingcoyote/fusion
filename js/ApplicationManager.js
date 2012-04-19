@@ -4,6 +4,7 @@ function ApplicationManager(canvasWidth, canvasHeight) {
   g_store = new Store();
 
   g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background0, 1024, 2048, 0, 15, 0, -1024, true, -105));
+  g_GameObjectManager.addGameObject(new Background(g_ResourceManager.planet1, 700, 2700, 0, 20, 20, -1, true, -104));
   g_GameObjectManager.addGameObject(new Background(g_ResourceManager.background1, 1024, 2048, 0, 30, 0, -1024, true, -95));
   g_GameObjectManager.addGameObject(new VisualGameObject(g_ResourceManager.platform, 0, 651, -1));
   
