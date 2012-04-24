@@ -187,7 +187,7 @@ InvaderController.prototype.update = function(dt) {
     if(this.invaders[i].dead) continue;
     alive = true;
   };
-  if(alive === false) {
+  if(alive === false && this.invader_number == this.wave.invaders.length) {
     g_level++;
     g_ApplicationManager.updateLevel();
     if(! InvaderWaves[g_level]) {
