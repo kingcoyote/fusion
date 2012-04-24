@@ -108,7 +108,6 @@ Bullet.types.laser.init = function(bullet) {
   );
   
   bullet.sprite.rotate(bullet.angle);
-  bullet.sprite = TilingSprite(bullet.sprite);
 }
 Bullet.types.laser.update = function(bullet, dt) {
   bullet.turret.cooldown = 1;
