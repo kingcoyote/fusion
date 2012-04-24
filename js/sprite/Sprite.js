@@ -9,6 +9,8 @@ function Sprite(source) {
   this.angle     = 0;
   this.reflect_x = 1;
   this.reflect_y = 1;
+  this.tile_x    = 1;
+  this.tile_y    = 1;
   
   this.canvas        = document.createElement('canvas');
   this.canvas.width  = source.width;
@@ -23,15 +25,31 @@ function Sprite(source) {
 }
 
 Sprite.prototype.draw = function(context, x, y) {
-  context.drawImage(this.canvas, x - (this.canvas.width - this.width) / 2, y - (this.canvas.height - this.height) / 2);
+  // tile
+  for(var i = 0; i < this.tile_x; i++) {
+    for(var j = 0; j < this.tile_y; j++) {
+      var offset_x = i * this.source.width;
+      var offset_y = j * this.source.height;
+      
+      var distance = Math.sqrt(Math.pow(offset_x, 2) + Math.pow(offset_y, 2));
+      var angle = this.angle + Math.atan2(offset_y, offset_x) - Math.PI / 2;
+      
+      context.drawImage(
+        this.canvas, 
+        x - (this.canvas.width - this.width) / 2   + (Math.sin(angle) * distance), 
+        y - (this.canvas.height - this.height) / 2 - (Math.cos(angle) * distance)
+      );
+    }
+  }
 };
 
 Sprite.prototype.drawSprite = function() {
   var context = this.canvas.getContext('2d');
   
   // clear the canvas
-  this.canvas.width  = Math.sqrt(this.width * this.width + this.height * this.height);
-  this.canvas.height = this.canvas.width; 
+  var square = Math.sqrt(this.width * this.width + this.height * this.height);
+  this.canvas.width  = square * this.tile_x;
+  this.canvas.height = square * this.tile_y; 
   context.clearRect(0,0,this.canvas.width, this.canvas.height);
   context.translate(
     (this.canvas.width - this.width) / 2,
@@ -128,6 +146,11 @@ Sprite.prototype.reflect = function(y, x) {
   
   this.drawSprite();
 };
+
+Sprite.prototype.setTiling = function(x, y) {
+  this.tile_x = x;
+  this.tile_y = y;
+}
 
 Sprite.prototype.update = function(dt) {
   
