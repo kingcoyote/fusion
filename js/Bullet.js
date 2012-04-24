@@ -118,6 +118,7 @@ Bullet.types.laser.update = function(bullet, dt) {
   var distance = Math.sqrt((x*x) + (y*y));
   
   bullet.sprite.setTiling(1, Math.ceil(distance / bullet.sprite.height));
+  bullet.sprite.rotate(bullet.turret.angle);
   
   bullet.turret.target.health -= this.damage * dt;
   
