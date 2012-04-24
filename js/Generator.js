@@ -29,7 +29,7 @@ function Generator(i) {
   this.StoreInventory = {
       gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
       genweakturret: { name: "Gun Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
-      genlaserturret: { name: "Laser Turret", icon : "genweakturret", cost:100, callback: this.laserTurret },
+      genlaserturret: { name: "Laser Turret", icon : "genlaserturret", cost:100, callback: this.laserTurret },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
   
