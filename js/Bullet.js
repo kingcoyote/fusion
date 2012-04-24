@@ -50,8 +50,8 @@ Bullet.types.gun.init = function(bullet) {
   
   flash.object = new VisualGameObject(
     flash.image, 
-    bullet.x - flash.image.width / 2 + flash.x, 
-    bullet.y - flash.image.height / 2 + flash.y, 
+    bullet.x - (flash.image.width / 2) + flash.x, 
+    bullet.y - (flash.image.height / 2) + flash.y, 
     5
   );
   TempGameObject(flash.object, 0.05);
@@ -95,7 +95,7 @@ Bullet.types.gun.collisionArea = function(bullet) {
 Bullet.types.missile = {};
 
 Bullet.types.laser = {
-  damage : 5 
+  damage : 12 
 };
 Bullet.types.laser.init = function(bullet) {
   image = g_ResourceManager.greenLaser;

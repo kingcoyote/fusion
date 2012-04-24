@@ -25,7 +25,22 @@ function Sprite(source) {
 }
 
 Sprite.prototype.draw = function(context, x, y) {
-  context.drawImage(this.canvas, x - (this.canvas.width - this.width) / 2, y - (this.canvas.height - this.height) / 2);
+  // tile
+  for(var i = 0; i < this.tile_x; i++) {
+    for(var j = 0; j < this.tile_y; j++) {
+      var offset_x = i * this.source.width;
+      var offset_y = j * this.source.height;
+      
+      var distance = Math.sqrt(Math.pow(offset_x, 2) + Math.pow(offset_y, 2));
+      var angle = this.angle + Math.atan2(offset_y, offset_x) - Math.PI / 2;
+      
+      context.drawImage(
+        this.canvas, 
+        x - (this.canvas.width - this.width) / 2   + (Math.sin(angle) * distance), 
+        y - (this.canvas.height - this.height) / 2 - (Math.cos(angle) * distance)
+      );
+    }
+  }
 };
 
 Sprite.prototype.drawSprite = function() {
@@ -48,32 +63,27 @@ Sprite.prototype.drawSprite = function() {
   );
   context.scale(this.reflect_x, this.reflect_y);
   
-  // tile
-  for(var i = 1; i <= this.tile_x; i++) {
-    for(var j = 1; j <= this.tile_y; j++) {
-      // rotate
-      context.translate(
-        this.width / 2, this.height / 2
-      );
-      context.rotate(this.angle);
-      context.translate(
-        0 - this.width / 2, 0 - this.height / 2
-      );
-      
-      // draw and scale
-      context.drawImage(
-        this.source,
-        this.width  * this.frame_x,
-        this.height * this.frame_y,
-        this.width,
-        this.height,
-        0,
-        0,
-        this.width * this.scale_x,
-        this.height * this.scale_y
-      );
-    }
-  }
+  // rotate
+  context.translate(
+    this.width / 2, this.height / 2
+  );
+  context.rotate(this.angle);
+  context.translate(
+    0 - this.width / 2, 0 - this.height / 2
+  );
+  
+  // draw and scale
+  context.drawImage(
+    this.source,
+    this.width  * this.frame_x,
+    this.height * this.frame_y,
+    this.width,
+    this.height,
+    0,
+    0,
+    this.width * this.scale_x,
+    this.height * this.scale_y
+  );
 };
 
 Sprite.prototype.initFrames = function(cols, rows) {
@@ -138,8 +148,8 @@ Sprite.prototype.reflect = function(y, x) {
 };
 
 Sprite.prototype.setTiling = function(x, y) {
-  this.tile.x = x;
-  this.tile.y = y;
+  this.tile_x = x;
+  this.tile_y = y;
 }
 
 Sprite.prototype.update = function(dt) {
