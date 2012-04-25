@@ -30,12 +30,15 @@ Bullet.types.gun = {
   damage : 10
 };
 Bullet.types.gun.init = function(bullet) {
-  image = g_ResourceManager.bulletUp;
+  var x = bullet.x;
+  var y = bullet.y;
+  var image = g_ResourceManager.bulletUp;
+  
   VisualGameObject.call(
     bullet, 
     image, 
-    bullet.x - image.width / 2, 
-    bullet.y - image.height / 2, 
+    x - image.width / 2, 
+    y - image.height / 2, 
     -1
   );
   
@@ -50,8 +53,8 @@ Bullet.types.gun.init = function(bullet) {
   
   flash.object = new VisualGameObject(
     flash.image, 
-    bullet.x - (flash.image.width / 2) + flash.x, 
-    bullet.y - (flash.image.height / 2) + flash.y, 
+    x - (flash.image.width / 2) + flash.x, 
+    y - (flash.image.height / 2) + flash.y, 
     5
   );
   TempGameObject(flash.object, 0.05);
@@ -98,12 +101,14 @@ Bullet.types.laser = {
   damage : 12 
 };
 Bullet.types.laser.init = function(bullet) {
-  image = g_ResourceManager.greenLaser;
+  var x = bullet.x;
+  var y = bullet.y
+  var image = g_ResourceManager.greenLaser;
   VisualGameObject.call(
     bullet, 
     image, 
-    bullet.x, 
-    bullet.y, 
+    x, 
+    y, 
     2
   );
   
