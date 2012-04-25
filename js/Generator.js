@@ -49,7 +49,9 @@ Generator.prototype.draw = function(context) {
 };
 
 Generator.prototype.update = function(dt) {
-  
+  if(this.health <= 0) {
+    this.shutdown();
+  }
 };
 
 Generator.prototype.shutdown = function() {

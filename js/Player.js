@@ -55,6 +55,11 @@ Player.prototype.keyUp = function(event) {
 };
 
 Player.prototype.update = function (dt) {
+  if(this.health <= 0) {
+    this.shutdown();
+    return null;
+  }
+  
   if (this.left) {
     this.x -= this.speed * dt;
     this.sprite.setFrame(0);
