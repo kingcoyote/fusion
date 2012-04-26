@@ -102,13 +102,13 @@ Bullet.types.laser = {
 };
 Bullet.types.laser.init = function(bullet) {
   var x = bullet.x;
-  var y = bullet.y
+  var y = bullet.y;
   var image = g_ResourceManager.greenLaser;
   VisualGameObject.call(
     bullet, 
     image, 
-    x, 
-    y, 
+    x - image.width / 2,
+    y - image.height / 2, 
     2
   );
   
@@ -129,6 +129,7 @@ Bullet.types.laser.update = function(bullet, dt) {
   
   if(bullet.turret.target.dead == true) {
     bullet.shutdown();
+    bullet.turret.gun.sprite.setFrame(0,3);
   }
 }
 Bullet.types.laser.shutdown = function(bullet) {

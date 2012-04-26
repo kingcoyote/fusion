@@ -135,12 +135,14 @@ Turret.weapon.laser.init = function(turret) {
 Turret.weapon.laser.shoot = function(turret) {
   var bullet = new Bullet(
     Bullet.laser,
-    turret.x + turret.sprite.width / 2,
-    turret.y + turret.sprite.height / 2,
+    turret.x + turret.sprite.width / 2 - Math.sin(turret.angle) * -22,
+    turret.y + turret.sprite.height / 2 - Math.cos(turret.angle) * 22,
     turret.angle,
     -1
   );
   g_GameObjectManager.addGameObject(bullet);
+  
+  turret.gun.sprite = AnimatedSprite(turret.gun.sprite, [1,2], 0.25);
   
   turret.bullet = bullet;
   bullet.turret = turret;
