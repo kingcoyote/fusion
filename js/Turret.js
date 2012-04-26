@@ -24,10 +24,10 @@ function Turret(type,x,y) {
 
 Turret.prototype = new VisualGameObject();
 
-Turret.gun     = 'gun';
-Turret.missile = 'missile';
-Turret.laser   = 'laser';
-Turret.twin    = 'twin';
+Turret.gun        = 'gun';
+Turret.missile    = 'missile';
+Turret.laser      = 'laser';
+Turret.machinegun = 'machinegun';
 
 Turret.prototype.update = function(dt) {
   this.gun.x = this.x;
@@ -99,7 +99,7 @@ Turret.weapon.gun.init = function(turret) {
   turret.gun.sprite.initFrames(7,5);
   turret.gun.sprite.setFrame(0,1);
   g_GameObjectManager.addGameObject(turret.gun);
-}
+};
 Turret.weapon.gun.shoot = function(turret) {
   var bullet = new Bullet(
     Bullet.gun,
@@ -112,10 +112,38 @@ Turret.weapon.gun.shoot = function(turret) {
   turret.gun.sprite = AnimatedSprite(turret.gun.sprite, [2,3,4,5], 0.5);
   
   g_GameObjectManager.addGameObject(bullet);
-}
+};
 
 // missile
-Turret.weapon.missile;
+Turret.weapon.missile = {
+  range : 600,
+  firespeed : 1.5
+};
+Turret.weapon.missile.init = function(turret) {
+  turret.gun = new VisualGameObject(
+    turret.image,
+    turret.x,
+    turret.y,
+    2
+  );
+  turret.gun.sprite.initFrames(7,5);
+  turret.gun.sprite.setFrame(0,2);
+  g_GameObjectManager.addGameObject(turret.gun);
+};
+Turret.weapon.missile.shoot = function(turret) {
+  var bullet = new Bullet(
+    Bullet.missile,
+    turret.x + turret.sprite.width / 2,
+    turret.y + turret.sprite.height / 2,
+    turret.angle,
+    -1
+  );
+  
+  g_GameObjectManager.addGameObject(bullet);
+  
+  turret.bullet = bullet;
+  bullet.turret = turret;
+};
 
 // laser
 Turret.weapon.laser = {
@@ -149,4 +177,20 @@ Turret.weapon.laser.shoot = function(turret) {
 };
 
 // twin
-Turret.weapon.twin;
+Turret.weapon.machinegun = {
+  range : 400
+};
+Turret.weapon.machinegun.init = function(turret) {
+  turret.gun = new VisualGameObject(
+    turret.image,
+    turret.x,
+    turret.y,
+    2
+  );
+  turret.gun.sprite.initFrames(7,5);
+  turret.gun.sprite.setFrame(0,2);
+  g_GameObjectManager.addGameObject(turret.gun);
+};
+Turret.weapon.machinegun.shoot = function(turret) {
+  
+};

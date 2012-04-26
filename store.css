@@ -47,6 +47,14 @@
 #store_inventory div.inventory div.icon.genweakturret:hover { background-position:-56px -392px; }
 #store_inventory div.inventory div.icon.genweakturret.click { background-position:-112px -392px; }
 
+#store_inventory div.inventory div.icon.genmissileturret { background-position:0 -560px; }
+#store_inventory div.inventory div.icon.genmissileturret:hover { background-position:-56px -560px; }
+#store_inventory div.inventory div.icon.genmissileturret.click { background-position:-112px -560px; }
+
 #store_inventory div.inventory div.icon.genlaserturret { background-position:0 -504px; }
 #store_inventory div.inventory div.icon.genlaserturret:hover { background-position:-56px -504px; }
 #store_inventory div.inventory div.icon.genlaserturret.click { background-position:-112px -504px; }
+
+#store_inventory div.inventory div.icon.genmachinegunturret { background-position:0 -622px; }
+#store_inventory div.inventory div.icon.genmachinegunturret:hover { background-position:-56px -622px; }
+#store_inventory div.inventory div.icon.genmachinegunturret.click { background-position:-112px -622px; }
