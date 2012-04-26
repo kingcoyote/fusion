@@ -65,10 +65,15 @@ Invader.prototype.locateTarget = function(){
   var x = this.x + this.sprite.width / 2,
     y = this.y + this.sprite.height / 2,
     target = {
-      x : g_player.x + g_player.sprite.width / 2,
-      y : g_player.y + g_player.sprite.height / 2,
+      x : 0,
+      y : 0,
       d : Infinity
     };
+  
+  if(g_player.health >= 0) {
+    target.x = g_player.x + g_player.sprite.width / 2
+    target.y = g_player.y + g_player.sprite.height / 2
+  }
   
   for(var i in g_ApplicationManager.generators) {
     var g = g_ApplicationManager.generators[i],
@@ -92,6 +97,7 @@ Invader.prototype.update = function(dt) {
     this.shutdown();
     g_score += this.points;
     g_ApplicationManager.updateScore();
+    return null;
   }
   
   this.x += this.speed_x * dt;
