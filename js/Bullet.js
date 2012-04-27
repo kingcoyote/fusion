@@ -98,7 +98,7 @@ Bullet.types.gun.collisionArea = function(bullet) {
 Bullet.types.missile = {
   speed : 250,
   radius : 100,
-  detonate : 100,
+  detonate : 30,
   damage : 16,
   turn : Math.PI / 4
 };
@@ -137,7 +137,30 @@ Bullet.types.missile.update = function(bullet, dt) {
   }
 };
 Bullet.types.missile.shutdown = function(bullet) {
-  console.log('missile exploded');
+  var explosion = new VisualGameObject(
+    g_ResourceManager.explosion, 
+    bullet.x + (bullet.sprite.width / 2) - 62,
+    bullet.y + (bullet.sprite.height / 2) - 62,
+    1
+  );
+  explosion.sprite.initFrames(5);
+  explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.5, false);
+  TempGameObject(explosion, 0.50);
+  g_GameObjectManager.addGameObject(explosion);
+  
+  var hitbox = new Rectangle(
+    bullet.x + bullet.sprite.width / 2 - this.radius / 2,
+    bullet.y + bullet.sprite.height / 2 - this.radius / 2,
+    this.radius,
+    this.radius
+  );
+  
+  for(var i in g_ApplicationManager.invaderController.invaders) {
+    var invader = g_ApplicationManager.invaderController.invaders[i];
+    if(!invader.dead && invader.collisionArea().intersects(hitbox)) {
+      invader.health -= this.damage;
+    }
+  }
 };
 
 Bullet.types.laser = {
