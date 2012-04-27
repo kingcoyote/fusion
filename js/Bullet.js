@@ -100,7 +100,7 @@ Bullet.types.missile = {
   radius : 100,
   detonate : 100,
   damage : 16,
-  turn : Math.PI / 8
+  turn : Math.PI / 4
 };
 Bullet.types.missile.init = function(bullet) {
   var x = bullet.x;
@@ -118,9 +118,11 @@ Bullet.types.missile.init = function(bullet) {
   bullet.sprite.rotate(bullet.angle);
 };
 Bullet.types.missile.update = function(bullet, dt) {
-  var angle = Math.atan2(bullet.turret.target.y - bullet.y, bullet.turret.target.x - bullet.x);
+  var angle = Math.atan2(bullet.turret.target.y - bullet.y, bullet.turret.target.x - bullet.x) + Math.PI / 2;
   
-  bullet.angle -= (bullet.angle - angle) > this.turn * dt ? this.turn * dt : bullet.angle - angle;
+  var direction = angle - bullet.angle > 0 ? 1 : -1;
+  
+  bullet.angle += Math.abs(angle - bullet.angle) > this.turn * dt ? this.turn * dt * direction : angle - bullet.angle;
   
   bullet.x += this.speed * Math.sin(bullet.angle) * dt;
   bullet.y -= this.speed * Math.cos(bullet.angle) * dt;
