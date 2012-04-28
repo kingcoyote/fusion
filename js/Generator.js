@@ -31,7 +31,7 @@ function Generator(i) {
       genweakturret: { name: "Cannon Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
       genmissileturret: { name: "Missile Turret", icon : "genmissileturret", cost:100, callback: this.missileTurret },
       genlaserturret: { name: "Laser Turret", icon : "genlaserturret", cost:100, callback: this.laserTurret },
-      genmachinegunturret: { name: "Machinegun Turret", icon : "genmachinegunturret", cost:100, callback: this.machinegunTurret },
+      genmachinegunturret: { name: "MG Turret", icon : "genmachinegunturret", cost:100, callback: this.machinegunTurret },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
   

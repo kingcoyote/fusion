@@ -55,6 +55,6 @@
 #store_inventory div.inventory div.icon.genlaserturret:hover { background-position:-56px -504px; }
 #store_inventory div.inventory div.icon.genlaserturret.click { background-position:-112px -504px; }
 
-#store_inventory div.inventory div.icon.genmachinegunturret { background-position:0 -622px; }
-#store_inventory div.inventory div.icon.genmachinegunturret:hover { background-position:-56px -622px; }
-#store_inventory div.inventory div.icon.genmachinegunturret.click { background-position:-112px -622px; }
+#store_inventory div.inventory div.icon.genmachinegunturret { background-position:0 -616px; }
+#store_inventory div.inventory div.icon.genmachinegunturret:hover { background-position:-56px -616px; }
+#store_inventory div.inventory div.icon.genmachinegunturret.click { background-position:-112px -616px; }
