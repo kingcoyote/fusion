@@ -173,7 +173,7 @@ Generator.prototype.machinegunTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.StoreInventory.genmachineturret.cost += 100;
+  this.StoreInventory.genmachinegunturret.cost += 100;
 };
 
 Generator.prototype.increaseArmor = function() {

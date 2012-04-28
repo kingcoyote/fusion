@@ -15,6 +15,7 @@ g_resources = {
   'planet1' : 'images/backgrounds/planet1.png',
   'bulletUp' : 'images/effects/BulletUp.png',
   'bulletDown' : 'images/effects/BulletDown.png',
+  'mgBullet' : 'images/effects/MGBullet.png',
   'greenLaser' : 'images/effects/GreenLaser.png',
   'missile' : 'images/effects/RedMissile.png',
   'hammer' : 'images/player/HammerFrames.png',

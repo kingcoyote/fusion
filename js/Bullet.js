@@ -21,7 +21,7 @@ Bullet.prototype.shutdown = function() {
 Bullet.gun     = "gun";
 Bullet.missile = "missile";
 Bullet.laser   = "laser";
-Bullet.twin    = "twin";
+Bullet.machinegun    = "machinegun";
 
 Bullet.types = {};
 
@@ -220,13 +220,50 @@ Bullet.types.laser.shutdown = function(bullet) {
   bullet.turret.bullet = null;
 };
 
-Bullet.types.machinegun = {};
+Bullet.types.machinegun = {
+  speed  : 850, // base speed
+  damage : 3
+};
 Bullet.types.machinegun.init = function(bullet) {
+  var x = bullet.x;
+  var y = bullet.y;
+  var image = g_ResourceManager.mgBullet;
   
+  VisualGameObject.call(
+    bullet, 
+    image, 
+    x - image.width / 2, 
+    y - image.height / 2, 
+    -1
+  );
+  
+  bullet.sprite.rotate(bullet.angle);
 };
-Bullet.types.machinegun.update = function(bullet) {
+Bullet.types.machinegun.update = function(bullet, dt) {
+  bullet.x += this.speed * Math.sin(bullet.angle) * dt;
+  bullet.y -= this.speed * Math.cos(bullet.angle) * dt;
   
+  if(bullet.y + 80 < 0 || bullet.y - 80 > g_GameObjectManager.canvas.height) {
+    return bullet.shutdown();
+  }
+
+  for(var i in g_GameObjectManager.gameObjects) {
+    var object = g_GameObjectManager.gameObjects[i];
+    if(object.destructible && bullet.team != object.team && this.collisionArea(bullet).intersects(object.collisionArea())) {
+      if(object.invulnerable > 0) {
+        break;
+      }
+      var damage = (this.damage - object.armor);
+      object.health -= (damage >= 1 ? damage : 1);
+      g_ApplicationManager.updateHealth();
+      bullet.shutdown();
+      break;
+    };
+  }
 };
-Bullet.types.machinegun.shutdown = function() {
-  
+Bullet.types.machinegun.shutdown = function(bullet) {
+
+};
+Bullet.types.machinegun.collisionArea = function(bullet) {
+  return new Rectangle(bullet.x, bullet.y, bullet.sprite.width, bullet.sprite.height);
 };
