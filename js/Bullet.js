@@ -118,22 +118,36 @@ Bullet.types.missile.init = function(bullet) {
   bullet.sprite.rotate(bullet.angle);
 };
 Bullet.types.missile.update = function(bullet, dt) {
-  var angle = Math.atan2(bullet.turret.target.y - bullet.y, bullet.turret.target.x - bullet.x) + Math.PI / 2;
-  
-  var direction = angle - bullet.angle > 0 ? 1 : -1;
-  
-  bullet.angle += Math.abs(angle - bullet.angle) > this.turn * dt ? this.turn * dt * direction : angle - bullet.angle;
+  if( ! bullet.turret.target.dead) {
+    var target = {
+        x : bullet.turret.target.x + bullet.turret.target.sprite.width  / 2,
+        y : bullet.turret.target.y + bullet.turret.target.sprite.height / 2 
+    };
+    var self = {
+        x : bullet.x + bullet.sprite.width  / 2,
+        y : bullet.y + bullet.sprite.height / 2
+    };
+    var angle = Math.atan2(
+      target.y - self.y, 
+      target.x - self.x
+    ) + Math.PI / 2;
+    
+    var direction = angle - bullet.angle > 0 ? 1 : -1;
+    
+    bullet.angle += Math.abs(angle - bullet.angle) > this.turn * dt ? this.turn * dt * direction : angle - bullet.angle;
+    
+    bullet.sprite.rotate(bullet.angle);
+    
+    if(Math.sqrt(Math.pow(target.y - self.y, 2) + Math.pow(target.x - self.x, 2)) <= this.detonate) {
+      bullet.shutdown();
+    }
+  }
   
   bullet.x += this.speed * Math.sin(bullet.angle) * dt;
   bullet.y -= this.speed * Math.cos(bullet.angle) * dt;
-  bullet.sprite.rotate(bullet.angle);
   
   if(bullet.y + 80 < 0 || bullet.y - 80 > g_GameObjectManager.canvas.height) {
     return bullet.shutdown();
-  }
-  
-  if(Math.sqrt(Math.pow(bullet.turret.target.y - bullet.y, 2) + Math.pow(bullet.turret.target.x - bullet.x, 2)) <= this.detonate) {
-    bullet.shutdown();
   }
 };
 Bullet.types.missile.shutdown = function(bullet) {
@@ -175,19 +189,23 @@ Bullet.types.laser.init = function(bullet) {
     image, 
     x - image.width / 2,
     y - image.height / 2, 
-    2
+    -1
   );
   
   bullet.sprite.rotate(bullet.angle);
 };
 Bullet.types.laser.update = function(bullet, dt) {
+  var distance = 0;
+  
+  bullet.angle = bullet.turret.angle;
   bullet.turret.cooldown = 1;
-  bullet.angle = bullet.turret.gun.angle;
   
-  var x = bullet.x - bullet.turret.target.x;
-  var y = bullet.y - bullet.turret.target.y;
-  var distance = Math.sqrt((x*x) + (y*y));
-  
+  if( ! bullet.turret.target.dead) {
+    var x = (bullet.turret.target.x + bullet.turret.target.sprite.width  / 2) - (bullet.x + bullet.sprite.width / 2);
+    var y = (bullet.turret.target.y + bullet.turret.target.sprite.height / 2) - (bullet.y + bullet.sprite.height / 2);
+    distance = Math.sqrt((x*x) + (y*y));
+  }
+
   bullet.sprite.setTiling(1, Math.ceil(distance / bullet.sprite.height));
   bullet.sprite.rotate(bullet.turret.angle);
   

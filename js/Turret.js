@@ -33,8 +33,16 @@ Turret.prototype.update = function(dt) {
   this.gun.x = this.x;
   this.gun.y = this.y;
   
-  if(this.target.x && this.target.y) {
-    this.setDirection(Math.atan2(this.y - this.target.y, this.x - this.target.x) - Math.PI / 2);
+  if( ! this.target.dead) {
+    var target = {
+        x : this.target.x + this.target.sprite.width  / 2,
+        y : this.target.y + this.target.sprite.height / 2 
+    };
+    var self = {
+        x : this.x + this.sprite.width  / 2,
+        y : this.y + this.sprite.height / 2
+    };
+    this.setDirection(Math.atan2(self.y - target.y, self.x - target.x) - Math.PI / 2);
   } else {
     this.setDirection(0);
   }
