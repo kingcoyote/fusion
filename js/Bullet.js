@@ -138,14 +138,14 @@ Bullet.types.missile.update = function(bullet, dt) {
 };
 Bullet.types.missile.shutdown = function(bullet) {
   var explosion = new VisualGameObject(
-    g_ResourceManager.explosion, 
+    g_ResourceManager.missileExplosion, 
     bullet.x + (bullet.sprite.width / 2) - 62,
     bullet.y + (bullet.sprite.height / 2) - 62,
     1
   );
-  explosion.sprite.initFrames(5);
-  explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.5, false);
-  TempGameObject(explosion, 0.50);
+  explosion.sprite.initFrames(6);
+  explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4,5], 0.75, false);
+  TempGameObject(explosion, 0.75);
   g_GameObjectManager.addGameObject(explosion);
   
   var hitbox = new Rectangle(

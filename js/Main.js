@@ -27,6 +27,7 @@ g_resources = {
   'bossBody' : 'images/enemies/BossBody.png',
   'bossWingRight' : 'images/enemies/BossWingRight.png',
   'explosion': 'images/effects/explosion1.png',
+  'missileExplosion' : 'images/effects/missileExplosion.png',
   'smallExploRed': 'images/effects/SmallExploRed.png',
   'smallExploBlue': 'images/effects/SmallExploBlue.png',
   'flashUp': 'images/effects/FlashUp.png',
