@@ -27,11 +27,11 @@ function Generator(i) {
   this.sprite.initFrames(2,3);
   
   this.StoreInventory = {
-      gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
       genweakturret: { name: "Cannon Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
       genmissileturret: { name: "Missile Turret", icon : "genmissileturret", cost:100, callback: this.missileTurret },
       genlaserturret: { name: "Laser Turret", icon : "genlaserturret", cost:100, callback: this.laserTurret },
       genmachinegunturret: { name: "MG Turret", icon : "genmachinegunturret", cost:100, callback: this.machinegunTurret },
+      gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
   
