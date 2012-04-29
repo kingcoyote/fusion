@@ -194,6 +194,8 @@ InvaderController.prototype.update = function(dt) {
     alive = true;
   };
   if(alive === false && this.invader_number == this.wave.invaders.length) {
+    g_player.health = g_player.max_health;
+    g_ApplicationManager.updateHealth();
     g_level++;
     g_ApplicationManager.updateLevel();
     if(! InvaderWaves[g_level]) {
