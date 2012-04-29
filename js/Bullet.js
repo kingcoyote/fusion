@@ -99,7 +99,7 @@ Bullet.types.missile = {
   speed : 250,
   radius : 100,
   detonate : 30,
-  damage : 16,
+  damage : 25,
   turn : Math.PI / 4
 };
 Bullet.types.missile.init = function(bullet) {

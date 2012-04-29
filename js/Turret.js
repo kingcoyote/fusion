@@ -125,7 +125,7 @@ Turret.weapon.gun.shoot = function(turret) {
 // missile
 Turret.weapon.missile = {
   range : 600,
-  firespeed : 1.5
+  firespeed : 2.25
 };
 Turret.weapon.missile.init = function(turret) {
   turret.gun = new VisualGameObject(

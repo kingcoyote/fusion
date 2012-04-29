@@ -128,11 +128,11 @@ Invader.prototype.setDirection = function(x, y) {
 };
 
 Invader.invaders = {
-  invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 0, y : -21 }], cooldown: 1.5, health: 10, points : 10, z:1, speed:100 },
-  invader2 : { image : 'invader2', width: 65, height: 65, gun : [{ x : 0, y : -22 }], cooldown: 0.25, health: 30, points : 30, z:1, speed : 50 },
-  invader3 : { image : 'invader3', width: 54, height: 89, gun : [{ x : -16, y : -5 }, { x : 16, y : -5 }], cooldown: 1.5, health: 50, points:65, z:1, speed: 75 },
-  invader4 : { image : 'invader4', width: 120, height: 106, gun : [{ x : -57, y : 7 }, { x : 0, y : -58}, { x : 57, y : 7}], cooldown: 1, health: 150, points:200, z:1, speed:100 },
-  invader5 : { image : 'invader5', width: 75, height: 72, gun : [{ x : 0, y : 16 }], cooldown: 0.5, health: 80, points: 100, z:1, speed:75 },
+  invader1 : { image : 'invader1', width: 35, height: 45, gun : [{ x : 0, y : -21 }], cooldown: 1.5, health: 20, points : 15, z:1, speed:100 },
+  invader2 : { image : 'invader2', width: 65, height: 65, gun : [{ x : 0, y : -22 }], cooldown: 0.5, health: 80, points : 30, z:1, speed : 50 },
+  invader3 : { image : 'invader3', width: 54, height: 89, gun : [{ x : -16, y : -5 }, { x : 16, y : -5 }], cooldown: 1.5, health: 160, points:65, z:1, speed: 75 },
+  invader4 : { image : 'invader4', width: 120, height: 106, gun : [{ x : -57, y : 7 }, { x : 0, y : -58}, { x : 57, y : 7}], cooldown: 1, health: 250, points:200, z:1, speed:100 },
+  invader5 : { image : 'invader5', width: 75, height: 72, gun : [{ x : 0, y : 16 }], cooldown: 0.25, health: 500, points: 220, z:1, speed:75 },
   invader6 : { image : 'bossWingLeft', width: 214, height: 281, gun : [{ x : 86, y : 280}], cooldown: 0.75, health: 200, points:0, z:2 },
   invader7 : { image : 'bossWingRight', width: 214, height: 281, gun : [{ x : 127, y : 280}], cooldown: 0.75, health: 200, points:0, z:2 },
   invader8 : { image : 'bossBody', width: 184, height: 234, gun : [{ x : 16, y : 223}, { x : 92, y : 186}, { x : 167, y : 223}], cooldown: 0.5, health: 250, points:0, z:1 }
@@ -217,12 +217,12 @@ InvaderController.prototype.getRandomCoords = function() {
 }
 
 var InvaderWaves = [ null, 
-   { duration : 10, invaders : [1,1,2,1,1,2,1,1] },
-   { duration : 10, invaders : [1,1,2,2,1,1,2,2,1,1,2,2,3] },
-   { duration : 10, invaders : [2,2,2,3,2,3,2,2] },
-   { duration : 10, invaders : [1,1,2,3,1,1,1,1,2,3,1,1,1,1,2,3] },
-   { duration : 10, invaders : [2,2,2,3,3,2,2,5,2,2] },
-   { duration : 10, invaders : [2,3,3,2,3,3,5,3,5] },
-   { duration : 10, invaders : [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,4] },
-   { duration : 10, invaders : [2,2,3,2,3,3,2,5,5] },
+   { duration : 10, invaders : [1,1,1,1,1,1,1,1] },
+   { duration : 12, invaders : [1,1,2,2,1,1,2,2,1,1] },
+   { duration : 14, invaders : [2,1,1,2,1,1,2,1,1,3,1,1,2,1,1,3,1,1,2,1,1,2,1,1] },
+   { duration : 16, invaders : [1,1,2,3,1,1,1,1,2,3,1,1,1,1,2,3,2,1,2,3,2,1,2,1,1,2] },
+   { duration : 18, invaders : [2,2,2,3,3,2,2,5,2,2,2,3,2,3,2,2,3,5] },
+   { duration : 20, invaders : [2,3,3,1,1,2,1,1,3,3,5,3,5,2,3,2,2,1,1,1,1,2,3] },
+   { duration : 22, invaders : [1,1,1,2,1,1,1,1,3,1,1,1,1,1,2,1,1,1,1,1,3,1,1,1,2,2,4] },
+   { duration : 24, invaders : [1,1,1,2,1,1,1,2,1,1,1,3,1,1,1,2,1,1,1,3,1,1,1,3,1,1,1,2,1,1,1,5,1,1,1,5,1,1,1] },
  ];
