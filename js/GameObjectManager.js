@@ -117,8 +117,8 @@ GameObjectManager.prototype.keyDown = function(event) {
     if (this.gameObjects[x].keyDown) {
       this.gameObjects[x].keyDown(event);
     }
-  }  canvas.onmousedown = function(e) { g.mouseDown(e); }; 
-  canvas.onmouseup   = function(e) { g.mouseUp(e); };
+  }  
+  event.preventDefault();
 };
 
 GameObjectManager.prototype.keyUp = function(event) {
@@ -127,6 +127,7 @@ GameObjectManager.prototype.keyUp = function(event) {
       this.gameObjects[x].keyUp(event);
     }
   }
+  event.preventDefault();
 };
 
 GameObjectManager.prototype.mouseDown = function(event) {
@@ -136,6 +137,7 @@ GameObjectManager.prototype.mouseDown = function(event) {
       this.gameObjects[x].mouseDown(event);
     }
   }
+  event.preventDefault();
 };
 
 GameObjectManager.prototype.mouseUp = function(event) {
@@ -145,6 +147,7 @@ GameObjectManager.prototype.mouseUp = function(event) {
       this.gameObjects[x].mouseUp(event);
     }
   }
+  event.preventDefault();
 };
 
 GameObjectManager.prototype.mouseClick = function(event) {
@@ -154,4 +157,5 @@ GameObjectManager.prototype.mouseClick = function(event) {
       this.gameObjects[x].mouseClick(event);
     }
   }
+  event.preventDefault()
 };
