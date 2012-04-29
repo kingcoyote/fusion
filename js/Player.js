@@ -145,29 +145,29 @@ Player.prototype.getStoreInventory = function() {
   return inventory;
 };
   
-Player.prototype.extraLife = function() {
+Player.extraLife = function() {
   g_lives++;
   g_ApplicationManager.updateLives();
 };
 
-Player.prototype.increasedHealth = function() {
+Player.increasedHealth = function() {
   Player.stats.health += 20;
-  self.health += 20;
-  self.max_health += 20;
+  g_player.health += 20;
+  g_player.max_health += 20;
   g_ApplicationManager.updateHealth();
-  self.StoreInventory.increasedhealth.cost += 50;
+  Player.StoreInventory.increasedhealth.cost += 50;
 };
   
-Player.prototype.speedBoost = function() {
+Player.speedBoost = function() {
   Player.stats.speed += 25;
-  self.speed += 25;
-  self.StoreInventory.speedboost.cost += 50;
+  g_player.speed += 25;
+  Player.StoreInventory.speedboost.cost += 50;
 };
 
-Player.prototype.fasterFiring = function() {
+Player.fasterFiring = function() {
   Player.stats.firespeed -= 0.05;
-  self.firespeed -= 0.05;
-  self.StoreInventory.fasterfiring.cost += 50;
+  g_player.firespeed -= 0.05;
+  Player.StoreInventory.fasterfiring.cost += 50;
 };
   
 Player.StoreInventory = {
@@ -178,7 +178,7 @@ Player.StoreInventory = {
  }; 
 
 Player.stats_default = {
-    health : 60,
+    health : 200,
     speed  : 325,
     firespeed : 0.4
 };
