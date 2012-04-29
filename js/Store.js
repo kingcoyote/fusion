@@ -10,6 +10,11 @@ function Store() {
 };
   
 Store.showInventory = function(inventoryCallback, scope) {
+  Store.current = {
+    callback : inventoryCallback,
+    scope : scope
+  };
+  
   if(!Store.active) return;
   
   Store.store_div.style.display = 'block';
@@ -40,8 +45,13 @@ Store.addStoreInventory = function(item, i, scope) {
       g_score -= item.cost;
       g_ApplicationManager.updateScore();
       item.callback.apply(scope);
+      Store.reset();
     }
   };
+};
+
+Store.reset = function() {
+  Store.showInventory(Store.current.callback, Store.current.scope);
 };
 
 Store.showStore = function() {
@@ -52,6 +62,7 @@ Store.showStore = function() {
 
 Store.closeStore = function() {
   Store.active = false;
+  Store.current = {};
   Store.store_hud_div.style.display = 'none';
   Store.button.style.display = 'none';
   for(var i in g_GameObjectManager.gameObjects) {
