@@ -70,7 +70,7 @@ Invader.prototype.locateTarget = function(){
       d : Infinity
     };
   
-  if(g_player.health >= 0) {
+  if(g_player.health > 0) {
     target.x = g_player.x + g_player.sprite.width / 2
     target.y = g_player.y + g_player.sprite.height / 2
   }
