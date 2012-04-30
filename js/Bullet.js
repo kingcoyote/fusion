@@ -158,8 +158,8 @@ Bullet.types.missile.shutdown = function(bullet) {
     1
   );
   explosion.sprite.initFrames(6);
-  explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4,5], 0.75, false);
-  TempGameObject(explosion, 0.75);
+  explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4,5], 0.5, false);
+  TempGameObject(explosion, 0.5);
   g_GameObjectManager.addGameObject(explosion);
   
   var hitbox = new Rectangle(
