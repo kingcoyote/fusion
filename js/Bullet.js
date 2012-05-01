@@ -99,7 +99,7 @@ Bullet.types.missile = {
   speed : 250,
   radius : 100,
   detonate : 30,
-  damage : 25,
+  damage : 40,
   turn : Math.PI / 4
 };
 Bullet.types.missile.init = function(bullet) {
@@ -178,7 +178,7 @@ Bullet.types.missile.shutdown = function(bullet) {
 };
 
 Bullet.types.laser = {
-  damage : 12 
+  damage : 10
 };
 Bullet.types.laser.init = function(bullet) {
   var x = bullet.x;
@@ -222,7 +222,7 @@ Bullet.types.laser.shutdown = function(bullet) {
 
 Bullet.types.machinegun = {
   speed  : 850, // base speed
-  damage : 3
+  damage : 5
 };
 Bullet.types.machinegun.init = function(bullet) {
   var x = bullet.x;

@@ -178,7 +178,7 @@ Player.StoreInventory = {
  }; 
 
 Player.stats_default = {
-    health : 200,
+    health : 50,
     speed  : 325,
     firespeed : 0.4
 };

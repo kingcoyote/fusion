@@ -17,15 +17,6 @@ function Generator(i) {
   
   var image = g_ResourceManager.genBase;
 
-  VisualGameObject.call(
-      this,
-      image,
-      this.positions[i].x,
-      this.positions[i].y,
-      2
-  );
-  this.sprite.initFrames(2,3);
-  
   this.StoreInventory = {
       genweakturret: { name: "Cannon Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
       genmissileturret: { name: "Missile Turret", icon : "genmissileturret", cost:100, callback: this.missileTurret },
@@ -34,6 +25,15 @@ function Generator(i) {
       gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
+  
+  VisualGameObject.call(
+      this,
+      image,
+      this.positions[i].x,
+      this.positions[i].y,
+      2
+  );
+  this.sprite.initFrames(2,3);
   
   this.mouseClick = function() { Store.showInventory(g.getStoreInventory, g); };
   
@@ -110,7 +110,7 @@ Generator.prototype.weakTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.StoreInventory.genweakturret.cost += 100;
+  this.increaseCost('genweakturret', 75);
 };
 
 Generator.prototype.missileTurret = function() {
@@ -131,7 +131,7 @@ Generator.prototype.missileTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.StoreInventory.genmissileturret.cost += 100;
+  this.increaseCost('genmissileturret', 75);
 };
 
 Generator.prototype.laserTurret = function() {
@@ -152,7 +152,7 @@ Generator.prototype.laserTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.StoreInventory.genlaserturret.cost += 100;
+  this.increaseCost('genlaserturret', 75);
 };
 
 Generator.prototype.machinegunTurret = function() {
@@ -173,10 +173,16 @@ Generator.prototype.machinegunTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.StoreInventory.genmachinegunturret.cost += 100;
+  this.increaseCost('genmachinegunturret', 75);
 };
 
 Generator.prototype.increaseArmor = function() {
   this.armor += 1;
   this.StoreInventory.genarmor.cost += 50;
 };
+
+Generator.prototype.increaseCost = function(type, amount) {
+  for(var i in g_ApplicationManager.generators) {
+    g_ApplicationManager.generators[i].StoreInventory[type].cost += amount;
+  }
+}
