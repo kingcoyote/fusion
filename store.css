@@ -2,7 +2,7 @@
 #store_header { position: absolute; text-align:center; top: 50px; width:450px; padding:0 287px; }
 #store { position:absolute; width:774px; height: 518px; left:125px; top:125px; background-color:#000; border:2px solid #ffffff; display:none; text-shadow: 2px 2px #000000; z-index:100000; }
 #store_footer { text-align:center;}
-#store_inventory { margin: 25px; border:1px solid #666; background-color:#333; height: 390px; padding:15px; }
+#store_inventory { margin: 25px; border:1px solid #666; background-color:#333; height: 390px; padding:15px; overflow-y:scroll; overflow-x:hidden }
 #store_close { margin:0 auto; }
 
 #store_inventory div.inventory { width:146px; float:left; margin:5px; text-align:center; padding:5px; }

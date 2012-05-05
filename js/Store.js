@@ -21,6 +21,7 @@ Store.showInventory = function(inventoryCallback, scope) {
   Store.store_inventory.innerHTML = '';
   var inventory = inventoryCallback.call(scope);
   for(var i in inventory) {
+    if(inventory[i].active == false) continue;
     Store.addStoreInventory(inventory[i], i, scope);
   }
 };
