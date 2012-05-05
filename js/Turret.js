@@ -24,10 +24,10 @@ function Turret(type,x,y) {
 
 Turret.prototype = new VisualGameObject();
 
-Turret.gun        = 'gun';
+Turret.cannon     = 'cannon';
 Turret.missile    = 'missile';
 Turret.laser      = 'laser';
-Turret.machinegun = 'machinegun';
+Turret.mg         = 'mg';
 
 Turret.prototype.update = function(dt) {
   this.gun.x = this.x;
@@ -93,11 +93,11 @@ Turret.prototype.setDirection = function(angle) {
 Turret.weapon = {};
 
 // gun
-Turret.weapon.gun = {
+Turret.weapon.cannon = {
   firespeed : 0.75,
   range     : 400
 };
-Turret.weapon.gun.init = function(turret) {
+Turret.weapon.cannon.init = function(turret) {
   turret.gun = new VisualGameObject(
     turret.image,
     turret.x,
@@ -108,9 +108,9 @@ Turret.weapon.gun.init = function(turret) {
   turret.gun.sprite.setFrame(0,1);
   g_GameObjectManager.addGameObject(turret.gun);
 };
-Turret.weapon.gun.shoot = function(turret) {
+Turret.weapon.cannon.shoot = function(turret) {
   var bullet = new Bullet(
-    Bullet.gun,
+    Bullet.cannon,
     turret.x + turret.sprite.width / 2,
     turret.y + turret.sprite.height / 2,
     turret.angle,
@@ -184,12 +184,12 @@ Turret.weapon.laser.shoot = function(turret) {
   bullet.turret = turret;
 };
 
-// twin
-Turret.weapon.machinegun = {
+// mg
+Turret.weapon.mg = {
   range : 400,
   firespeed : 0.125
 };
-Turret.weapon.machinegun.init = function(turret) {
+Turret.weapon.mg.init = function(turret) {
   turret.gun = new VisualGameObject(
     turret.image,
     turret.x,

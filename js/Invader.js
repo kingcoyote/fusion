@@ -34,7 +34,7 @@ Invader.prototype.shoot = function() {
     var y = (this.y + this.sprite.height / 2) + (Math.cos(this.angle - gun.angle) * gun.distance);
     var angle = Math.atan2(this.target.y - y, this.target.x - x) + Math.PI / 2;
     var bullet = new Bullet(
-        Bullet.gun,
+        Bullet.cannon,
         x, 
         y, 
         angle, 

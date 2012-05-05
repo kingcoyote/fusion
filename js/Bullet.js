@@ -20,19 +20,19 @@ Bullet.prototype.shutdown = function() {
   VisualGameObject.prototype.shutdown.call(this);
 };
 
-Bullet.gun     = "gun";
+Bullet.cannon  = "cannon";
 Bullet.missile = "missile";
 Bullet.laser   = "laser";
-Bullet.machinegun    = "machinegun";
+Bullet.mg      = "mg";
 
 Bullet.types = {};
 
-Bullet.types.gun = {
+Bullet.types.cannon = {
   speed  : 650, // base speed
   damage : 10,
   firespeed: 0.5
 };
-Bullet.types.gun.init = function(bullet) {
+Bullet.types.cannon.init = function(bullet) {
   var x = bullet.x;
   var y = bullet.y;
   var image = g_ResourceManager.bigBullet;
@@ -67,7 +67,7 @@ Bullet.types.gun.init = function(bullet) {
   
   flash.object.sprite.rotate(bullet.angle);
 };
-Bullet.types.gun.update = function(bullet, dt) {
+Bullet.types.cannon.update = function(bullet, dt) {
   bullet.x += this.speed * Math.sin(bullet.angle) * dt;
   bullet.y -= this.speed * Math.cos(bullet.angle) * dt;
   
@@ -89,14 +89,14 @@ Bullet.types.gun.update = function(bullet, dt) {
     };
   }
 };
-Bullet.types.gun.shutdown = function(bullet) {
+Bullet.types.cannon.shutdown = function(bullet) {
   var explosion = new VisualGameObject(g_ResourceManager.smallExploBlue, bullet.x - 20, bullet.y - 20, 10);
   explosion.sprite.initFrames(5);
   explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4], 0.3, false);
   TempGameObject(explosion, 0.3);
   g_GameObjectManager.addGameObject(explosion);
 };
-Bullet.types.gun.collisionArea = function(bullet) {
+Bullet.types.cannon.collisionArea = function(bullet) {
   return new Rectangle(bullet.x, bullet.y, bullet.sprite.width, bullet.sprite.height);
 };
 
@@ -229,13 +229,13 @@ Bullet.types.laser.shutdown = function(bullet) {
   bullet.turret.bullet = null;
 };
 
-Bullet.types.machinegun = {
+Bullet.types.mg = {
   speed  : 850, // base speed
   damage : 5,
   spread : Math.PI / 16,
   firespeed: 0.125
 };
-Bullet.types.machinegun.init = function(bullet) {
+Bullet.types.mg.init = function(bullet) {
   var x = bullet.x;
   var y = bullet.y;
   var image = g_ResourceManager.smallBullet;
@@ -254,7 +254,7 @@ Bullet.types.machinegun.init = function(bullet) {
   
   bullet.sprite.rotate(bullet.angle);
 };
-Bullet.types.machinegun.update = function(bullet, dt) {
+Bullet.types.mg.update = function(bullet, dt) {
   bullet.x += this.speed * Math.sin(bullet.angle) * dt;
   bullet.y -= this.speed * Math.cos(bullet.angle) * dt;
   
@@ -276,9 +276,9 @@ Bullet.types.machinegun.update = function(bullet, dt) {
     };
   }
 };
-Bullet.types.machinegun.shutdown = function(bullet) {
+Bullet.types.mg.shutdown = function(bullet) {
 
 };
-Bullet.types.machinegun.collisionArea = function(bullet) {
+Bullet.types.mg.collisionArea = function(bullet) {
   return new Rectangle(bullet.x, bullet.y, bullet.sprite.width, bullet.sprite.height);
 };

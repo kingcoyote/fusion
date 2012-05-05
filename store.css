@@ -107,9 +107,9 @@
 #store_inventory div.inventory div.icon.gen100health:hover { background-position:-56px -336px; }
 #store_inventory div.inventory div.icon.gen100health.click { background-position:-112px -336px; }
 
-#store_inventory div.inventory div.icon.genweakturret { background-position:0 -392px; }
-#store_inventory div.inventory div.icon.genweakturret:hover { background-position:-56px -392px; }
-#store_inventory div.inventory div.icon.genweakturret.click { background-position:-112px -392px; }
+#store_inventory div.inventory div.icon.gencannonturret { background-position:0 -392px; }
+#store_inventory div.inventory div.icon.gencannonturret:hover { background-position:-56px -392px; }
+#store_inventory div.inventory div.icon.gencannonturret.click { background-position:-112px -392px; }
 
 #store_inventory div.inventory div.icon.genmissileturret { background-position:0 -560px; }
 #store_inventory div.inventory div.icon.genmissileturret:hover { background-position:-56px -560px; }
@@ -119,6 +119,6 @@
 #store_inventory div.inventory div.icon.genlaserturret:hover { background-position:-56px -504px; }
 #store_inventory div.inventory div.icon.genlaserturret.click { background-position:-112px -504px; }
 
-#store_inventory div.inventory div.icon.genmachinegunturret { background-position:0 -616px; }
-#store_inventory div.inventory div.icon.genmachinegunturret:hover { background-position:-56px -616px; }
-#store_inventory div.inventory div.icon.genmachinegunturret.click { background-position:-112px -616px; }
+#store_inventory div.inventory div.icon.genmgturret { background-position:0 -616px; }
+#store_inventory div.inventory div.icon.genmgturret:hover { background-position:-56px -616px; }
+#store_inventory div.inventory div.icon.genmgturret.click { background-position:-112px -616px; }

@@ -18,10 +18,10 @@ function Generator(i) {
   var image = g_ResourceManager.genBase;
 
   this.StoreInventory = {
-      genweakturret: { name: "Cannon Turret", icon : "genweakturret", cost: 100, callback: this.weakTurret },
+      gencannonturret: { name: "Cannon Turret", icon : "gencannonturret", cost: 100, callback: this.cannonTurret },
       genmissileturret: { name: "Missile Turret", icon : "genmissileturret", cost:100, callback: this.missileTurret },
       genlaserturret: { name: "Laser Turret", icon : "genlaserturret", cost:100, callback: this.laserTurret },
-      genmachinegunturret: { name: "MG Turret", icon : "genmachinegunturret", cost:100, callback: this.machinegunTurret },
+      genmgturret: { name: "MG Turret", icon : "genmgturret", cost:100, callback: this.mgTurret },
       gen100health: { name: "+100 Health", icon : "gen100health", cost: 150, callback: this.minorHealth },
       genarmor: { name: "Increase Armor", icon : "genarmor", cost: 50, callback: this.increaseArmor }
   };
@@ -92,13 +92,13 @@ Generator.prototype.minorHealth = function() {
   }
 };
 
-Generator.prototype.weakTurret = function() {
+Generator.prototype.cannonTurret = function() {
   var position = this.addon_position;
   // hide the store div
   // create a new turret placer object
   turret = DraggableGameObject(
     new Turret(
-      Turret.gun,
+      Turret.cannon,
       this.x + position.x,
       this.y + position.y
     ), 
@@ -110,7 +110,7 @@ Generator.prototype.weakTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.increaseCost('genweakturret', 75);
+  this.increaseCost('gencannonturret', 75);
 };
 
 Generator.prototype.missileTurret = function() {
@@ -155,13 +155,13 @@ Generator.prototype.laserTurret = function() {
   this.increaseCost('genlaserturret', 75);
 };
 
-Generator.prototype.machinegunTurret = function() {
+Generator.prototype.mgTurret = function() {
   var position = this.addon_position;
   // hide the store div
   // create a new turret placer object
   turret = DraggableGameObject(
     new Turret(
-      Turret.machinegun,
+      Turret.mg,
       this.x + position.x,
       this.y + position.y
     ), 
@@ -173,7 +173,7 @@ Generator.prototype.machinegunTurret = function() {
   g_GameObjectManager.addGameObject(turret);
   g_ApplicationManager.turrets.push(turret);
   this.addons.push(turret);
-  this.increaseCost('genmachinegunturret', 75);
+  this.increaseCost('genmgturret', 75);
 };
 
 Generator.prototype.increaseArmor = function() {
