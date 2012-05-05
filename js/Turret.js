@@ -187,8 +187,7 @@ Turret.weapon.laser.shoot = function(turret) {
 // twin
 Turret.weapon.machinegun = {
   range : 400,
-  firespeed : 0.125,
-  spread : Math.PI / 16
+  firespeed : 0.125
 };
 Turret.weapon.machinegun.init = function(turret) {
   turret.gun = new VisualGameObject(
@@ -201,12 +200,12 @@ Turret.weapon.machinegun.init = function(turret) {
   turret.gun.sprite.setFrame(0,4);
   g_GameObjectManager.addGameObject(turret.gun);
 };
-Turret.weapon.machinegun.shoot = function(turret) {
+Turret.weapon.mg.shoot = function(turret) {
   var bullet = new Bullet(
       Bullet.machinegun,
       turret.x + turret.sprite.width / 2,
       turret.y + turret.sprite.height / 2,
-      turret.angle + Math.random() * this.spread - this.spread / 2,
+      turret.angle,
       -1
     );
     

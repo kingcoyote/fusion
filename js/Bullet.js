@@ -1,10 +1,12 @@
-function Bullet(type, x, y, angle, team) {
+function Bullet(type, x, y, angle, team, level) {
   this.type = Bullet.types[type];
   this.team = team;
   this.angle = angle;
   this.x = x;
   this.y = y;
+  this.level = typeof(level) == "undefined" ? 1 : level;
   this.type.init(this);
+  this.sprite.setFrame(this.level-1);
 };
 
 Bullet.prototype = new VisualGameObject;
@@ -27,7 +29,8 @@ Bullet.types = {};
 
 Bullet.types.gun = {
   speed  : 650, // base speed
-  damage : 10
+  damage : 10,
+  firespeed: 0.5
 };
 Bullet.types.gun.init = function(bullet) {
   var x = bullet.x;
@@ -78,7 +81,7 @@ Bullet.types.gun.update = function(bullet, dt) {
       if(object.invulnerable > 0) {
         break;
       }
-      var damage = (this.damage - object.armor);
+      var damage = (this.damage * bullet.level - object.armor);
       object.health -= (damage >= 1 ? damage : 1);
       g_ApplicationManager.updateHealth();
       bullet.shutdown();
@@ -176,7 +179,7 @@ Bullet.types.missile.shutdown = function(bullet) {
   for(var i in g_ApplicationManager.invaderController.invaders) {
     var invader = g_ApplicationManager.invaderController.invaders[i];
     if(!invader.dead && invader.collisionArea().intersects(hitbox)) {
-      invader.health -= this.damage;
+      invader.health -= this.damage * bullet.level;
     }
   }
 };
@@ -215,7 +218,7 @@ Bullet.types.laser.update = function(bullet, dt) {
   bullet.sprite.setTiling(1, Math.ceil(distance / bullet.sprite.height));
   bullet.sprite.rotate(bullet.turret.angle);
   
-  bullet.turret.target.health -= this.damage * dt;
+  bullet.turret.target.health -= this.damage * bullet.level * dt;
   
   if(bullet.turret.target.dead == true) {
     bullet.shutdown();
@@ -228,7 +231,9 @@ Bullet.types.laser.shutdown = function(bullet) {
 
 Bullet.types.machinegun = {
   speed  : 850, // base speed
-  damage : 5
+  damage : 5,
+  spread : Math.PI / 16,
+  firespeed: 0.125
 };
 Bullet.types.machinegun.init = function(bullet) {
   var x = bullet.x;
@@ -244,6 +249,8 @@ Bullet.types.machinegun.init = function(bullet) {
   );
   
   bullet.sprite.initFrames(3,1);
+  
+  bullet.angle += Math.random() * this.spread - this.spread / 2
   
   bullet.sprite.rotate(bullet.angle);
 };
@@ -261,7 +268,7 @@ Bullet.types.machinegun.update = function(bullet, dt) {
       if(object.invulnerable > 0) {
         break;
       }
-      var damage = (this.damage - object.armor);
+      var damage = (this.damage * bullet.level - object.armor);
       object.health -= (damage >= 1 ? damage : 1);
       g_ApplicationManager.updateHealth();
       bullet.shutdown();
