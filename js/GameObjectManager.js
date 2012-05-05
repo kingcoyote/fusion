@@ -95,6 +95,7 @@ GameObjectManager.prototype.endLoop = function() {
 };
 
 GameObjectManager.prototype.addGameObject = function(gameObject) {
+  gameObject.zOrder += Math.random();
   this.gameObjects.push(gameObject);
   this.gameObjects.sort(function(a,b){return a.zOrder - b.zOrder;});
 };
