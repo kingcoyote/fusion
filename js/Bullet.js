@@ -32,15 +32,17 @@ Bullet.types.gun = {
 Bullet.types.gun.init = function(bullet) {
   var x = bullet.x;
   var y = bullet.y;
-  var image = g_ResourceManager.bulletUp;
+  var image = g_ResourceManager.bigBullet;
   
   VisualGameObject.call(
     bullet, 
     image, 
-    x - image.width / 2, 
-    y - image.height / 2, 
+    x - image.width / 8, 
+    y - image.height / 8, 
     -1
   );
+  
+  bullet.sprite.initFrames(4,1);
   
   bullet.sprite.rotate(bullet.angle);
   
@@ -110,10 +112,12 @@ Bullet.types.missile.init = function(bullet) {
   VisualGameObject.call(
     bullet, 
     image, 
-    x - image.width / 2, 
-    y - image.height / 2, 
+    x - image.width / 6, 
+    y - image.height / 6, 
     -1
   );
+  
+  bullet.sprite.initFrames(3,1);
   
   bullet.sprite.rotate(bullet.angle);
 };
@@ -183,14 +187,16 @@ Bullet.types.laser = {
 Bullet.types.laser.init = function(bullet) {
   var x = bullet.x;
   var y = bullet.y;
-  var image = g_ResourceManager.greenLaser;
+  var image = g_ResourceManager.laser;
   VisualGameObject.call(
     bullet, 
     image, 
-    x - image.width / 2,
-    y - image.height / 2, 
+    x - image.width / 10,
+    y - image.height / 10, 
     -1
   );
+  
+  bullet.sprite.initFrames(5,1);
   
   bullet.sprite.rotate(bullet.angle);
 };
@@ -227,15 +233,17 @@ Bullet.types.machinegun = {
 Bullet.types.machinegun.init = function(bullet) {
   var x = bullet.x;
   var y = bullet.y;
-  var image = g_ResourceManager.mgBullet;
+  var image = g_ResourceManager.smallBullet;
   
   VisualGameObject.call(
     bullet, 
     image, 
-    x - image.width / 2, 
-    y - image.height / 2, 
+    x - image.width / 6, 
+    y - image.height / 6, 
     -1
   );
+  
+  bullet.sprite.initFrames(3,1);
   
   bullet.sprite.rotate(bullet.angle);
 };
