@@ -252,19 +252,19 @@ Player.StoreInventory = {
     increaseArmor:   { name: "Increase Armor", icon: "playerincreasearmor", cost: 100, callback: Player.increaseArmor },
     doubleCannon:    { name: "Double Cannon", icon: "playerdoublecannon", cost: 300, callback: Player.doubleCannon },
     tripleCannon:    { name: "Triple Cannon", icon: "playertriplecannon", cost: 800, callback: Player.tripleCannon, active: false },
-    cannonBoost:     { name: "Cannon Boost", icon: "playercannonboost", cost: 150, callback: Player.cannonBoost },
+    cannonBoost:     { name: "Cannon Boost", icon: "playercannonboost3", cost: 150, callback: Player.cannonBoost },
     laser:           { name: "Laser", icon: "playerlaser", cost: 100, callback: Player.laser, active:false },
     doubleLaser:     { name: "Double Laser", icon: "playerdoublelaser", cost: 300, callback: Player.doubleLaser, active: false },
     tripleLaser:     { name: "Triple Laser", icon: "playertriplelaser", cost: 800, callback: Player.tripleLaser, active: false },
-    laserBoost:      { name: "Laser Boost", icon: "playerlaserboost", cost: 150, callback: Player.laserBoost, active: false },
+    laserBoost:      { name: "Laser Boost", icon: "playerlaserboost4", cost: 150, callback: Player.laserBoost, active: false },
     missile:         { name: "Missile", icon: "playermissile", cost: 100, callback: Player.missile, active:false },
     doubleMissile:   { name: "Double Missile", icon: "playerdoublemissile", cost: 300, callback: Player.doubleMissile, active: false },
     tripleMissile:   { name: "Triple Missile", icon: "playertriplemissile", cost: 800, callback: Player.tripleMissile, active: false },
-    missileBoost:    { name: "Missile Boost", icon: "playermissileboost", cost: 150, callback: Player.missileBoost, active: false },
+    missileBoost:    { name: "Missile Boost", icon: "playermissileboost2", cost: 150, callback: Player.missileBoost, active: false },
     mg:              { name: "MG", icon: "playermg", cost: 100, callback: Player.mg },
     doubleMg:        { name: "Double MG", icon: "playerdoublemg", cost: 300, callback: Player.doubleMg, active: false },
     tripleMg:        { name: "Triple MG", icon: "playertriplemg", cost: 800, callback: Player.tripleMg, active: false },
-    mgBoost:         { name: "MG Boost", icon: "playermgboost", cost: 150, callback: Player.mgBoost, active:false }
+    mgBoost:         { name: "MG Boost", icon: "playermgboost2", cost: 150, callback: Player.mgBoost, active:false }
  }; 
 
 Player.stats_default = {

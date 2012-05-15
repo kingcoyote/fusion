@@ -27,69 +27,101 @@
 #store_inventory div.inventory div.icon.fasterfiring:hover { background-position:-56px -224px; }
 #store_inventory div.inventory div.icon.fasterfiring.click { background-position:-112px -224px; }
 
-#store_inventory div.inventory div.icon.playerdoublecannon { background-position:0 -672px; }
-#store_inventory div.inventory div.icon.playerdoublecannon:hover { background-position:-56px -672px; }
-#store_inventory div.inventory div.icon.playerdoublecannon.click { background-position:-112px -672px; }
+#store_inventory div.inventory div.icon.playercannon { background-position:0 -672px; }
+#store_inventory div.inventory div.icon.playercannon:hover { background-position:-56px -672px; }
+#store_inventory div.inventory div.icon.playercannon.click { background-position:-112px -672x; }
 
-#store_inventory div.inventory div.icon.playertriplecannon { background-position:0 -728px; }
-#store_inventory div.inventory div.icon.playertriplecannon:hover { background-position:-56px -728px; }
-#store_inventory div.inventory div.icon.playertriplecannon.click { background-position:-112px -728px; }
+#store_inventory div.inventory div.icon.playerdoublecannon { background-position:0 -728px; }
+#store_inventory div.inventory div.icon.playerdoublecannon:hover { background-position:-56px -728px; }
+#store_inventory div.inventory div.icon.playerdoublecannon.click { background-position:-112px -728x; }
 
-#store_inventory div.inventory div.icon.playercannonboost { background-position:0 -784px; }
-#store_inventory div.inventory div.icon.playercannonboost:hover { background-position:-56px -784px; }
-#store_inventory div.inventory div.icon.playercannonboost.click { background-position:-112px -784px; }
+#store_inventory div.inventory div.icon.playertriplecannon { background-position:0 -784px; }
+#store_inventory div.inventory div.icon.playertriplecannon:hover { background-position:-56px -784px; }
+#store_inventory div.inventory div.icon.playertriplecannon.click { background-position:-112px -784px; }
 
-#store_inventory div.inventory div.icon.playerlaser { background-position:0 -840px; }
-#store_inventory div.inventory div.icon.playerlaser:hover { background-position:-56px -840px; }
-#store_inventory div.inventory div.icon.playerlaser.click { background-position:-112px -840px; }
+#store_inventory div.inventory div.icon.playercannonboost1 { background-position:0 -840px; }
+#store_inventory div.inventory div.icon.playercannonboost1:hover { background-position:-56px -840px; }
+#store_inventory div.inventory div.icon.playercannonboost1.click { background-position:-112px -840px; }
 
-#store_inventory div.inventory div.icon.playerdoublelaser { background-position:0 -896px; }
-#store_inventory div.inventory div.icon.playerdoublelaser:hover { background-position:-56px -896px; }
-#store_inventory div.inventory div.icon.playerdoublelaser.click { background-position:-112px -895px; }
+#store_inventory div.inventory div.icon.playercannonboost2 { background-position:0 -896px; }
+#store_inventory div.inventory div.icon.playercannonboost2:hover { background-position:-56px -896px; }
+#store_inventory div.inventory div.icon.playercannonboost2.click { background-position:-112px -896px; }
 
-#store_inventory div.inventory div.icon.playertriplelaser { background-position:0 -952px; }
-#store_inventory div.inventory div.icon.playertriplelaser:hover { background-position:-56px -952px; }
-#store_inventory div.inventory div.icon.playertriplelaser.click { background-position:-112px -952px; }
+#store_inventory div.inventory div.icon.playercannonboost3 { background-position:0 -952px; }
+#store_inventory div.inventory div.icon.playercannonboost3:hover { background-position:-56px -952px; }
+#store_inventory div.inventory div.icon.playercannonboost3.click { background-position:-112px -952px; }
 
-#store_inventory div.inventory div.icon.playerlaserboost { background-position:0 -1008px; }
-#store_inventory div.inventory div.icon.playerlaserboost:hover { background-position:-56px -1008px; }
-#store_inventory div.inventory div.icon.playerlaserboost.click { background-position:-112px -1008px; }
+#store_inventory div.inventory div.icon.playerlaser { background-position:0 -1008px; }
+#store_inventory div.inventory div.icon.playerlaser:hover { background-position:-56px -1008px; }
+#store_inventory div.inventory div.icon.playerlaser.click { background-position:-112px -1008px; }
 
-#store_inventory div.inventory div.icon.playermissile { background-position:0 -1064px; }
-#store_inventory div.inventory div.icon.playermissile:hover { background-position:-56px -1064px; }
-#store_inventory div.inventory div.icon.playermissile.click { background-position:-112px -1064px; }
+#store_inventory div.inventory div.icon.playerdoublelaser { background-position:0 -1120px; }
+#store_inventory div.inventory div.icon.playerdoublelaser:hover { background-position:-56px -1064px; }
+#store_inventory div.inventory div.icon.playerdoublelaser.click { background-position:-112px -1064px; }
 
-#store_inventory div.inventory div.icon.playerdoublemissile { background-position:0 -1120px; }
-#store_inventory div.inventory div.icon.playerdoublemissile:hover { background-position:-56px -1120px; }
-#store_inventory div.inventory div.icon.playerdoublemissile.click { background-position:-112px -1120px; }
+#store_inventory div.inventory div.icon.playertriplelaser { background-position:0 -1120px; }
+#store_inventory div.inventory div.icon.playertriplelaser:hover { background-position:-56px -1120px; }
+#store_inventory div.inventory div.icon.playertriplelaser.click { background-position:-112px -1120px; }
 
-#store_inventory div.inventory div.icon.playertriplemissile { background-position:0 -1176px; }
-#store_inventory div.inventory div.icon.playertriplemissile:hover { background-position:-56px -1176px; }
-#store_inventory div.inventory div.icon.playertriplemissile.click { background-position:-112px -1176px; }
+#store_inventory div.inventory div.icon.playerlaserboost1 { background-position:0 -1176px; }
+#store_inventory div.inventory div.icon.playerlaserboost1:hover { background-position:-56px -1176px; }
+#store_inventory div.inventory div.icon.playerlaserboost1.click { background-position:-112px -1176px; }
 
-#store_inventory div.inventory div.icon.playermissileboost { background-position:0 -1232px; }
-#store_inventory div.inventory div.icon.playermissileboost:hover { background-position:-56px -1232px; }
-#store_inventory div.inventory div.icon.playermissileboost.click { background-position:-112px -1232px; }
+#store_inventory div.inventory div.icon.playerlaserboost2 { background-position:0 -1232px; }
+#store_inventory div.inventory div.icon.playerlaserboost2:hover { background-position:-56px -1232px; }
+#store_inventory div.inventory div.icon.playerlaserboost2.click { background-position:-112px -1232px; }
 
-#store_inventory div.inventory div.icon.playermg { background-position:0 -1288px; }
-#store_inventory div.inventory div.icon.playermg:hover { background-position:-56px -1288px; }
-#store_inventory div.inventory div.icon.playermg.click { background-position:-112px -1288px; }
+#store_inventory div.inventory div.icon.playerlaserboost3 { background-position:0 -1288px; }
+#store_inventory div.inventory div.icon.playerlaserboost3:hover { background-position:-56px -1288px; }
+#store_inventory div.inventory div.icon.playerlaserboost3.click { background-position:-112px -1288px; }
 
-#store_inventory div.inventory div.icon.playerdoublemg { background-position:0 -1288px; }
-#store_inventory div.inventory div.icon.playerdoublemg:hover { background-position:-56px -1288px; }
-#store_inventory div.inventory div.icon.playerdoublemg.click { background-position:-112px -1288px; }
+#store_inventory div.inventory div.icon.playerlaserboost4 { background-position:0 -1344px; }
+#store_inventory div.inventory div.icon.playerlaserboost4:hover { background-position:-56px -1344px; }
+#store_inventory div.inventory div.icon.playerlaserboost4.click { background-position:-112px -1344px; }
 
-#store_inventory div.inventory div.icon.playertriplemg { background-position:0 -1344px; }
-#store_inventory div.inventory div.icon.playertriplemg:hover { background-position:-56px -1344px; }
-#store_inventory div.inventory div.icon.playertriplemg.click { background-position:-112px -1344px; }
+#store_inventory div.inventory div.icon.playermissile { background-position:0 -1400px; }
+#store_inventory div.inventory div.icon.playermissile:hover { background-position:-56px -1400px; }
+#store_inventory div.inventory div.icon.playermissile.click { background-position:-112px -1400px; }
 
-#store_inventory div.inventory div.icon.playermgboost { background-position:0 -1400px; }
-#store_inventory div.inventory div.icon.playermgboost:hover { background-position:-56px -1400px; }
-#store_inventory div.inventory div.icon.playermgboost.click { background-position:-112px -1400px; }
+#store_inventory div.inventory div.icon.playerdoublemissile { background-position:0 -1456px; }
+#store_inventory div.inventory div.icon.playerdoublemissile:hover { background-position:-56px -1456px; }
+#store_inventory div.inventory div.icon.playerdoublemissile.click { background-position:-112px -1456px; }
 
-#store_inventory div.inventory div.icon.playerincreasearmor { background-position:0 -1456px; }
-#store_inventory div.inventory div.icon.playerincreasearmor:hover { background-position:-56px -1456px; }
-#store_inventory div.inventory div.icon.playerincreasearmor.click { background-position:-112px -1456px; }
+#store_inventory div.inventory div.icon.playertriplemissile { background-position:0 -1512px; }
+#store_inventory div.inventory div.icon.playertriplemissile:hover { background-position:-56px -1512px; }
+#store_inventory div.inventory div.icon.playertriplemissile.click { background-position:-112px -1512px; }
+
+#store_inventory div.inventory div.icon.playermissileboost1 { background-position:0 -1568px; }
+#store_inventory div.inventory div.icon.playermissileboost1:hover { background-position:-56px -1568px; }
+#store_inventory div.inventory div.icon.playermissileboost1.click { background-position:-112px -1568px; }
+
+#store_inventory div.inventory div.icon.playermissileboost2 { background-position:0 -1624px; }
+#store_inventory div.inventory div.icon.playermissileboost2:hover { background-position:-56px -1624px; }
+#store_inventory div.inventory div.icon.playermissileboost2.click { background-position:-112px -1624px; }
+
+#store_inventory div.inventory div.icon.playermg { background-position:0 -1680px; }
+#store_inventory div.inventory div.icon.playermg:hover { background-position:-56px -1680px; }
+#store_inventory div.inventory div.icon.playermg.click { background-position:-112px -1680px; }
+
+#store_inventory div.inventory div.icon.playerdoublemg { background-position:0 -1736px; }
+#store_inventory div.inventory div.icon.playerdoublemg:hover { background-position:-56px -1736px; }
+#store_inventory div.inventory div.icon.playerdoublemg.click { background-position:-112px -1736px; }
+
+#store_inventory div.inventory div.icon.playertriplemg { background-position:0 -1792px; }
+#store_inventory div.inventory div.icon.playertriplemg:hover { background-position:-56px -1792px; }
+#store_inventory div.inventory div.icon.playertriplemg.click { background-position:-112px -1792px; }
+
+#store_inventory div.inventory div.icon.playermgboost1 { background-position:0 -1848px; }
+#store_inventory div.inventory div.icon.playermgboost1:hover { background-position:-56px -1848px; }
+#store_inventory div.inventory div.icon.playermgboost1.click { background-position:-112px -1848px; }
+
+#store_inventory div.inventory div.icon.playermgboost2 { background-position:0 -1904px; }
+#store_inventory div.inventory div.icon.playermgboost2:hover { background-position:-56px -1904px; }
+#store_inventory div.inventory div.icon.playermgboost2.click { background-position:-112px -1904px; }
+
+#store_inventory div.inventory div.icon.playerincreasearmor { background-position:0 -1960px; }
+#store_inventory div.inventory div.icon.playerincreasearmor:hover { background-position:-56px -1960px; }
+#store_inventory div.inventory div.icon.playerincreasearmor.click { background-position:-112px -1960px; }
 
 #store_inventory div.inventory div.icon.shieldrestore { background-position:0 -56px; }
 #store_inventory div.inventory div.icon.shieldrestore:hover { background-position:-56px -56px; }
