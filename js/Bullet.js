@@ -164,7 +164,7 @@ Bullet.types.missile.shutdown = function(bullet) {
     bullet.y + (bullet.sprite.height / 2) - 62,
     1
   );
-  explosion.sprite.initFrames(6);
+  explosion.sprite.initFrames(5);
   explosion.sprite = AnimatedSprite(explosion.sprite, [1,2,3,4,5], 0.5, false);
   TempGameObject(explosion, 0.5);
   g_GameObjectManager.addGameObject(explosion);
