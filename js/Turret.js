@@ -202,7 +202,7 @@ Turret.weapon.mg.init = function(turret) {
 };
 Turret.weapon.mg.shoot = function(turret) {
   var bullet = new Bullet(
-      Bullet.machinegun,
+      Bullet.mg,
       turret.x + turret.sprite.width / 2,
       turret.y + turret.sprite.height / 2,
       turret.angle,
