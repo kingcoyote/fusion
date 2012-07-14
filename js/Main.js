@@ -51,23 +51,6 @@ window.onload = function() {
     precalc_sin[i] = Math.sin(i * (Math.PI / 180));
   }
   
-  var n = 100;
-
-  for(var j = 1; j < n; j++) {
-    var key1 = String((Math.round(((j / 2) / n) * n)) / n);
-    while(key1.length < 4) key1 += "0";
-  
-    if(key1.length > 5) key1 = String(Math.round(Number(key1) * 1000) / 1000)
-    
-    var key2 = String(1 - (Math.round(((j / 2) / n) * n)) / n);
-    while(key2.length < 4) key2 += "0";
-
-    if(key2.length > 5) key2 = String(Math.round(Number(key2) * 1000) / 1000)
-
-    precalc_atan2[key1] = Math.atan2(n, j);
-    precalc_atan2[key2] = Math.atan2(j, n);
-  }
-
   Math.sin = function(angle) {
     var degrees = angle * 180 / Math.PI;
     if(degrees < 0) {
