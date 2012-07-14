@@ -69,6 +69,16 @@ window.onload = function() {
     return precalc_sin[degrees];
   }
 
+  var rad, x, y, key;
+
+  for(var j = 0; j <360; j++) {
+    rad = j * Math.PI / 180;
+    x = Math.sin(rad);
+    y = Math.cos(rad);
+    key = (y / x).toFixed(3);
+    precalc_atan2[key] = Math.atan2(y, x);
+  }
+  
   g_GameObjectManager = new GameObjectManager();
   document.getElementById('restart').onclick = function() {
     g_GameObjectManager = new GameObjectManager();
