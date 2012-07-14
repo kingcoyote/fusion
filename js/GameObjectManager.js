@@ -119,7 +119,9 @@ GameObjectManager.prototype.keyDown = function(event) {
       this.gameObjects[x].keyDown(event);
     }
   }  
-  event.preventDefault();
+  if(event.which == 32) {
+    event.preventDefault();
+  }
 };
 
 GameObjectManager.prototype.keyUp = function(event) {
