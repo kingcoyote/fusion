@@ -42,13 +42,13 @@ g_resources = {
 };
 
 window.onload = function() {
-  memo_cos = {},
-    memo_sin = {},
-    memo_atan2 = {};
+  precalc_cos = {},
+    precalc_sin = {},
+    precalc_atan2 = {};
 
   for(var i = 0; i < 360; i++) {
-    memo_cos[i] = Math.cos(i * (Math.PI / 180));
-    memo_sin[i] = Math.sin(i * (Math.PI / 180));
+    precalc_cos[i] = Math.cos(i * (Math.PI / 180));
+    precalc_sin[i] = Math.sin(i * (Math.PI / 180));
   }
   
   var n = 100;
@@ -64,25 +64,26 @@ window.onload = function() {
 
     if(key2.length > 5) key2 = String(Math.round(Number(key2) * 1000) / 1000)
 
-    memo_atan2[key1] = Math.atan2(n, j);
-    memo_atan2[key2] = Math.atan2(j, n);
+    precalc_atan2[key1] = Math.atan2(n, j);
+    precalc_atan2[key2] = Math.atan2(j, n);
   }
 
-  old_cos = Math.cos;
-  Math.cos = function(angle) {
-    var degrees = angle * Math.PI / 180;
+  Math.sin = function(angle) {
+    var degrees = angle * 180 / Math.PI;
     if(degrees < 0) {
       degrees = 360 + degrees;
     }
     degrees = Math.round(degrees) % 360;
-    return old_cos(angle)
+    return precalc_cos[degrees];
   }
 
-  old_sin = Math.sin;
-  Math.sin = function(angle) {
-    var degrees = (angle % (Math.PI * 2) * (180/Math.PI));
-    degrees = degrees > 0 ? degrees : 360 + degrees;
-    return old_sin(angle)
+  Math.cos = function(angle) {
+    var degrees = angle * 180 / Math.PI;
+    if(degrees < 0) {
+      degrees = 360 + degrees;
+    }
+    degrees = Math.round(degrees) % 360;
+    return precalc_sin[degrees];
   }
 
   g_GameObjectManager = new GameObjectManager();
