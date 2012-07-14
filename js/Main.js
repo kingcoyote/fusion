@@ -42,6 +42,49 @@ g_resources = {
 };
 
 window.onload = function() {
+  memo_cos = {},
+    memo_sin = {},
+    memo_atan2 = {};
+
+  for(var i = 0; i < 360; i++) {
+    memo_cos[i] = Math.cos(i * (Math.PI / 180));
+    memo_sin[i] = Math.sin(i * (Math.PI / 180));
+  }
+  
+  var n = 100;
+
+  for(var j = 1; j < n; j++) {
+    var key1 = String((Math.round(((j / 2) / n) * n)) / n);
+    while(key1.length < 4) key1 += "0";
+  
+    if(key1.length > 5) key1 = String(Math.round(Number(key1) * 1000) / 1000)
+    
+    var key2 = String(1 - (Math.round(((j / 2) / n) * n)) / n);
+    while(key2.length < 4) key2 += "0";
+
+    if(key2.length > 5) key2 = String(Math.round(Number(key2) * 1000) / 1000)
+
+    memo_atan2[key1] = Math.atan2(n, j);
+    memo_atan2[key2] = Math.atan2(j, n);
+  }
+
+  old_cos = Math.cos;
+  Math.cos = function(angle) {
+    var degrees = angle * Math.PI / 180;
+    if(degrees < 0) {
+      degrees = 360 + degrees;
+    }
+    degrees = Math.round(degrees) % 360;
+    return old_cos(angle)
+  }
+
+  old_sin = Math.sin;
+  Math.sin = function(angle) {
+    var degrees = (angle % (Math.PI * 2) * (180/Math.PI));
+    degrees = degrees > 0 ? degrees : 360 + degrees;
+    return old_sin(angle)
+  }
+
   g_GameObjectManager = new GameObjectManager();
   document.getElementById('restart').onclick = function() {
     g_GameObjectManager = new GameObjectManager();
