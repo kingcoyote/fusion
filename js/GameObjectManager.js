@@ -34,6 +34,10 @@ function GameObjectManager() {
   // create a new ResourceManager
   g_ResourceManager = new ResourceManager(g_resources);
 
+  this.frametimes = [];
+  this.frameNumber = 0;
+  while(this.frametimes.length < 60) this.frametimes.push(0);
+
   // use setInterval to call the draw function
   this.loop = setTimeout(function(){ g.draw(); }, SECONDS_BETWEEN_FRAMES);
 }
@@ -43,7 +47,7 @@ GameObjectManager.prototype.draw = function () {
   var thisFrame  = +new Date();
   var dt         = (thisFrame - this.lastFrame)/1000;
   this.lastFrame = thisFrame;
-
+  this.frameNumber += 1;
   if (!this.resourcesLoaded){
     var numLoaded = 0;
     for (var i = 0; i < g_ResourceManager.imageProperties.length; ++i) {
@@ -88,6 +92,12 @@ GameObjectManager.prototype.draw = function () {
   }
   var g = this;
   this.loop = setTimeout(function(){ g.draw(); }, SECONDS_BETWEEN_FRAMES);
+  this.frametimes.shift();
+  this.frametimes.push(dt);
+
+  var frametime = eval(this.frametimes.join('+')) / this.frametimes.length;
+
+  if(this.frameNumber % 60 == 0) document.getElementById('fps').innerHTML = (Math.round(1 / frametime));
 };
 
 GameObjectManager.prototype.endLoop = function() {
